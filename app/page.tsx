@@ -22,11 +22,11 @@ const QUICK_LINKS = [
     tone: "primary" as const,
   },
   {
-    href: "/varieties",
-    emoji: "🌱",
-    title: "สายพันธุ์",
-    desc: "ตรวจสอบสายพันธุ์ที่มีจำหน่ายในไทย พร้อมความยาก ฤดูเก็บเกี่ยว และราคาตลาด",
-    cta: "ดูสายพันธุ์ →",
+    href: "/match",
+    emoji: "🎯",
+    title: "จับคู่สายพันธุ์",
+    desc: "บอกพื้นที่และสิ่งที่ต้องการ เราจัดอันดับสายพันธุ์ที่เหมาะกับคุณพร้อมเหตุผล",
+    cta: "เริ่มจับคู่ →",
     tone: "light" as const,
   },
   {
@@ -104,16 +104,16 @@ export default function HomePage() {
             </span>
           </div>
           <Link
-            href="/articles/common-avocado-problems"
+            href="/trace"
             className="absolute -left-4 bottom-6 flex max-w-[270px] items-center gap-3 rounded-2xl border border-border bg-white p-4 text-ink shadow-[0_8px_24px_rgba(31,68,32,0.10)] hover:border-avocado-light"
           >
             <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] bg-avocado-pale text-lg text-avocado">
               ✓
             </span>
             <span className="text-sm font-medium leading-snug text-ink">
-              บทความทุกชิ้นอ้างอิงงานวิจัย UC IPM, UC ANR และ UC Davis
+              ต้นพันธุ์ทุกต้นมีรหัสตรวจสอบได้
               <br />
-              <span className="font-bold text-avocado">อ่านเพิ่มเติม →</span>
+              <span className="font-bold text-avocado">ตรวจรหัสต้น →</span>
             </span>
           </Link>
         </div>

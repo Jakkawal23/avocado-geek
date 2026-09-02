@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import type { Article, Guide, Shop, Variety } from "./types";
+import type { Article, Guide, Shop, TraceLot, Variety } from "./types";
 
 // All content lives as individual, hand-editable JSON files under
 // /public/data/<type>/<slug>.json — no database, no API route. Adding a new
@@ -84,6 +84,17 @@ export function getAllGuides(): Guide[] {
 
 export function getGuideBySlug(slug: string): Guide | undefined {
   return bySlug(getAllGuides(), slug);
+}
+
+// ---- Trace lots (tree traceability codes, used by /trace) ----
+
+export function getAllTraceLots(): TraceLot[] {
+  return readJsonDir<TraceLot>("tracelots");
+}
+
+export function getTraceLotByCode(code: string): TraceLot | undefined {
+  const normalized = code.trim().toUpperCase();
+  return getAllTraceLots().find((lot) => lot.code.toUpperCase() === normalized);
 }
 
 // ---- Aggregate stats (used on the homepage) ----

@@ -26,7 +26,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-7 text-[15px] font-medium md:flex">
+        <nav className="ml-auto hidden items-center gap-6 text-[15px] font-medium lg:flex">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="text-ink hover:text-avocado">
               {link.label}
@@ -34,39 +34,78 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 md:ml-0">
+        <div className="ml-auto hidden items-center gap-2.5 lg:ml-0 lg:flex">
           <Link
             href="/search"
-            className="inline-flex items-center gap-1.5 rounded-[10px] border border-[#D8D4C6] bg-white px-3.5 py-2.5 text-sm font-semibold text-ink-soft hover:border-avocado hover:text-avocado"
+            aria-label="ค้นหา"
+            className="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-[#D8D4C6] bg-white text-ink-soft hover:border-avocado hover:text-avocado"
           >
-            <span aria-hidden>⌕</span>
-            <span className="hidden sm:inline">ค้นหา</span>
+            ⌕
           </Link>
-          <button
-            type="button"
-            aria-label="เปิดเมนู"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-[#D8D4C6] bg-white text-ink-soft md:hidden"
+          <Link
+            href="/trace"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-[10px] border border-[#D8D4C6] bg-white px-4 py-2.5 text-sm font-semibold text-ink-soft hover:border-avocado hover:text-avocado"
           >
-            {open ? "✕" : "☰"}
-          </button>
+            <span className="text-[13px]">▣</span>
+            ตรวจรหัสต้น
+          </Link>
+          <Link
+            href="/match"
+            className="whitespace-nowrap rounded-[10px] bg-avocado px-5 py-2.5 text-sm font-semibold text-white hover:bg-avocado-light"
+          >
+            เลือกพันธุ์ให้ฉัน
+          </Link>
         </div>
+
+        <button
+          type="button"
+          aria-label="เปิดเมนู"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="ml-auto flex h-10 w-10 items-center justify-center rounded-[10px] border border-[#D8D4C6] bg-white text-ink-soft lg:hidden"
+        >
+          {open ? "✕" : "☰"}
+        </button>
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-border bg-cream px-4 py-3 md:hidden">
-          {NAV_LINKS.map((link) => (
+        <div className="flex flex-col gap-3 border-t border-border bg-cream px-4 py-4 lg:hidden">
+          <nav className="flex flex-col gap-1">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg px-2 py-2.5 text-[15px] font-medium text-ink hover:bg-avocado-pale hover:text-avocado"
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link
-              key={link.href}
-              href={link.href}
+              href="/search"
               className="rounded-lg px-2 py-2.5 text-[15px] font-medium text-ink hover:bg-avocado-pale hover:text-avocado"
               onClick={() => setOpen(false)}
             >
-              {link.label}
+              ค้นหา
             </Link>
-          ))}
-        </nav>
+          </nav>
+          <div className="flex flex-col gap-2 pt-1">
+            <Link
+              href="/trace"
+              onClick={() => setOpen(false)}
+              className="rounded-[10px] border border-[#D8D4C6] bg-white px-4 py-3 text-center text-sm font-semibold text-ink-soft"
+            >
+              ▣ ตรวจรหัสต้น
+            </Link>
+            <Link
+              href="/match"
+              onClick={() => setOpen(false)}
+              className="rounded-[10px] bg-avocado px-4 py-3 text-center text-sm font-semibold text-white"
+            >
+              เลือกพันธุ์ให้ฉัน
+            </Link>
+          </div>
+        </div>
       )}
     </header>
   );

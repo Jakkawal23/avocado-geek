@@ -41,6 +41,11 @@ export interface Variety {
   image?: string;
   difficultyStars?: string;
   stats?: VarietyStat[];
+  // ---- Used by the /match variety matcher (lib/matcher.ts) ----
+  elevation?: "สูง" | "ราบ" | "ทุกพื้นที่"; // suitable growing elevation
+  difficultyLevel?: 1 | 2 | 3 | 4; // 1 = easiest, matches difficultyStars count
+  waterNeed?: "ต่ำ" | "ปานกลาง" | "สูง";
+  goals?: string[]; // e.g. ["กินเอง", "ขายผลสด", "ขายพรีเมียม", "ทำต้นตอ"]
 }
 
 export interface ShopProduct {
@@ -84,6 +89,27 @@ export interface Guide {
   tips: string[];
   category?: string;
   date?: string;
+}
+
+export interface TraceEvent {
+  d: string; // date label, e.g. "15 มี.ค. 2567"
+  h: string; // event title
+  p: string; // event description
+}
+
+export interface TraceLot {
+  id: string;
+  code: string; // e.g. "AVO-2503-014" — what growers type into /trace
+  slug: string;
+  varietySlug: string;
+  status: string; // e.g. "รับรองแล้ว"
+  graftDate: string; // ISO date
+  rootstock: string;
+  scion: string;
+  method: string; // e.g. "เสียบยอด (cleft grafting)"
+  warranty: string;
+  stats: VarietyStat[];
+  events: TraceEvent[];
 }
 
 export type ContentType = "article" | "variety" | "shop" | "guide";

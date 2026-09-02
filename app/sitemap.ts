@@ -5,7 +5,18 @@ import { SITE_URL } from "@/lib/seo";
 // Auto-generated from the JSON content directories — add a new article,
 // variety, shop, or guide file and it appears here automatically.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/articles", "/varieties", "/shops", "/guides", "/search", "/about", "/contact"].map(
+  const staticRoutes = [
+    "",
+    "/articles",
+    "/varieties",
+    "/shops",
+    "/guides",
+    "/match",
+    "/trace",
+    "/search",
+    "/about",
+    "/contact",
+  ].map(
     (path) => ({
       url: `${SITE_URL}${path}`,
       lastModified: new Date(),

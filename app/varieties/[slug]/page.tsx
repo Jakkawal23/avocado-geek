@@ -10,6 +10,7 @@ import {
 import { buildMetadata, varietyJsonLd } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
+import VarietyCareTabs from "@/components/VarietyCareTabs";
 
 export function generateStaticParams() {
   return getAllVarieties().map((v) => ({ slug: v.slug }));
@@ -98,6 +99,13 @@ export default function VarietyDetailPage({ params }: { params: { slug: string }
             </Link>
           </div>
         </div>
+      </div>
+
+      <div className="mb-14 flex flex-col gap-5">
+        <h2 className="font-display text-[26px] font-semibold tracking-tight text-avocado-dark">
+          การปลูกและดูแล (ข้อมูลทั่วไป)
+        </h2>
+        <VarietyCareTabs />
       </div>
 
       {relatedArticles.length > 0 && (

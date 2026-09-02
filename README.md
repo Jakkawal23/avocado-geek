@@ -27,6 +27,12 @@ does), but keeping `filename == slug` makes the folder easy to scan.
 | `public/data/varieties/*.json` | `{ id, name, slug, origin, characteristics, best_season, climate, description, image, sku, scientificName, difficultyStars, stats }` | `/varieties`, `/varieties/[slug]` |
 | `public/data/shops/*.json` | `{ id, name, slug, location, phone, website, description, rating, varieties_available, products, channels, tags }` | `/shops`, `/shops/[slug]` |
 | `public/data/guides/*.json` | `{ id, title, slug, type, difficulty, duration, content, steps, tips }` | `/guides`, `/guides/[slug]` |
+| `public/data/tracelots/*.json` | `{ id, code, slug, varietySlug, status, graftDate, rootstock, scion, method, warranty, stats, events }` | `/trace` (tree traceability lookup) |
+
+Two more sections beyond the core four, both driven by the same JSON data:
+
+- **`/trace`** — growers type the code printed on a tree's tag (try `AVO-2503-014` on the live site) and see its graft date, computed age, rootstock/scion, a timeline, and warranty — all looked up client-side against `public/data/tracelots/*.json`, no backend. Add a new file to certify a new grafting batch.
+- **`/match`** — a short quiz (region, elevation, experience, watering habit, goal) that scores every variety in `public/data/varieties/*.json` and ranks them with a reason for each. The scoring reads four extra fields on the variety JSON: `elevation`, `difficultyLevel`, `waterNeed`, `goals` — set these on a new variety so it participates correctly (see `lib/matcher.ts`).
 
 `content` on an article is an array of `{ h, p, img? }` sections (heading +
 paragraph, with an optional image caption) — that's what builds the table of
@@ -48,8 +54,9 @@ automatically via the `predev`/`prebuild` npm scripts.
 - `lib/seo.ts` — `buildMetadata()` for per-page `<head>` tags, plus JSON-LD
   builders for Article / Product (variety) / LocalBusiness (shop) / HowTo
   (guide) structured data.
-- `lib/search.ts` — builds and filters the unified search index consumed by
+- `lib/search.ts` / `lib/searchUtils.ts` — builds and filters the unified search index consumed by
   `/search` (served as a static `/search-index.json` asset, not an API route).
+- `lib/matcher.ts` — question definitions and scoring for `/match`.
 - `components/` — cards, browsers (client-side search/filter UI), header,
   footer, share buttons, contact form, newsletter box.
 - `app/sitemap.ts` / `app/robots.ts` — auto-generated from the same data.
