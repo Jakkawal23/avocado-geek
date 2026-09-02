@@ -42,5 +42,11 @@
   "goals": [
     "ทำต้นตอ",
     "กินเอง"
-  ]
+  ],
+  "difficultyLabel": "ง่าย",
+  "seasonBuckets": [
+    "มิ.ย.–ส.ค.",
+    "ก.ย.–พ.ย."
+  ],
+  "highlights": []
 }

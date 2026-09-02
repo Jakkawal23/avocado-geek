@@ -46,6 +46,11 @@ export interface Variety {
   difficultyLevel?: 1 | 2 | 3 | 4; // 1 = easiest, matches difficultyStars count
   waterNeed?: "ต่ำ" | "ปานกลาง" | "สูง";
   goals?: string[]; // e.g. ["กินเอง", "ขายผลสด", "ขายพรีเมียม", "ทำต้นตอ"]
+  // ---- Used by the /varieties filter sidebar ----
+  difficultyLabel?: "ง่าย" | "ปานกลาง" | "ยาก";
+  fruitSize?: "เล็ก" | "กลาง" | "ใหญ่"; // เล็ก <200g, กลาง 200-350g, ใหญ่ >350g
+  seasonBuckets?: string[]; // any of "มิ.ย.–ส.ค." | "ก.ย.–พ.ย." | "ธ.ค.–ก.พ."
+  highlights?: string[]; // e.g. ["ราคาสูง", "รสชาติเข้ม", "ทนโรค", "ยอดนิยม"]
 }
 
 export interface ShopProduct {
@@ -73,7 +78,8 @@ export interface Shop {
   varieties_available: string[];
   products?: ShopProduct[];
   channels?: ShopChannel[];
-  tags?: string[];
+  tags?: string[]; // product types on offer, e.g. ["ผลสด", "ต้นพันธุ์"] — doubles as the /shops filter
+  saleChannels?: string[]; // e.g. ["ออนไลน์", "หน้าสวน/หน้าร้าน"]
   verifiedDate?: string;
 }
 

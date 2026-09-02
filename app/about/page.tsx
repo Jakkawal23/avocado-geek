@@ -26,6 +26,13 @@ const PILLARS = [
   },
 ];
 
+const CRITERIA = [
+  "ระบุสายพันธุ์และวันที่ทาบกิ่งบนต้นพันธุ์ทุกต้น",
+  "มีเงื่อนไขรับประกันการติดของรอยต่ออย่างน้อย 30 วัน",
+  "ตรวจสอบแหล่งที่มาของกิ่งพันธุ์ย้อนหลังได้",
+  "ไม่มีข้อร้องเรียนที่ยังไม่ได้แก้ไขในรอบ 12 เดือน",
+];
+
 const FAQS = [
   {
     q: "ข้อมูลสายพันธุ์มาจากไหน",
@@ -64,6 +71,27 @@ export default function AboutPage() {
             <span className="text-[15px] leading-relaxed text-ink-muted">{p.p}</span>
           </div>
         ))}
+      </div>
+
+      <div className="mb-16 grid grid-cols-1 gap-8 rounded-3xl border border-border bg-beige p-8 sm:p-10 lg:grid-cols-2">
+        <div className="flex flex-col gap-3">
+          <h2 className="font-display text-2xl font-semibold text-avocado-dark sm:text-[28px]">
+            มาตรฐานการรับรอง
+          </h2>
+          <p className="text-[15px] leading-relaxed text-ink-soft sm:text-base">
+            ร้านค้าที่ได้ตรารับรองจากเราต้องผ่านเกณฑ์ 4 ข้อ และตรวจทบทวนทุก 12 เดือน
+          </p>
+        </div>
+        <div className="flex flex-col gap-3.5">
+          {CRITERIA.map((c) => (
+            <div key={c} className="flex items-start gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[7px] bg-avocado text-[13px] text-white">
+                ✓
+              </span>
+              <span className="text-[15px] leading-relaxed text-ink sm:text-base">{c}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="flex flex-col gap-5">

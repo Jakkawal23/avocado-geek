@@ -49,5 +49,14 @@
   "waterNeed": "สูง",
   "goals": [
     "ขายพรีเมียม"
+  ],
+  "difficultyLabel": "ยาก",
+  "fruitSize": "กลาง",
+  "seasonBuckets": [
+    "ก.ย.–พ.ย."
+  ],
+  "highlights": [
+    "รสชาติเข้ม",
+    "ยอดนิยม"
   ]
 }

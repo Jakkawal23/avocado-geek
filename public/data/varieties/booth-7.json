@@ -49,5 +49,14 @@
   "waterNeed": "ปานกลาง",
   "goals": [
     "ขายผลสด"
+  ],
+  "difficultyLabel": "ปานกลาง",
+  "fruitSize": "ใหญ่",
+  "seasonBuckets": [
+    "ก.ย.–พ.ย.",
+    "ธ.ค.–ก.พ."
+  ],
+  "highlights": [
+    "ทนโรค"
   ]
 }

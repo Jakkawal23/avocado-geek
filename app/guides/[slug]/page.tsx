@@ -34,7 +34,7 @@ export default function GuideDetailPage({ params }: { params: { slug: string } }
       <Breadcrumbs
         items={[
           { label: "หน้าแรก", href: "/" },
-          { label: "คู่มือ", href: "/guides" },
+          { label: "ความรู้", href: "/articles" },
           { label: guide.title },
         ]}
       />

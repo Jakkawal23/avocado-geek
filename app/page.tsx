@@ -38,11 +38,11 @@ const QUICK_LINKS = [
     tone: "light" as const,
   },
   {
-    href: "/guides",
-    emoji: "📖",
-    title: "คู่มือ",
-    desc: "ขั้นตอนปลูก ดูแล และให้คะแนนความแก่ อ้างอิงงานวิชาการ",
-    cta: "อ่านคู่มือ →",
+    href: "/trace",
+    emoji: "▣",
+    title: "ตรวจรหัสต้น",
+    desc: "ต้นที่รับรองทุกต้นมีรหัสของตัวเอง ตรวจย้อนหลังวันเสียบยอด ต้นตอ และกิ่งพันธุ์ได้",
+    cta: "ตรวจสอบ →",
     tone: "light" as const,
   },
 ];
@@ -83,10 +83,10 @@ export default function HomePage() {
               ค้นหาสายพันธุ์
             </Link>
             <Link
-              href="/guides"
+              href="/articles"
               className="rounded-xl border border-[#D8D4C6] bg-white px-7 py-4 text-base font-semibold text-avocado hover:border-avocado"
             >
-              อ่านคู่มือปลูก →
+              อ่านความรู้ →
             </Link>
           </div>
           <div className="mt-2 flex w-full flex-wrap gap-10 border-t border-border pt-6">
@@ -218,10 +218,10 @@ export default function HomePage() {
               เริ่มต้น
             </Link>
             <Link
-              href="/guides"
+              href="/articles"
               className="rounded-xl border border-white/35 px-7 py-4 text-base font-semibold text-white hover:border-white"
             >
-              อ่านคู่มือปลูก
+              อ่านความรู้
             </Link>
           </div>
         </div>

@@ -50,5 +50,14 @@
   "goals": [
     "ขายผลสด",
     "กินเอง"
+  ],
+  "difficultyLabel": "ปานกลาง",
+  "fruitSize": "กลาง",
+  "seasonBuckets": [
+    "มิ.ย.–ส.ค.",
+    "ก.ย.–พ.ย."
+  ],
+  "highlights": [
+    "ทนโรค"
   ]
 }

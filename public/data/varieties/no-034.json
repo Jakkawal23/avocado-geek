@@ -50,5 +50,14 @@
   "goals": [
     "ขายผลสด",
     "ขายพรีเมียม"
+  ],
+  "difficultyLabel": "ปานกลาง",
+  "fruitSize": "ใหญ่",
+  "seasonBuckets": [
+    "ก.ย.–พ.ย."
+  ],
+  "highlights": [
+    "ทนโรค",
+    "ยอดนิยม"
   ]
 }

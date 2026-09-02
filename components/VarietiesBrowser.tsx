@@ -4,37 +4,82 @@ import { useMemo, useState } from "react";
 import type { Variety } from "@/lib/types";
 import VarietyCard from "./VarietyCard";
 
-function seasonBucket(season: string): string {
-  // best_season strings look like "ส.ค.–พ.ย." — bucket by first month mentioned.
-  if (/(มิ\.ย|ก\.ค|ส\.ค)/.test(season)) return "กลางปี (มิ.ย.–ส.ค.)";
-  if (/(ก\.ย|ต\.ค|พ\.ย)/.test(season)) return "ปลายปี (ก.ย.–พ.ย.)";
-  return "อื่น ๆ / แปรผัน";
+const DIFFICULTIES = ["ง่าย", "ปานกลาง", "ยาก"] as const;
+const SEASONS = ["มิ.ย.–ส.ค.", "ก.ย.–พ.ย.", "ธ.ค.–ก.พ."] as const;
+const SIZES: { value: string; label: string }[] = [
+  { value: "เล็ก", label: "เล็ก (<200 ก.)" },
+  { value: "กลาง", label: "กลาง (200–350 ก.)" },
+  { value: "ใหญ่", label: "ใหญ่ (>350 ก.)" },
+];
+const HIGHLIGHTS = ["ราคาสูง", "รสชาติเข้ม", "ทนโรค", "ยอดนิยม"] as const;
+
+function toggle(list: string[], value: string): string[] {
+  return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
+}
+
+function CheckboxGroup({
+  title,
+  options,
+  selected,
+  onToggle,
+}: {
+  title: string;
+  options: { value: string; label: string }[];
+  selected: string[];
+  onToggle: (value: string) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2.5">
+      <span className="text-[13px] font-bold tracking-wide text-avocado-dark">{title}</span>
+      {options.map((opt) => (
+        <label key={opt.value} className="flex cursor-pointer items-center gap-2.5 text-[15px] text-ink-soft">
+          <input
+            type="checkbox"
+            checked={selected.includes(opt.value)}
+            onChange={() => onToggle(opt.value)}
+            className="h-[17px] w-[17px] shrink-0 rounded border-[#C9C5B6] accent-avocado"
+          />
+          {opt.label}
+        </label>
+      ))}
+    </div>
+  );
 }
 
 export default function VarietiesBrowser({ varieties }: { varieties: Variety[] }) {
   const [query, setQuery] = useState("");
-  const [difficulty, setDifficulty] = useState<number | null>(null);
-  const [season, setSeason] = useState<string | null>(null);
-
-  const seasons = useMemo(
-    () => Array.from(new Set(varieties.map((v) => seasonBucket(v.best_season)))),
-    [varieties]
-  );
+  const [difficulty, setDifficulty] = useState<string[]>([]);
+  const [season, setSeason] = useState<string[]>([]);
+  const [size, setSize] = useState<string[]>([]);
+  const [highlight, setHighlight] = useState<string[]>([]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return varieties.filter((v) => {
-      if (difficulty !== null && (v.difficultyStars ?? "").split("★").length - 1 !== difficulty) return false;
-      if (season && seasonBucket(v.best_season) !== season) return false;
+      if (difficulty.length > 0 && !difficulty.includes(v.difficultyLabel ?? "")) return false;
+      if (season.length > 0 && !season.some((s) => v.seasonBuckets?.includes(s))) return false;
+      if (size.length > 0 && !size.includes(v.fruitSize ?? "")) return false;
+      if (highlight.length > 0 && !highlight.some((h) => v.highlights?.includes(h))) return false;
       if (!q) return true;
       const haystack = [v.name, v.scientificName, v.characteristics, v.origin].join(" ").toLowerCase();
       return haystack.includes(q);
     });
-  }, [varieties, query, difficulty, season]);
+  }, [varieties, query, difficulty, season, size, highlight]);
+
+  const hasActiveFilters =
+    query !== "" || difficulty.length > 0 || season.length > 0 || size.length > 0 || highlight.length > 0;
+
+  function clearAll() {
+    setQuery("");
+    setDifficulty([]);
+    setSeason([]);
+    setSize([]);
+    setHighlight([]);
+  }
 
   return (
-    <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[240px_1fr]">
-      <aside className="flex flex-col gap-5 rounded-2xl border border-border bg-white p-6">
+    <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[260px_1fr]">
+      <aside className="flex flex-col gap-6 rounded-2xl border border-border bg-white p-6">
         <div className="flex items-center gap-2.5 rounded-[10px] border border-border px-3.5 py-2.5">
           <span className="text-ink-fainter">⌕</span>
           <input
@@ -45,45 +90,36 @@ export default function VarietiesBrowser({ varieties }: { varieties: Variety[] }
           />
         </div>
 
-        <div className="flex flex-col gap-2.5">
-          <span className="text-[13px] font-bold tracking-wide text-avocado-dark">ความยาก</span>
-          {[1, 2, 3, 4].map((n) => (
-            <label key={n} className="flex cursor-pointer items-center gap-2 text-[15px] text-ink-soft">
-              <input
-                type="radio"
-                name="difficulty"
-                checked={difficulty === n}
-                onChange={() => setDifficulty(difficulty === n ? null : n)}
-              />
-              {"★".repeat(n)}
-              {"☆".repeat(4 - n)}
-            </label>
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-2.5">
-          <span className="text-[13px] font-bold tracking-wide text-avocado-dark">ฤดูเก็บเกี่ยว</span>
-          {seasons.map((s) => (
-            <label key={s} className="flex cursor-pointer items-center gap-2 text-[15px] text-ink-soft">
-              <input
-                type="radio"
-                name="season"
-                checked={season === s}
-                onChange={() => setSeason(season === s ? null : s)}
-              />
-              {s}
-            </label>
-          ))}
-        </div>
+        <CheckboxGroup
+          title="ระดับความยาก"
+          options={DIFFICULTIES.map((d) => ({ value: d, label: d }))}
+          selected={difficulty}
+          onToggle={(v) => setDifficulty((prev) => toggle(prev, v))}
+        />
+        <CheckboxGroup
+          title="ฤดูเก็บเกี่ยว"
+          options={SEASONS.map((s) => ({ value: s, label: s }))}
+          selected={season}
+          onToggle={(v) => setSeason((prev) => toggle(prev, v))}
+        />
+        <CheckboxGroup
+          title="ขนาดผล"
+          options={SIZES}
+          selected={size}
+          onToggle={(v) => setSize((prev) => toggle(prev, v))}
+        />
+        <CheckboxGroup
+          title="ลักษณะเด่น"
+          options={HIGHLIGHTS.map((h) => ({ value: h, label: h }))}
+          selected={highlight}
+          onToggle={(v) => setHighlight((prev) => toggle(prev, v))}
+        />
 
         <button
           type="button"
-          onClick={() => {
-            setQuery("");
-            setDifficulty(null);
-            setSeason(null);
-          }}
-          className="rounded-[10px] bg-beige py-2.5 text-sm font-semibold text-ink-soft hover:bg-avocado-pale hover:text-avocado"
+          onClick={clearAll}
+          disabled={!hasActiveFilters}
+          className="rounded-[10px] bg-beige py-2.5 text-sm font-semibold text-ink-soft hover:bg-avocado-pale hover:text-avocado disabled:cursor-not-allowed disabled:opacity-50"
         >
           ล้างตัวกรอง
         </button>

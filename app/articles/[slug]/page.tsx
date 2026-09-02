@@ -129,10 +129,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 ค้นหาสายพันธุ์
               </Link>
               <Link
-                href="/guides"
+                href="/match"
                 className="rounded-[10px] border border-white/35 px-5 py-3.5 text-sm font-semibold text-white hover:border-white"
               >
-                อ่านคู่มือปลูก
+                เลือกพันธุ์ให้ฉัน
               </Link>
             </div>
           </div>

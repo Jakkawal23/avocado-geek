@@ -1,13 +1,9 @@
 import Link from "next/link";
-import Newsletter from "./Newsletter";
 
 export default function Footer() {
   return (
     <footer className="bg-avocado-dark text-avocado-paler">
-      <div className="mx-auto max-w-content px-4 py-14 sm:px-6">
-        <Newsletter />
-      </div>
-      <div className="mx-auto grid max-w-content gap-9 px-4 pb-8 sm:grid-cols-2 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-content gap-9 px-4 pb-8 pt-14 sm:grid-cols-2 sm:px-6 md:grid-cols-4">
         <div className="flex flex-col gap-3">
           <span className="font-display text-lg font-bold text-white">Avocado Geek</span>
           <span className="max-w-[30ch] text-sm leading-relaxed">
@@ -16,9 +12,8 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-2.5 text-sm">
           <span className="mb-1 font-semibold text-white">เนื้อหา</span>
-          <Link href="/articles" className="text-avocado-paler hover:text-white">บทความความรู้</Link>
+          <Link href="/articles" className="text-avocado-paler hover:text-white">ความรู้ &amp; คู่มือ</Link>
           <Link href="/varieties" className="text-avocado-paler hover:text-white">สายพันธุ์อโวคาโด้</Link>
-          <Link href="/guides" className="text-avocado-paler hover:text-white">คู่มือปลูก &amp; ดูแล</Link>
           <Link href="/match" className="text-avocado-paler hover:text-white">เลือกพันธุ์ให้ฉัน</Link>
           <Link href="/trace" className="text-avocado-paler hover:text-white">ตรวจรหัสต้น</Link>
           <Link href="/shops" className="text-avocado-paler hover:text-white">ร้านค้าที่รับรอง</Link>

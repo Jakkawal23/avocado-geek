@@ -6,7 +6,6 @@ import { useState } from "react";
 const NAV_LINKS = [
   { href: "/varieties", label: "สายพันธุ์" },
   { href: "/articles", label: "ความรู้" },
-  { href: "/guides", label: "คู่มือ" },
   { href: "/shops", label: "ร้านค้ารับรอง" },
   { href: "/about", label: "เกี่ยวกับเรา" },
 ];
@@ -26,7 +25,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-6 text-[15px] font-medium lg:flex">
+        <nav className="ml-auto hidden items-center gap-7 text-[15px] font-medium lg:flex">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="text-ink hover:text-avocado">
               {link.label}
@@ -35,13 +34,6 @@ export default function Header() {
         </nav>
 
         <div className="ml-auto hidden items-center gap-2.5 lg:ml-0 lg:flex">
-          <Link
-            href="/search"
-            aria-label="ค้นหา"
-            className="flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border border-[#D8D4C6] bg-white text-ink-soft hover:border-avocado hover:text-avocado"
-          >
-            ⌕
-          </Link>
           <Link
             href="/trace"
             className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-[10px] border border-[#D8D4C6] bg-white px-4 py-2.5 text-sm font-semibold text-ink-soft hover:border-avocado hover:text-avocado"
@@ -81,13 +73,6 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/search"
-              className="rounded-lg px-2 py-2.5 text-[15px] font-medium text-ink hover:bg-avocado-pale hover:text-avocado"
-              onClick={() => setOpen(false)}
-            >
-              ค้นหา
-            </Link>
           </nav>
           <div className="flex flex-col gap-2 pt-1">
             <Link
