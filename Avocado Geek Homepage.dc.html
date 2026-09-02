@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Avocado Geek — ศูนย์รวมความรู้อโวคาโด้ของไทย: ฐานข้อมูลสายพันธุ์ วิธีปลูก การให้น้ำ การแก้ปัญหาโรคและแมลง การเสียบยอด การเก็บเกี่ยว และร้านค้าที่รับรอง" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #FBFAF6; -webkit-font-smoothing: antialiased; }
+  a { color: #2D5F2E; text-decoration: none; }
+  a:hover { color: #70B75C; }
+</style>
+</helmet>
+<div style="font-family: Sarabun, system-ui, sans-serif; color: #2C2C2C; background: #FBFAF6; min-height: 100vh;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(251,250,246,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid #E7E4D9;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; gap: 32px;">
+      <a href="#" onClick="{{ goHome }}" style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+        <span style="width: 34px; height: 34px; border-radius: 50% 50% 48% 48% / 60% 60% 40% 40%; background: #2D5F2E; display: block; position: relative;">
+          <span style="position: absolute; inset: 9px 10px; border-radius: 50%; background: #F5A623; display: block;"></span>
+        </span>
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.01em; color: #2D5F2E;">Avocado Geek</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; margin-left: auto;">
+        <a href="#" onClick="{{ goVarieties }}" style="color: #2C2C2C;" style-hover="color: #2D5F2E;">สายพันธุ์</a>
+        <a href="#" onClick="{{ goBlog }}" style="color: #2C2C2C;" style-hover="color: #2D5F2E;">ความรู้</a>
+        <a href="#" onClick="{{ goSellers }}" style="color: #2C2C2C;" style-hover="color: #2D5F2E;">ร้านค้ารับรอง</a>
+        <a href="#" onClick="{{ goAbout }}" style="color: #2C2C2C;" style-hover="color: #2D5F2E;">เกี่ยวกับเรา</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="#" onClick="{{ goTrace }}" style="display: inline-flex; align-items: center; gap: 7px; border: 1px solid #D8D4C6; background: #fff; color: #4A4A42; padding: 10px 15px; border-radius: 10px; font-size: 14px; font-weight: 600; white-space: nowrap;" style-hover="border-color: #2D5F2E; color: #2D5F2E;"><span style="font-size: 13px;">▣</span>ตรวจรหัสต้น</a>
+        <a href="#" onClick="{{ goMatch }}" style="background: #2D5F2E; color: #fff; padding: 11px 20px; border-radius: 10px; font-weight: 600; font-size: 15px; white-space: nowrap;" style-hover="background: #70B75C; color: #fff;">เลือกพันธุ์ให้ฉัน</a>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+  <section style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 22px; align-items: flex-start;">
+      <span style="display: inline-flex; align-items: center; gap: 8px; background: #EAF3E6; color: #2D5F2E; font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 999px; letter-spacing: 0.01em;">ศูนย์รวมความรู้อโวคาโด้ของไทย</span>
+      <h1 style="font-family: Poppins, Sarabun, sans-serif; font-weight: 700; font-size: clamp(36px, 4.4vw, 56px); line-height: 1.14; letter-spacing: -0.02em; margin: 0; color: #1F4420; text-wrap: pretty;">ฐานของความรู้<br />อโวคาโด้ทั้งหมด</h1>
+      <p style="font-size: 18px; line-height: 1.75; color: #5A5A52; margin: 0; max-width: 46ch; text-wrap: pretty;">ตั้งแต่การเลือกสายพันธุ์ การปลูก ไปจนถึงร้านค้าที่เราตรวจสอบแล้ว — คู่มือของผู้ปลูกอโวคาโด้ไทย รวบรวมไว้ในที่เดียว</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 6px;">
+        <a href="#" onClick="{{ goVarieties }}" style="background: #2D5F2E; color: #fff; padding: 15px 28px; border-radius: 12px; font-weight: 600; font-size: 16px;" style-hover="background: #1F4420; color: #fff;">ค้นหาสายพันธุ์</a>
+        <a href="#" onClick="{{ goMatch }}" style="background: #fff; color: #2D5F2E; border: 1px solid #D8D4C6; padding: 15px 28px; border-radius: 12px; font-weight: 600; font-size: 16px;" style-hover="border-color: #2D5F2E; background: #fff;">เลือกพันธุ์ให้ฉัน →</a>
+      </div>
+      <div style="display: flex; gap: 40px; padding-top: 24px; margin-top: 8px; border-top: 1px solid #E7E4D9; width: 100%; flex-wrap: wrap;">
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 26px; font-weight: 700; color: #2D5F2E;">{{ varietyCount }}</span>
+          <span style="font-size: 14px; color: #7A7A70;">สายพันธุ์ในฐานข้อมูล</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 26px; font-weight: 700; color: #2D5F2E;">120+</span>
+          <span style="font-size: 14px; color: #7A7A70;">บทความความรู้</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 26px; font-weight: 700; color: #2D5F2E;">{{ sellerCount }}</span>
+          <span style="font-size: 14px; color: #7A7A70;">ร้านค้าที่รับรอง</span>
+        </div>
+      </div>
+    </div>
+    <div style="position: relative;">
+      <div style="aspect-ratio: 4 / 4.4; border-radius: 24px; overflow: hidden; background: repeating-linear-gradient(135deg, #E6EEE2 0 14px, #DCE7D7 14px 28px); display: grid; place-items: center; border: 1px solid #D8DFD2;">
+        <span style="font-family: 'Courier New', monospace; font-size: 13px; color: #4E6B4A; background: rgba(251,250,246,0.85); padding: 8px 14px; border-radius: 8px; text-align: center;">hero photo — สวนอโวคาโด้ / ผลบนต้น</span>
+      </div>
+      <a href="#" onClick="{{ goTrace }}" style="position: absolute; bottom: 24px; left: -18px; background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 16px 18px; box-shadow: 0 8px 24px rgba(31,68,32,0.10); display: flex; align-items: center; gap: 12px; max-width: 270px; color: #2C2C2C;" style-hover="border-color: #70B75C; color: #2C2C2C;">
+        <span style="width: 38px; height: 38px; border-radius: 10px; background: #EAF3E6; color: #2D5F2E; display: grid; place-items: center; font-size: 18px; flex-shrink: 0;">✓</span>
+        <span style="font-size: 14px; line-height: 1.45; color: #2C2C2C; font-weight: 500;">ต้นพันธุ์ทุกต้นมีรหัสตรวจสอบได้<br /><span style="color: #2D5F2E; font-weight: 700;">ตรวจรหัสต้น →</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 56px 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+      <a href="#" onClick="{{ goBlog }}" style="background: #2D5F2E; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px; min-height: 210px; color: #fff;" style-hover="background: #1F4420; color: #fff;">
+        <span style="font-size: 26px;">📚</span>
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 21px; font-weight: 600; color: #fff;">เรียนรู้</span>
+        <span style="font-size: 15px; line-height: 1.65; color: #CFE2CB;">วิธีปลูก การดูแล และเทคนิคจากผู้ปลูกจริง ตลอดทั้งปี</span>
+        <span style="margin-top: auto; font-size: 14px; font-weight: 600; color: #A8D49C;">ไปยังบล็อก →</span>
+      </a>
+      <a href="#" onClick="{{ goMatch }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px; min-height: 210px; color: #2C2C2C;" style-hover="border-color: #70B75C; background: #fff; color: #2C2C2C;">
+        <span style="font-size: 26px;">🎯</span>
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 21px; font-weight: 600; color: #1F4420;">จับคู่สายพันธุ์</span>
+        <span style="font-size: 15px; line-height: 1.65; color: #666;">บอกพื้นที่และสิ่งที่ต้องการ เราจัดอันดับสายพันธุ์ที่เหมาะกับคุณพร้อมเหตุผล</span>
+        <span style="margin-top: auto; font-size: 14px; font-weight: 600; color: #2D5F2E;">เริ่มจับคู่ →</span>
+      </a>
+      <a href="#" onClick="{{ goSellers }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px; min-height: 210px; color: #2C2C2C;" style-hover="border-color: #70B75C; background: #fff; color: #2C2C2C;">
+        <span style="font-size: 26px;">🏪</span>
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 21px; font-weight: 600; color: #1F4420;">ซื้อ</span>
+        <span style="font-size: 15px; line-height: 1.65; color: #666;">เชื่อมต่อกับร้านต้นพันธุ์และผู้ผลิตที่เราตรวจสอบแล้ว</span>
+        <span style="margin-top: auto; font-size: 14px; font-weight: 600; color: #2D5F2E;">ดูร้านค้า →</span>
+      </a>
+      <a href="#" onClick="{{ goContact }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px; min-height: 210px; color: #2C2C2C;" style-hover="border-color: #70B75C; background: #fff; color: #2C2C2C;">
+        <span style="font-size: 26px;">👥</span>
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 21px; font-weight: 600; color: #1F4420;">ชุมชน</span>
+        <span style="font-size: 15px; line-height: 1.65; color: #666;">ถามผู้เชี่ยวชาญและแลกเปลี่ยนประสบการณ์กับผู้ปลูกคนอื่น</span>
+        <span style="margin-top: auto; font-size: 14px; font-weight: 600; color: #2D5F2E;">เข้าร่วม →</span>
+      </a>
+    </div>
+  </section>
+
+  <section style="background: #F3F1E8; border-top: 1px solid #E7E4D9; border-bottom: 1px solid #E7E4D9;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 32px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A70;">variety guide</span>
+          <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(28px, 3vw, 36px); font-weight: 600; margin: 0; color: #1F4420; letter-spacing: -0.015em;">สายพันธุ์ยอดนิยม</h2>
+        </div>
+        <a href="#" onClick="{{ goVarieties }}" style="font-size: 15px; font-weight: 600;">ดูสายพันธุ์ทั้งหมด →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px;">
+        <sc-for list="{{ topVarieties }}" as="v" hint-placeholder-count="4">
+          <a href="#" onClick="{{ v.open }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; color: #2C2C2C;" style-hover="border-color: #70B75C; color: #2C2C2C;">
+            <div style="aspect-ratio: 4 / 3; background: repeating-linear-gradient(135deg, #E6EEE2 0 12px, #DCE7D7 12px 24px); display: grid; place-items: center;">
+              <span style="font-family: 'Courier New', monospace; font-size: 11px; color: #4E6B4A;">variety photo</span>
+            </div>
+            <div style="padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1;">
+              <span style="display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; background: #FDF3E0; color: #8A5B08; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 999px;">✓ CERTIFIED</span>
+              <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">{{ v.name }}</span>
+              <span style="font-family: 'Courier New', monospace; font-size: 12px; color: #9A9A90; font-style: italic;">{{ v.sci }}</span>
+              <span style="font-size: 14px; line-height: 1.55; color: #666; margin-top: 2px;">{{ v.desc }}</span>
+              <div style="margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: #7A7A70;">
+                <span>ความยาก {{ v.stars }}</span>
+                <span>{{ v.season }}</span>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-family: 'Courier New', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A70;">knowledge</span>
+        <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(28px, 3vw, 36px); font-weight: 600; margin: 0; color: #1F4420; letter-spacing: -0.015em;">บทความล่าสุด</h2>
+      </div>
+      <a href="#" onClick="{{ goBlog }}" style="font-size: 15px; font-weight: 600;">อ่านทั้งหมด →</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+      <sc-for list="{{ topPosts }}" as="p" hint-placeholder-count="3">
+        <a href="#" onClick="{{ p.open }}" style="display: flex; flex-direction: column; gap: 14px; color: #2C2C2C;" style-hover="color: #2D5F2E;">
+          <div style="aspect-ratio: 16 / 10; border-radius: 16px; background: repeating-linear-gradient(135deg, #ECEADF 0 12px, #E3E0D3 12px 24px); display: grid; place-items: center; border: 1px solid #E7E4D9;">
+            <span style="font-family: 'Courier New', monospace; font-size: 11px; color: #7A7A70;">article image</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #7A7A70;">
+            <span style="background: #EAF3E6; color: #2D5F2E; font-weight: 600; padding: 4px 10px; border-radius: 999px;">{{ p.tag }}</span>
+            <span>อ่าน {{ p.read }} นาที</span>
+          </div>
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 20px; font-weight: 600; line-height: 1.4; color: #1F4420; text-wrap: pretty;">{{ p.title }}</span>
+          <span style="font-size: 15px; line-height: 1.7; color: #666;">{{ p.excerpt }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 80px;">
+    <div style="background: #2D5F2E; border-radius: 24px; padding: clamp(32px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(26px, 3vw, 36px); font-weight: 600; color: #fff; margin: 0; letter-spacing: -0.015em; text-wrap: pretty;">เริ่มปลูกอโวคาโด้ต้นแรกของคุณ</h2>
+        <p style="font-size: 17px; line-height: 1.7; color: #CFE2CB; margin: 0; max-width: 48ch;">เลือกสายพันธุ์ที่เหมาะกับพื้นที่ของคุณ แล้วไปต่อที่ร้านค้าที่เราตรวจสอบแล้ว</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end;">
+        <a href="#" onClick="{{ goVarieties }}" style="background: #F5A623; color: #3A2A00; padding: 15px 28px; border-radius: 12px; font-weight: 700; font-size: 16px;" style-hover="background: #FFB846; color: #3A2A00;">เริ่มต้น</a>
+        <a href="#" onClick="{{ goContact }}" style="border: 1px solid rgba(255,255,255,0.35); color: #fff; padding: 15px 28px; border-radius: 12px; font-weight: 600; font-size: 16px;" style-hover="border-color: #fff; color: #fff;">ถามชุมชน</a>
+      </div>
+    </div>
+  </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 28px;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><span>บล็อกความรู้</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px;">
+      <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em;">องค์ความรู้อโวคาโด้</h1>
+      <p style="font-size: 17px; color: #666; margin: 0; max-width: 66ch; line-height: 1.7;">บทความที่เขียนจากเอกสารวิชาการและคู่มือส่งเสริมการเกษตร อ้างอิงแหล่งข้อมูลอย่าง UC IPM, UC ANR และศูนย์วิจัยหลังการเก็บเกี่ยว UC Davis พร้อมปรับให้เข้ากับสภาพการปลูกในไทย</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 40px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px;">
+        <div style="display: flex; flex-direction: column; gap: 40px; grid-column: 1 / -1;">
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+            <div style="flex: 1 1 280px; display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #E7E4D9; border-radius: 12px; padding: 13px 16px;">
+              <span style="color: #9A9A90; font-size: 15px;">⌕</span>
+              <input placeholder="ค้นหาบทความ เช่น รากเน่า, ทาบกิ่ง, ปุ๋ย" style="border: none; outline: none; font-family: Sarabun, sans-serif; font-size: 15px; width: 100%; background: transparent; color: #2C2C2C;" />
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ blogTags }}" as="t" hint-placeholder-count="6">
+                <span style="border: 1px solid #E7E4D9; background: #fff; color: #4A4A42; font-size: 14px; font-weight: 500; padding: 9px 16px; border-radius: 999px; cursor: pointer;" style-hover="border-color: #2D5F2E; color: #2D5F2E;">{{ t }}</span>
+              </sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasVarietyFilter }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; background: #EAF3E6; border: 1px solid #CFE2CB; border-radius: 14px; padding: 16px 20px;">
+              <span style="font-size: 15px; color: #1F4420; line-height: 1.6;">กรองบทความที่เกี่ยวกับสายพันธุ์ <strong>{{ filterLabel }}</strong> — พบ {{ filterCount }} บทความ</span>
+              <a href="#" onClick="{{ clearFilter }}" style="font-size: 14px; font-weight: 600; white-space: nowrap;">ล้างตัวกรอง ✕</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noFilterMatch }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size: 15px; line-height: 1.7; color: #7A7A70; background: #F3F1E8; border: 1px solid #E7E4D9; border-radius: 12px; padding: 16px 20px;">ยังไม่มีบทความที่กล่าวถึงสายพันธุ์นี้โดยเฉพาะ — ด้านล่างคือบทความทั้งหมดที่ใช้ได้กับทุกสายพันธุ์</span>
+          </sc-if>
+          <sc-if value="{{ showFeatured }}" hint-placeholder-val="{{ true }}">
+          <a href="#" onClick="{{ openFeatured }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; background: #fff; border: 1px solid #E7E4D9; border-radius: 20px; overflow: hidden; color: #2C2C2C;" style-hover="border-color: #70B75C; color: #2C2C2C;">
+            <div style="min-height: 320px; background: repeating-linear-gradient(135deg, #E6EEE2 0 14px, #DCE7D7 14px 28px); display: grid; place-items: center;">
+              <span style="font-family: 'Courier New', monospace; font-size: 12px; color: #4E6B4A;">featured image — 1200×800</span>
+            </div>
+            <div style="padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 14px; justify-content: center;">
+              <span style="align-self: flex-start; background: #F5A623; color: #3A2A00; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;">บทความแนะนำ</span>
+              <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(24px, 2.6vw, 32px); font-weight: 600; line-height: 1.35; margin: 0; color: #1F4420; text-wrap: pretty;">{{ featured.title }}</h2>
+              <p style="font-size: 16px; line-height: 1.75; color: #666; margin: 0;">{{ featured.excerpt }}</p>
+              <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #7A7A70; margin-top: 4px;">
+                <span>{{ featured.author }}</span><span>·</span><span>{{ featured.date }}</span><span>·</span><span>อ่าน {{ featured.read }} นาที</span>
+              </div>
+            </div>
+          </a>
+          </sc-if>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+            <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+              <a href="#" onClick="{{ p.open }}" style="display: flex; flex-direction: column; gap: 13px; color: #2C2C2C;" style-hover="color: #2D5F2E;">
+                <div style="aspect-ratio: 16 / 10; border-radius: 16px; background: repeating-linear-gradient(135deg, #ECEADF 0 12px, #E3E0D3 12px 24px); display: grid; place-items: center; border: 1px solid #E7E4D9;">
+                  <span style="font-family: 'Courier New', monospace; font-size: 11px; color: #7A7A70;">article image</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #7A7A70;">
+                  <span style="background: #EAF3E6; color: #2D5F2E; font-weight: 600; padding: 4px 10px; border-radius: 999px;">{{ p.tag }}</span>
+                  <span>อ่าน {{ p.read }} นาที</span>
+                </div>
+                <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 19px; font-weight: 600; line-height: 1.42; color: #1F4420; text-wrap: pretty;">{{ p.title }}</span>
+                <span style="font-size: 15px; line-height: 1.7; color: #666;">{{ p.excerpt }}</span>
+                <span style="font-size: 13px; color: #9A9A90;">{{ p.author }} · {{ p.date }}</span>
+              </a>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ showPagination }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; justify-content: center; align-items: center; gap: 8px; padding-top: 16px;">
+            <span style="width: 40px; height: 40px; border-radius: 10px; background: #2D5F2E; color: #fff; display: grid; place-items: center; font-weight: 600; font-size: 15px;">1</span>
+            <span style="width: 40px; height: 40px; border-radius: 10px; border: 1px solid #E7E4D9; background: #fff; color: #4A4A42; display: grid; place-items: center; font-weight: 500; font-size: 15px; cursor: pointer;" style-hover="border-color: #2D5F2E;">2</span>
+            <span style="width: 40px; height: 40px; border-radius: 10px; border: 1px solid #E7E4D9; background: #fff; color: #4A4A42; display: grid; place-items: center; font-weight: 500; font-size: 15px; cursor: pointer;" style-hover="border-color: #2D5F2E;">3</span>
+            <span style="color: #9A9A90; padding: 0 6px;">…</span>
+            <span style="height: 40px; padding: 0 16px; border-radius: 10px; border: 1px solid #E7E4D9; background: #fff; color: #4A4A42; display: grid; place-items: center; font-weight: 500; font-size: 15px; cursor: pointer;" style-hover="border-color: #2D5F2E;">ถัดไป →</span>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isArticle }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 24px; flex-wrap: wrap;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><a href="#" onClick="{{ goBlog }}">บล็อกความรู้</a><span>/</span><span>{{ article.tag }}</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: start;">
+      <article style="grid-column: span 2; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <span style="align-self: flex-start; background: #EAF3E6; color: #2D5F2E; font-size: 13px; font-weight: 600; padding: 6px 13px; border-radius: 999px;">{{ article.tag }}</span>
+          <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(30px, 3.6vw, 44px); font-weight: 700; line-height: 1.22; margin: 0; color: #1F4420; letter-spacing: -0.02em; text-wrap: pretty;">{{ article.title }}</h1>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #7A7A70; flex-wrap: wrap;">
+            <span style="width: 36px; height: 36px; border-radius: 50%; background: #EAF3E6; color: #2D5F2E; display: grid; place-items: center; font-weight: 700; font-size: 14px;">{{ article.initial }}</span>
+            <span style="color: #2C2C2C; font-weight: 600;">{{ article.author }}</span><span>·</span><span>{{ article.date }}</span><span>·</span><span>อ่าน {{ article.read }} นาที</span>
+          </div>
+        </div>
+        <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; border: 1px solid #D8DFD2; background: #F3F1E8;">
+          <image-slot id="{{ article.heroId }}" shape="rect" placeholder="{{ article.imageNote }}"></image-slot>
+        </div>
+        <div style="background: #F3F1E8; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px 26px; display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 15px; font-weight: 600; color: #1F4420;">สารบัญ</span>
+          <sc-for list="{{ article.toc }}" as="h" hint-placeholder-count="4">
+            <a href="#" style="font-size: 15px; color: #4A6B47;" style-hover="color: #2D5F2E;">{{ h }}</a>
+          </sc-for>
+        </div>
+        <sc-for list="{{ article.body }}" as="b" hint-placeholder-count="5">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 24px; font-weight: 600; color: #1F4420; margin: 12px 0 0; letter-spacing: -0.01em;">{{ b.h }}</h2>
+            <p style="font-size: 17px; line-height: 1.9; color: #3C3C36; margin: 0; text-wrap: pretty;">{{ b.p }}</p>
+            <sc-if value="{{ b.img }}" hint-placeholder-val="{{ false }}">
+              <figure style="margin: 6px 0 0; display: flex; flex-direction: column; gap: 9px;">
+                <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; border: 1px solid #E7E4D9; background: #F3F1E8;">
+                  <image-slot id="{{ b.imgId }}" shape="rect" placeholder="{{ b.img }}"></image-slot>
+                </div>
+                <figcaption style="font-size: 14px; color: #8A8A80; line-height: 1.6;">{{ b.img }}</figcaption>
+              </figure>
+            </sc-if>
+          </div>
+        </sc-for>
+        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #E7E4D9; padding-top: 22px; margin-top: 12px;">
+          <span style="font-size: 13px; color: #8A8A80;">หัวข้อที่เกี่ยวข้อง</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ article.keywords }}" as="k" hint-placeholder-count="4">
+              <span style="background: #F3F1E8; border: 1px solid #E7E4D9; color: #4A4A42; font-size: 13px; padding: 6px 12px; border-radius: 999px;">{{ k }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background: #2D5F2E; border-radius: 20px; padding: 32px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; margin-top: 20px;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 21px; font-weight: 600; color: #fff;">อยากรู้ว่าสายพันธุ์นี้เหมาะกับสวนคุณไหม?</span>
+            <span style="font-size: 15px; color: #CFE2CB;">เปิดดูข้อมูลสายพันธุ์แบบละเอียด หรือถามในชุมชนผู้ปลูก</span>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="#" onClick="{{ goVarieties }}" style="background: #F5A623; color: #3A2A00; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 15px;" style-hover="background: #FFB846; color: #3A2A00;">ค้นหาสายพันธุ์นี้</a>
+            <a href="#" onClick="{{ goContact }}" style="border: 1px solid rgba(255,255,255,0.35); color: #fff; padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px;" style-hover="border-color: #fff; color: #fff;">สอบถามชุมชน</a>
+          </div>
+        </div>
+      </article>
+      <aside style="display: flex; flex-direction: column; gap: 24px; position: sticky; top: 96px;">
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 16px; font-weight: 600; color: #1F4420;">บทความที่เกี่ยวข้อง</span>
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+            <a href="#" onClick="{{ r.open }}" style="display: flex; gap: 12px; align-items: flex-start; color: #2C2C2C;" style-hover="color: #2D5F2E;">
+              <span style="width: 56px; height: 48px; border-radius: 8px; background: repeating-linear-gradient(135deg, #ECEADF 0 8px, #E3E0D3 8px 16px); flex-shrink: 0;"></span>
+              <span style="font-size: 14px; line-height: 1.5; font-weight: 500;">{{ r.title }}</span>
+            </a>
+          </sc-for>
+        </div>
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 16px; font-weight: 600; color: #1F4420;">สายพันธุ์ที่กล่าวถึง</span>
+          <sc-for list="{{ mentioned }}" as="m" hint-placeholder-count="2">
+            <a href="#" onClick="{{ m.open }}" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid #E7E4D9; border-radius: 10px; padding: 11px 14px; font-size: 14px; font-weight: 600; color: #2D5F2E;" style-hover="border-color: #70B75C; color: #2D5F2E;">
+              <span>{{ m.name }}</span><span>→</span>
+            </a>
+          </sc-for>
+        </div>
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 16px; font-weight: 600; color: #1F4420;">แชร์บทความ</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="border: 1px solid #E7E4D9; border-radius: 10px; padding: 9px 14px; font-size: 14px; color: #4A4A42; cursor: pointer;" style-hover="border-color: #2D5F2E; color: #2D5F2E;">Facebook</span>
+            <span style="border: 1px solid #E7E4D9; border-radius: 10px; padding: 9px 14px; font-size: 14px; color: #4A4A42; cursor: pointer;" style-hover="border-color: #2D5F2E; color: #2D5F2E;">Line</span>
+            <span style="border: 1px solid #E7E4D9; border-radius: 10px; padding: 9px 14px; font-size: 14px; color: #4A4A42; cursor: pointer;" style-hover="border-color: #2D5F2E; color: #2D5F2E;">คัดลอกลิงก์</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isVarieties }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 28px;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><span>สายพันธุ์อโวคาโด้</span>
+    </div>
+    <div style="display: flex; flex-direction: column; margin-bottom: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em;">ตรวจสอบสายพันธุ์อโวคาโด้</h1>
+        <p style="font-size: 17px; color: #666; margin: 0; max-width: 62ch; line-height: 1.7;">สายพันธุ์ที่มีจำหน่ายในไทย พร้อมรหัสสินค้า ความยาก ฤดูเก็บเกี่ยว ขนาดผล และราคาตลาดโดยประมาณ</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; align-items: start;">
+      <aside style="display: flex; flex-direction: column; gap: 22px; background: #fff; border: 1px solid #E7E4D9; border-radius: 18px; padding: 24px;">
+        <div style="display: flex; align-items: center; gap: 10px; border: 1px solid #E7E4D9; border-radius: 10px; padding: 11px 14px;">
+          <span style="color: #9A9A90;">⌕</span>
+          <input placeholder="ชื่อสายพันธุ์" style="border: none; outline: none; font-family: Sarabun, sans-serif; font-size: 15px; width: 100%; background: transparent;" />
+        </div>
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-size: 13px; font-weight: 700; color: #1F4420; letter-spacing: 0.02em;">{{ f.label }}</span>
+            <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
+              <label style="display: flex; align-items: center; gap: 9px; font-size: 15px; color: #4A4A42; cursor: pointer;">
+                <span style="width: 17px; height: 17px; border: 1px solid #C9C5B6; border-radius: 4px; background: #fff; flex-shrink: 0;"></span>
+                <span>{{ o }}</span>
+              </label>
+            </sc-for>
+          </div>
+        </sc-for>
+        <span style="text-align: center; background: #F3F1E8; border-radius: 10px; padding: 11px; font-size: 14px; font-weight: 600; color: #4A4A42; cursor: pointer;" style-hover="background: #EAF3E6; color: #2D5F2E;">ล้างตัวกรอง</span>
+      </aside>
+      <div style="grid-column: span 3; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+          <span style="font-size: 14px; color: #7A7A70;">แสดง {{ varietyCount }} สายพันธุ์</span>
+          <span style="font-size: 14px; color: #4A4A42; border: 1px solid #E7E4D9; background: #fff; border-radius: 10px; padding: 9px 14px; cursor: pointer;">เรียงตาม: ความนิยม ▾</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <sc-for list="{{ varieties }}" as="v" hint-placeholder-count="8">
+            <a href="#" onClick="{{ v.open }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; color: #2C2C2C;" style-hover="border-color: #70B75C; color: #2C2C2C;">
+              <div style="aspect-ratio: 4 / 3; background: repeating-linear-gradient(135deg, #E6EEE2 0 12px, #DCE7D7 12px 24px); display: grid; place-items: center;">
+                <span style="font-family: 'Courier New', monospace; font-size: 11px; color: #4E6B4A;">variety photo</span>
+              </div>
+              <div style="padding: 18px; display: flex; flex-direction: column; gap: 7px; flex: 1;">
+                <span style="font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: #8A8A80;">{{ v.sku }}</span>
+                <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">{{ v.name }}</span>
+                <span style="font-family: 'Courier New', monospace; font-size: 12px; color: #9A9A90; font-style: italic;">{{ v.sci }}</span>
+                <span style="font-size: 14px; line-height: 1.55; color: #666;">{{ v.desc }}</span>
+                <div style="margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: #7A7A70;">
+                  <span>{{ v.stars }}</span><span>{{ v.season }}</span>
+                </div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isVarietyDetail }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 24px; flex-wrap: wrap;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><a href="#" onClick="{{ goVarieties }}">สายพันธุ์</a><span>/</span><span>{{ variety.name }}</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start; margin-bottom: 56px;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="aspect-ratio: 4 / 3; border-radius: 20px; background: repeating-linear-gradient(135deg, #E6EEE2 0 14px, #DCE7D7 14px 28px); display: grid; place-items: center; border: 1px solid #D8DFD2;">
+          <span style="font-family: 'Courier New', monospace; font-size: 12px; color: #4E6B4A;">gallery — ผลและต้น {{ variety.name }}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+          <span style="aspect-ratio: 1; border-radius: 10px; background: repeating-linear-gradient(135deg, #E6EEE2 0 8px, #DCE7D7 8px 16px); border: 1px solid #D8DFD2;"></span>
+          <span style="aspect-ratio: 1; border-radius: 10px; background: repeating-linear-gradient(135deg, #ECEADF 0 8px, #E3E0D3 8px 16px); border: 1px solid #E7E4D9;"></span>
+          <span style="aspect-ratio: 1; border-radius: 10px; background: repeating-linear-gradient(135deg, #ECEADF 0 8px, #E3E0D3 8px 16px); border: 1px solid #E7E4D9;"></span>
+          <span style="aspect-ratio: 1; border-radius: 10px; background: repeating-linear-gradient(135deg, #ECEADF 0 8px, #E3E0D3 8px 16px); border: 1px solid #E7E4D9;"></span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; background: #2D5F2E; color: #fff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 999px;">✓ CERTIFIED BY AVOCADO GEEK</span>
+          <span style="display: inline-flex; align-items: center; font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #4A4A42; background: #F3F1E8; border: 1px solid #E7E4D9; padding: 7px 14px; border-radius: 999px;">{{ variety.sku }}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(30px, 3.6vw, 44px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em;">{{ variety.name }}</h1>
+          <span style="font-family: 'Courier New', monospace; font-size: 14px; color: #8A8A80; font-style: italic;">{{ variety.sci }}</span>
+        </div>
+        <p style="font-size: 17px; line-height: 1.8; color: #4A4A42; margin: 0;">{{ variety.long }}</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: #E7E4D9; border: 1px solid #E7E4D9; border-radius: 16px; overflow: hidden;">
+          <sc-for list="{{ variety.stats }}" as="s" hint-placeholder-count="6">
+            <div style="background: #fff; padding: 16px 18px; display: flex; flex-direction: column; gap: 5px;">
+              <span style="font-size: 12px; color: #8A8A80; letter-spacing: 0.02em;">{{ s.k }}</span>
+              <span style="font-size: 16px; font-weight: 600; color: #1F4420;">{{ s.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 4px;">
+          <a href="#" onClick="{{ goSellers }}" style="background: #2D5F2E; color: #fff; padding: 14px 24px; border-radius: 12px; font-weight: 600; font-size: 16px;" style-hover="background: #1F4420; color: #fff;">ซื้อต้นพันธุ์นี้</a>
+          <a href="#" onClick="{{ goVarietyArticles }}" style="background: #fff; border: 1px solid #D8D4C6; color: #2D5F2E; padding: 14px 24px; border-radius: 12px; font-weight: 600; font-size: 16px;" style-hover="border-color: #2D5F2E; background: #fff;">อ่านบทความที่เกี่ยวข้อง</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 4px; border-bottom: 1px solid #E7E4D9; margin-bottom: 32px; flex-wrap: wrap;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <span onClick="{{ t.select }}" style="padding: 14px 20px; font-size: 15px; font-weight: 600; cursor: pointer; color: {{ t.color }}; border-bottom: 3px solid {{ t.border }};">{{ t.label }}</span>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-bottom: 64px;">
+      <sc-for list="{{ tabContent }}" as="c" hint-placeholder-count="4">
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 17px; font-weight: 600; color: #1F4420;">{{ c.h }}</span>
+          <span style="font-size: 15px; line-height: 1.8; color: #5A5A52;">{{ c.p }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 56px;">
+      <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 28px; font-weight: 600; margin: 0; color: #1F4420; letter-spacing: -0.015em;">ร้านค้าที่มีสายพันธุ์นี้</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <sc-for list="{{ topSellers }}" as="s" hint-placeholder-count="3">
+          <a href="#" onClick="{{ s.open }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; color: #2C2C2C;" style-hover="border-color: #70B75C; color: #2C2C2C;">
+            <span style="width: 44px; height: 44px; border-radius: 12px; background: #EAF3E6; color: #2D5F2E; display: grid; place-items: center; font-weight: 700; font-family: Poppins, sans-serif;">{{ s.initial }}</span>
+            <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 17px; font-weight: 600; color: #1F4420;">{{ s.name }}</span>
+            <span style="font-size: 14px; color: #7A7A70;">{{ s.province }} · {{ s.type }}</span>
+            <span style="font-size: 14px; font-weight: 600; color: #2D5F2E; margin-top: 4px;">ดูโปรไฟล์ →</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isTrace }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 28px;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><span>ตรวจรหัสต้น</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start; margin-bottom: 56px;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: 'Courier New', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A70;">tree traceability</span>
+        <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(32px, 4vw, 46px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em; line-height: 1.18;">ตรวจประวัติต้นอโวคาโด้</h1>
+        <p style="font-size: 17px; line-height: 1.8; color: #4A4A42; margin: 0; max-width: 48ch;">ต้นที่รับรองโดย Avocado Geek ทุกต้นมีรหัสของตัวเอง — รหัสหนึ่งใช้ร่วมกันในต้นที่เสียบยอดรอบเดียวกัน สแกน QR บนป้ายต้น หรือกรอกรหัสด้านล่างเพื่อดูวันเสียบยอด อายุต้น ต้นตอ และกิ่งพันธุ์ที่ใช้</p>
+        <form onSubmit="{{ lookup }}" style="display: flex; flex-direction: column; gap: 12px; max-width: 460px;">
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <input value="{{ code }}" onChange="{{ onCode }}" placeholder="เช่น AVO-2503-014" style="flex: 1 1 240px; font-family: 'Courier New', monospace; font-size: 16px; letter-spacing: 0.04em; padding: 15px 17px; border: 1px solid #D8D4C6; border-radius: 12px; outline: none; color: #2C2C2C; background: #fff;" />
+            <button type="submit" style="background: #2D5F2E; color: #fff; border: none; padding: 15px 26px; border-radius: 12px; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 16px; cursor: pointer;" style-hover="background: #1F4420;">ตรวจสอบ</button>
+          </div>
+          <sc-if value="{{ hasLotError }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size: 14px; color: #A8452A; background: #FBEAE5; border: 1px solid #F0CFC6; border-radius: 10px; padding: 11px 14px;">{{ lotError }}</span>
+          </sc-if>
+        </form>
+      </div>
+      <div style="display: grid; place-items: center; background: #F3F1E8; border: 1px solid #E7E4D9; border-radius: 20px; padding: 32px; min-height: 300px;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+          <div style="width: 162px; height: 162px; border-radius: 14px; background: #fff; border: 8px solid #fff; box-shadow: 0 6px 18px rgba(31,68,32,0.12); display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(9, 1fr); gap: 2px;">
+            <span style="grid-column: 1 / 4; grid-row: 1 / 4; border: 4px solid #2D5F2E; border-radius: 3px;"></span>
+            <span style="grid-column: 7 / 10; grid-row: 1 / 4; border: 4px solid #2D5F2E; border-radius: 3px;"></span>
+            <span style="grid-column: 1 / 4; grid-row: 7 / 10; border: 4px solid #2D5F2E; border-radius: 3px;"></span>
+            <span style="grid-column: 5; grid-row: 1; background: #2D5F2E;"></span>
+            <span style="grid-column: 5; grid-row: 3; background: #2D5F2E;"></span>
+            <span style="grid-column: 4; grid-row: 5; background: #2D5F2E;"></span>
+            <span style="grid-column: 5; grid-row: 5; background: #2D5F2E;"></span>
+            <span style="grid-column: 7; grid-row: 5; background: #2D5F2E;"></span>
+            <span style="grid-column: 9; grid-row: 5; background: #2D5F2E;"></span>
+            <span style="grid-column: 1; grid-row: 5; background: #2D5F2E;"></span>
+            <span style="grid-column: 5; grid-row: 7; background: #2D5F2E;"></span>
+            <span style="grid-column: 6; grid-row: 6; background: #2D5F2E;"></span>
+            <span style="grid-column: 8; grid-row: 7; background: #2D5F2E;"></span>
+            <span style="grid-column: 6; grid-row: 9; background: #2D5F2E;"></span>
+            <span style="grid-column: 8; grid-row: 9; background: #2D5F2E;"></span>
+            <span style="grid-column: 7; grid-row: 8; background: #2D5F2E;"></span>
+            <span style="grid-column: 9; grid-row: 7; background: #2D5F2E;"></span>
+          </div>
+          <span style="font-size: 15px; line-height: 1.7; color: #5A5A52; max-width: 34ch;">ป้ายติดต้นพิมพ์ QR ของรหัสต้นไว้ — สแกนแล้วเข้าหน้านี้พร้อมรหัสกรอกไว้ให้อัตโนมัติ</span>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ hasLot }}" hint-placeholder-val="{{ false }}">
+    <div style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="background: #2D5F2E; border-radius: 20px; padding: clamp(26px, 3vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="display: inline-flex; align-self: flex-start; align-items: center; gap: 7px; background: rgba(255,255,255,0.16); color: #fff; font-size: 12px; font-weight: 700; padding: 7px 13px; border-radius: 999px;">✓ ต้นนี้ได้รับการรับรอง</span>
+          <span style="font-family: 'Courier New', monospace; font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; color: #fff; letter-spacing: 0.03em;">{{ lot.code }}</span>
+          <span style="font-size: 16px; color: #CFE2CB;">{{ lot.variety }} · {{ lot.status }}</span>
+          <span style="font-size: 13px; color: #A8D49C; line-height: 1.6;">รหัสนี้เป็นรหัสของต้นคุณ — ออกให้กับรอบเสียบยอดที่ต้นนี้อยู่ ทุกต้นในรอบเดียวกันใช้กิ่งพันธุ์ ต้นตอ และวันเสียบยอดชุดเดียวกัน</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 13px; color: #A8D49C;">อายุนับจากวันเสียบยอด</span>
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(28px, 3.4vw, 40px); font-weight: 700; color: #fff; line-height: 1.1;">{{ lot.age }}</span>
+          <span style="font-size: 14px; color: #CFE2CB;">เสียบยอด {{ lot.graftDate }}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="#" onClick="{{ lot.openVariety }}" style="background: #F5A623; color: #3A2A00; text-align: center; padding: 13px 20px; border-radius: 11px; font-weight: 700; font-size: 15px;" style-hover="background: #FFB846; color: #3A2A00;">ดูข้อมูลสายพันธุ์</a>
+          <a href="#" onClick="{{ goSellers }}" style="border: 1px solid rgba(255,255,255,0.35); color: #fff; text-align: center; padding: 13px 20px; border-radius: 11px; font-weight: 600; font-size: 15px;" style-hover="border-color: #fff; color: #fff;">หาร้านที่รับรอง</a>
+        </div>
+      </div>
+
+      <div style="background: #E7E4D9; border: 1px solid #E7E4D9; border-radius: 18px; overflow: hidden; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1px;">
+        <sc-for list="{{ lot.stats }}" as="s" hint-placeholder-count="12">
+          <div style="background: #fff; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-size: 12px; letter-spacing: 0.01em; color: #8A8A80;">{{ s.k }}</span>
+            <span style="font-size: 15px; font-weight: 600; line-height: 1.55; color: #1F4420; text-wrap: pretty;">{{ s.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; align-items: start;">
+        <div style="grid-column: span 2; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+          <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 26px; font-weight: 600; margin: 0; color: #1F4420; letter-spacing: -0.015em;">ไทม์ไลน์ของต้นนี้</h2>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <sc-for list="{{ lot.events }}" as="e" hint-placeholder-count="5">
+              <div style="display: grid; grid-template-columns: 130px 1fr; gap: 18px; padding: 0 0 22px;">
+                <span style="font-family: 'Courier New', monospace; font-size: 13px; color: #7A7A70; padding-top: 3px;">{{ e.d }}</span>
+                <div style="border-left: 2px solid #E7E4D9; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; position: relative;">
+                  <span style="position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: #2D5F2E; border: 2px solid #FBFAF6;"></span>
+                  <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 17px; font-weight: 600; color: #1F4420;">{{ e.h }}</span>
+                  <span style="font-size: 15px; line-height: 1.75; color: #5A5A52;">{{ e.p }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 16px; font-weight: 600; color: #1F4420;">การรับประกัน</span>
+            <span style="font-size: 15px; line-height: 1.75; color: #5A5A52;">{{ lot.warranty }}</span>
+          </div>
+          <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 16px; font-weight: 600; color: #1F4420;">ที่มาของต้น</span>
+            <span style="font-size: 15px; line-height: 1.75; color: #5A5A52;">ต้นตอ: {{ lot.rootstock }}</span>
+            <span style="font-size: 15px; line-height: 1.75; color: #5A5A52;">กิ่งพันธุ์: {{ lot.scion }}</span>
+            <span style="font-size: 14px; color: #8A8A80;">วิธีขยายพันธุ์: {{ lot.method }}</span>
+          </div>
+          <div style="background: #F3F1E8; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 16px; font-weight: 600; color: #1F4420;">พบข้อมูลไม่ตรง?</span>
+            <span style="font-size: 14px; line-height: 1.7; color: #5A5A52;">ถ้าป้ายต้นระบุไม่ตรงกับข้อมูลนี้ แจ้งทีมงานได้ทันที เราจะตรวจสอบกับร้านต้นทาง</span>
+            <a href="#" onClick="{{ goContact }}" style="font-size: 14px; font-weight: 600;">แจ้งทีมงาน →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 56px;">
+      <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 26px; font-weight: 600; margin: 0; color: #1F4420; letter-spacing: -0.015em;">รหัสต้นต่อยอดไปได้อีก</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 9px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 13px; color: #7A7A70;">01</span>
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">สมุดบันทึกต้นของฉัน</span>
+          <span style="font-size: 15px; line-height: 1.7; color: #666;">ผูกรหัสต้นกับต้นที่ปลูกจริง บันทึกวันปลูก การให้ปุ๋ย และปัญหาที่เจอ เพื่อดูย้อนหลังในปีถัดไป</span>
+        </div>
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 9px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 13px; color: #7A7A70;">02</span>
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">เตือนงานตามอายุต้น</span>
+          <span style="font-size: 15px; line-height: 1.7; color: #666;">ระบบรู้อายุต้นจากวันเสียบยอด จึงเตือนได้ว่าถึงรอบใส่ปุ๋ย ตัดแต่งกิ่ง หรือคาดว่าจะเริ่มติดผลเมื่อไร</span>
+        </div>
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 9px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 13px; color: #7A7A70;">03</span>
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">ใบรับรองสำหรับขายผล</span>
+          <span style="font-size: 15px; line-height: 1.7; color: #666;">ผู้ปลูกอ้างรหัสของต้นเพื่อยืนยันสายพันธุ์ตอนขายผล เป็นหลักฐานที่ลูกค้าปลายทางตรวจได้เอง</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isMatch }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 28px;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><span>เลือกพันธุ์ให้ฉัน</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px;">
+      <span style="font-family: 'Courier New', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #7A7A70;">variety matcher</span>
+      <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em;">สายพันธุ์ไหนเหมาะกับคุณ</h1>
+      <p style="font-size: 17px; color: #666; margin: 0; max-width: 62ch; line-height: 1.7;">เลือกเท่าที่รู้ ข้ามข้อที่ยังไม่แน่ใจได้ — ยิ่งตอบมาก อันดับยิ่งแม่น เราจะบอกด้วยว่าเหมาะเพราะอะไร และมีอะไรต้องระวัง</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 26px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #F3F1E8; border: 1px solid #E7E4D9; border-radius: 12px; padding: 13px 18px;">
+          <span style="font-size: 14px; color: #4A4A42;">ตอบแล้ว <span style="font-weight: 700; color: #2D5F2E;">{{ answeredCount }}</span> ข้อ</span>
+          <a href="#" onClick="{{ resetMatch }}" style="font-size: 14px; font-weight: 600;">ล้างคำตอบ</a>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 15px; font-weight: 700; color: #1F4420;">พื้นที่ปลูกอยู่ภาคไหน</span>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+            <sc-for list="{{ regionCards }}" as="r" hint-placeholder-count="6">
+              <a href="#" onClick="{{ r.select }}" style="border: 1px solid; border-color: {{ r.border }}; background: {{ r.bg }}; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; color: {{ r.fg }};">
+                <span style="font-size: 15px; font-weight: 600; color: {{ r.fg }};">{{ r.label }}</span>
+                <span style="font-size: 12px; color: {{ r.sub }};">{{ r.note }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <sc-if value="{{ hasRegion }}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 15px; font-weight: 700; color: #1F4420;">จังหวัด <span style="font-weight: 500; color: #9A9A90;">(ไม่จำเป็น)</span></span>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ provinceChips }}" as="p" hint-placeholder-count="5">
+              <a href="#" onClick="{{ p.select }}" style="border: 1px solid; border-color: {{ p.border }}; background: {{ p.bg }}; color: {{ p.fg }}; font-size: 14px; font-weight: 500; padding: 9px 15px; border-radius: 999px;">{{ p.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-for list="{{ questions }}" as="q" hint-placeholder-count="8">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-size: 15px; font-weight: 700; color: #1F4420;">{{ q.label }}</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ q.options }}" as="o" hint-placeholder-count="3">
+                <a href="#" onClick="{{ o.select }}" style="border: 1px solid; border-color: {{ o.border }}; background: {{ o.bg }}; color: {{ o.fg }}; font-size: 14px; font-weight: {{ o.weight }}; padding: 10px 16px; border-radius: 10px;">{{ o.label }}</a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="grid-column: span 2; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+          <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 24px; font-weight: 600; margin: 0; color: #1F4420;">อันดับสายพันธุ์ที่เหมาะกับคุณ</h2>
+          <span style="font-size: 13px; color: #9A9A90;">เรียงตามคะแนนความเหมาะสม</span>
+        </div>
+        <sc-for list="{{ matches }}" as="m" hint-placeholder-count="6">
+          <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+              <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+                <span style="font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: #8A8A80;">{{ m.sku }}</span>
+                <a href="#" onClick="{{ m.open }}" style="font-family: Poppins, Sarabun, sans-serif; font-size: 20px; font-weight: 600; color: #1F4420;" style-hover="color: #2D5F2E;">{{ m.name }}</a>
+                <span style="font-size: 14px; color: #7A7A70;">เก็บเกี่ยว {{ m.season }} · {{ m.desc }}</span>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0;">
+                <span style="font-family: 'Courier New', monospace; font-size: 26px; font-weight: 700; color: {{ m.tone }};">{{ m.score }}</span>
+                <span style="font-size: 12px; font-weight: 600; color: {{ m.tone }};">{{ m.verdict }}</span>
+              </div>
+            </div>
+            <div style="height: 7px; border-radius: 99px; background: #F0EEE5; overflow: hidden;">
+              <div style="height: 100%; width: {{ m.bar }}; background: {{ m.tone }}; border-radius: 99px;"></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <sc-for list="{{ m.pros }}" as="p" hint-placeholder-count="2">
+                <div style="display: flex; gap: 9px; align-items: flex-start;">
+                  <span style="color: #2D5F2E; font-size: 13px; line-height: 1.6;">✓</span>
+                  <span style="font-size: 14px; line-height: 1.6; color: #3C3C36;">{{ p }}</span>
+                </div>
+              </sc-for>
+              <sc-for list="{{ m.cons }}" as="c" hint-placeholder-count="1">
+                <div style="display: flex; gap: 9px; align-items: flex-start;">
+                  <span style="color: #C9A227; font-size: 13px; line-height: 1.6;">!</span>
+                  <span style="font-size: 14px; line-height: 1.6; color: #7A7A70;">{{ c }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display: flex; gap: 14px; align-items: center; padding-top: 4px;">
+              <a href="#" onClick="{{ m.open }}" style="font-size: 14px; font-weight: 600;">ดูข้อมูลสายพันธุ์ →</a>
+              <a href="#" onClick="{{ goSellers }}" style="font-size: 14px; font-weight: 600; color: #7A7A70;" style-hover="color: #2D5F2E;">หาร้านที่ขาย</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isSellers }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 28px;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><span>ร้านค้าที่รับรอง</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px;">
+      <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em;">ร้านค้าที่รับรอง</h1>
+      <p style="font-size: 17px; color: #666; margin: 0; max-width: 64ch; line-height: 1.7;">ร้านและสวนที่ผ่านการตรวจสอบโดยทีมงาน จำหน่ายทั้งผลอโวคาโด้สดและต้นพันธุ์ และกำลังขยายไปสู่สินค้าอื่นที่เกี่ยวข้องกับอโวคาโด้</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; align-items: start;">
+      <aside style="display: flex; flex-direction: column; gap: 22px; background: #fff; border: 1px solid #E7E4D9; border-radius: 18px; padding: 24px;">
+        <div style="display: flex; align-items: center; gap: 10px; border: 1px solid #E7E4D9; border-radius: 10px; padding: 11px 14px;">
+          <span style="color: #9A9A90;">⌕</span>
+          <input placeholder="ชื่อร้าน / จังหวัด" style="border: none; outline: none; font-family: Sarabun, sans-serif; font-size: 15px; width: 100%; background: transparent;" />
+        </div>
+        <sc-for list="{{ sellerFilters }}" as="f" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-size: 13px; font-weight: 700; color: #1F4420;">{{ f.label }}</span>
+            <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
+              <label style="display: flex; align-items: center; gap: 9px; font-size: 15px; color: #4A4A42; cursor: pointer;">
+                <span style="width: 17px; height: 17px; border: 1px solid #C9C5B6; border-radius: 4px; background: #fff; flex-shrink: 0;"></span>
+                <span>{{ o }}</span>
+              </label>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #E7E4D9;">
+          <div style="aspect-ratio: 1; background: repeating-linear-gradient(135deg, #EAEFE6 0 10px, #E1E8DC 10px 20px); display: grid; place-items: center;">
+            <span style="font-family: 'Courier New', monospace; font-size: 11px; color: #4E6B4A; text-align: center;">map view<br />(optional)</span>
+          </div>
+        </div>
+      </aside>
+      <div style="grid-column: span 3; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+          <span style="font-size: 14px; color: #7A7A70;">แสดง {{ sellerCount }} ร้าน</span>
+          <div style="display: flex; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; background: #2D5F2E; color: #fff; border-radius: 10px; padding: 9px 16px; cursor: pointer;">รายการ</span>
+            <span style="font-size: 14px; font-weight: 500; border: 1px solid #E7E4D9; background: #fff; color: #4A4A42; border-radius: 10px; padding: 9px 16px; cursor: pointer;" style-hover="border-color: #2D5F2E;">แผนที่</span>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <sc-for list="{{ sellers }}" as="s" hint-placeholder-count="6">
+            <a href="#" onClick="{{ s.open }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px; color: #2C2C2C;" style-hover="border-color: #70B75C; color: #2C2C2C;">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="width: 52px; height: 52px; border-radius: 14px; background: #EAF3E6; color: #2D5F2E; display: grid; place-items: center; font-weight: 700; font-size: 18px; font-family: Poppins, sans-serif; flex-shrink: 0;">{{ s.initial }}</span>
+                <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+                  <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">{{ s.name }}</span>
+                  <span style="font-size: 13px; color: #7A7A70;">{{ s.tagline }}</span>
+                </div>
+              </div>
+              <span style="display: inline-flex; align-self: flex-start; background: #FDF3E0; color: #8A5B08; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 999px;">✓ CERTIFIED BY AVOCADO GEEK</span>
+              <span style="font-size: 15px; line-height: 1.65; color: #666;">{{ s.desc }}</span>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="2">
+                  <span style="background: #F3F1E8; color: #4A4A42; font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 8px;">{{ t }}</span>
+                </sc-for>
+              </div>
+              <div style="margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #F0EEE5;">
+                <span style="font-size: 13px; color: #7A7A70;">{{ s.type }}</span>
+                <span style="font-size: 14px; font-weight: 600; color: #2D5F2E;">ดูโปรไฟล์ →</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isSellerDetail }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 24px; flex-wrap: wrap;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><a href="#" onClick="{{ goSellers }}">ร้านค้าที่รับรอง</a><span>/</span><span>{{ seller.name }}</span>
+    </div>
+    <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 20px; padding: clamp(24px, 3vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; align-items: center; margin-bottom: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <span style="width: 68px; height: 68px; border-radius: 18px; background: #EAF3E6; color: #2D5F2E; display: grid; place-items: center; font-weight: 700; font-size: 24px; font-family: Poppins, sans-serif; flex-shrink: 0;">{{ seller.initial }}</span>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(26px, 3vw, 36px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em;">{{ seller.name }}</h1>
+            <span style="font-size: 15px; color: #7A7A70;">{{ seller.type }}</span>
+          </div>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; background: #2D5F2E; color: #fff; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 999px;">✓ CERTIFIED BY AVOCADO GEEK — ตรวจสอบเมื่อ {{ seller.verified }}</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; font-size: 15px; color: #4A4A42; padding-top: 4px;">
+          <span>📍 {{ seller.address }}</span>
+          <span>☎️ {{ seller.phone }}</span>
+          <span>🕘 {{ seller.hours }}</span>
+          <span>✉️ {{ seller.email }}</span>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 8px;">
+          <span style="background: #2D5F2E; color: #fff; padding: 13px 22px; border-radius: 11px; font-weight: 600; font-size: 15px; cursor: pointer;" style-hover="background: #1F4420;">ติดต่อร้าน</span>
+          <span style="border: 1px solid #D8D4C6; color: #2D5F2E; padding: 13px 22px; border-radius: 11px; font-weight: 600; font-size: 15px; cursor: pointer;" style-hover="border-color: #2D5F2E;">สั่งซื้อ →</span>
+        </div>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #E7E4D9; min-height: 260px; background: repeating-linear-gradient(135deg, #EAEFE6 0 12px, #E1E8DC 12px 24px); display: grid; place-items: center;">
+        <span style="font-family: 'Courier New', monospace; font-size: 12px; color: #4E6B4A; text-align: center;">map embed — {{ seller.province }}</span>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 48px;">
+      <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">เกี่ยวกับร้าน</span>
+        <span style="font-size: 15px; line-height: 1.85; color: #5A5A52;">{{ seller.about }}</span>
+      </div>
+      <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">สินค้า</span>
+        <sc-for list="{{ seller.products }}" as="p" hint-placeholder-count="4">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid #F0EEE5; padding-bottom: 10px;">
+            <span style="font-size: 15px; color: #3C3C36;">{{ p.name }}</span>
+            <span style="font-family: 'Courier New', monospace; font-size: 14px; font-weight: 700; color: #2D5F2E; white-space: nowrap;">{{ p.price }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #1F4420;">ช่องทางการสั่งซื้อ</span>
+        <sc-for list="{{ seller.channels }}" as="c" hint-placeholder-count="4">
+          <a href="#" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid #E7E4D9; border-radius: 11px; padding: 12px 15px; font-size: 15px; font-weight: 500; color: #3C3C36;" style-hover="border-color: #70B75C; color: #2D5F2E;">
+            <span>{{ c.label }}</span><span style="font-size: 13px; color: #9A9A90;">↗</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 28px; font-weight: 600; margin: 0; color: #1F4420; letter-spacing: -0.015em;">ร้านค้าใกล้เคียง</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <sc-for list="{{ relatedSellers }}" as="s" hint-placeholder-count="3">
+          <a href="#" onClick="{{ s.open }}" style="background: #fff; border: 1px solid #E7E4D9; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px; color: #2C2C2C;" style-hover="border-color: #70B75C; color: #2C2C2C;">
+            <span style="width: 42px; height: 42px; border-radius: 12px; background: #EAF3E6; color: #2D5F2E; display: grid; place-items: center; font-weight: 700; font-family: Poppins, sans-serif;">{{ s.initial }}</span>
+            <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 17px; font-weight: 600; color: #1F4420;">{{ s.name }}</span>
+            <span style="font-size: 14px; color: #7A7A70;">{{ s.tagline }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 28px;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><span>เกี่ยวกับเรา</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center; margin-bottom: 64px;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em; line-height: 1.18; text-wrap: pretty;">เราสร้างฐานความรู้ที่ผู้ปลูกไทยเชื่อถือได้</h1>
+        <p style="font-size: 18px; line-height: 1.85; color: #4A4A42; margin: 0;">Avocado Geek เริ่มจากกลุ่มผู้ปลูกอโวคาโด้ในภาคเหนือที่เจอปัญหาเดียวกัน — ข้อมูลกระจัดกระจาย ต้นพันธุ์ไม่ตรงปก และไม่รู้จะถามใคร เราจึงรวบรวมความรู้ ตรวจสอบสายพันธุ์ และคัดกรองร้านค้าไว้ในที่เดียว</p>
+      </div>
+      <div style="aspect-ratio: 4 / 3; border-radius: 20px; background: repeating-linear-gradient(135deg, #E6EEE2 0 14px, #DCE7D7 14px 28px); display: grid; place-items: center; border: 1px solid #D8DFD2;">
+        <span style="font-family: 'Courier New', monospace; font-size: 12px; color: #4E6B4A;">team / farm photo</span>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 64px;">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-family: 'Courier New', monospace; font-size: 13px; color: #7A7A70;">{{ p.n }}</span>
+          <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 20px; font-weight: 600; color: #1F4420;">{{ p.h }}</span>
+          <span style="font-size: 15px; line-height: 1.75; color: #666;">{{ p.p }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background: #F3F1E8; border: 1px solid #E7E4D9; border-radius: 20px; padding: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 64px;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 28px; font-weight: 600; margin: 0; color: #1F4420;">มาตรฐานการรับรอง</h2>
+        <p style="font-size: 16px; line-height: 1.8; color: #5A5A52; margin: 0;">ร้านค้าที่ได้ตรารับรองจากเราต้องผ่านเกณฑ์ 4 ข้อ และตรวจทบทวนทุก 12 เดือน</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <sc-for list="{{ criteria }}" as="c" hint-placeholder-count="4">
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <span style="width: 24px; height: 24px; border-radius: 7px; background: #2D5F2E; color: #fff; display: grid; place-items: center; font-size: 13px; flex-shrink: 0;">✓</span>
+            <span style="font-size: 16px; line-height: 1.6; color: #3C3C36;">{{ c }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <h2 style="font-family: Poppins, Sarabun, sans-serif; font-size: 28px; font-weight: 600; margin: 0; color: #1F4420;">คำถามที่พบบ่อย</h2>
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+        <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 14px; padding: 22px 26px; display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 17px; font-weight: 600; color: #1F4420;">{{ f.q }}</span>
+          <span style="font-size: 15px; line-height: 1.8; color: #5A5A52;">{{ f.a }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px;">
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7A7A70; margin-bottom: 28px;">
+      <a href="#" onClick="{{ goHome }}">หน้าแรก</a><span>/</span><span>ติดต่อเรา</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <h1 style="font-family: Poppins, Sarabun, sans-serif; font-size: clamp(32px, 4vw, 44px); font-weight: 700; margin: 0; color: #1F4420; letter-spacing: -0.02em;">ติดต่อทีมงาน</h1>
+        <p style="font-size: 17px; line-height: 1.8; color: #4A4A42; margin: 0; max-width: 46ch;">มีคำถามเรื่องการปลูก อยากเสนอร้านค้าเข้ารับการรับรอง หรือพบข้อมูลผิดพลาด — เขียนมาได้เลย เราตอบภายใน 2 วันทำการ</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 8px;">
+          <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
+            <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              <span style="font-size: 15px; color: #7A7A70;">{{ c.k }}</span>
+              <span style="font-size: 15px; font-weight: 600; color: #2D5F2E;">{{ c.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background: #fff; border: 1px solid #E7E4D9; border-radius: 20px; padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-size: 20px; font-weight: 600; color: #1F4420;">ส่งข้อความ</span>
+        <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #4A4A42;">ชื่อ
+          <input placeholder="ชื่อ–นามสกุล" style="font-family: Sarabun, sans-serif; font-size: 15px; padding: 13px 15px; border: 1px solid #E7E4D9; border-radius: 10px; outline: none; color: #2C2C2C;" />
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #4A4A42;">อีเมล
+          <input placeholder="you@email.com" style="font-family: Sarabun, sans-serif; font-size: 15px; padding: 13px 15px; border: 1px solid #E7E4D9; border-radius: 10px; outline: none; color: #2C2C2C;" />
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #4A4A42;">เรื่อง
+          <span style="font-family: Sarabun, sans-serif; font-size: 15px; padding: 13px 15px; border: 1px solid #E7E4D9; border-radius: 10px; color: #7A7A70; cursor: pointer;">คำถามเรื่องการปลูก ▾</span>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 7px; font-size: 14px; font-weight: 600; color: #4A4A42;">ข้อความ
+          <textarea placeholder="เล่าให้เราฟัง…" rows="5" style="font-family: Sarabun, sans-serif; font-size: 15px; padding: 13px 15px; border: 1px solid #E7E4D9; border-radius: 10px; outline: none; resize: vertical; color: #2C2C2C;"></textarea>
+        </label>
+        <span style="background: #2D5F2E; color: #fff; text-align: center; padding: 15px; border-radius: 12px; font-weight: 600; font-size: 16px; cursor: pointer;" style-hover="background: #1F4420;">ส่งข้อความ</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <footer style="background: #1F4420; color: #CFE2CB;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 36px;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: Poppins, Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #fff;">Avocado Geek</span>
+        <span style="font-size: 14px; line-height: 1.7; max-width: 30ch;">ฐานของความรู้อโวคาโด้ทั้งหมด — คู่มือของผู้ปลูกอโวคาโด้ไทย</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+        <span style="color: #fff; font-weight: 600; margin-bottom: 4px;">เนื้อหา</span>
+        <a href="#" onClick="{{ goBlog }}" style="color: #CFE2CB;" style-hover="color: #fff;">บล็อกความรู้</a>
+        <a href="#" onClick="{{ goVarieties }}" style="color: #CFE2CB;" style-hover="color: #fff;">สายพันธุ์อโวคาโด้</a>
+        <a href="#" onClick="{{ goMatch }}" style="color: #CFE2CB;" style-hover="color: #fff;">เลือกพันธุ์ให้ฉัน</a>
+        <a href="#" onClick="{{ goTrace }}" style="color: #CFE2CB;" style-hover="color: #fff;">ตรวจรหัสต้น</a>
+        <a href="#" onClick="{{ goSellers }}" style="color: #CFE2CB;" style-hover="color: #fff;">ร้านค้าที่รับรอง</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+        <span style="color: #fff; font-weight: 600; margin-bottom: 4px;">เกี่ยวกับ</span>
+        <a href="#" onClick="{{ goAbout }}" style="color: #CFE2CB;" style-hover="color: #fff;">เกี่ยวกับเรา</a>
+        <a href="#" onClick="{{ goContact }}" style="color: #CFE2CB;" style-hover="color: #fff;">ติดต่อ</a>
+        <a href="#" onClick="{{ goAbout }}" style="color: #CFE2CB;" style-hover="color: #fff;">คำถามที่พบบ่อย</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+        <span style="color: #fff; font-weight: 600; margin-bottom: 4px;">ติดตาม</span>
+        <a href="#" style="color: #CFE2CB;" style-hover="color: #fff;">Facebook</a>
+        <a href="#" style="color: #CFE2CB;" style-hover="color: #fff;">Line Official</a>
+        <a href="#" style="color: #CFE2CB;" style-hover="color: #fff;">YouTube</a>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px 40px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13px; color: #9CBD97;">© 2026 Avocado Geek. สงวนลิขสิทธิ์ทุกประการ</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const VARIETIES = [
+  { sku: "TR-AVO-STD", name: "อโวคาโด้ ธรรมดา", sci: "Persea americana (ต้นเพาะเมล็ด)", desc: "ต้นเพาะเมล็ด ราคาย่อมเยา ใช้เป็นต้นตอได้", stars: "★★☆☆☆", season: "ก.ค.–ต.ค.",
+    long: "ต้นที่ได้จากการเพาะเมล็ด ไม่ใช่ต้นทาบหรือต้นเสียบยอด จึงไม่การันตีว่าผลจะเหมือนต้นแม่ — ลักษณะผล รสชาติ และช่วงเก็บเกี่ยวจะแปรปรวนไปตามการผสมข้ามพันธุ์ ข้อดีคือระบบรากแข็งแรงและราคาถูก จึงนิยมใช้เป็น 'ต้นตอ' สำหรับทาบกิ่งพันธุ์ดีในภายหลัง หากปลูกเพื่อกินผลควรเข้าใจว่าใช้เวลา 5–8 ปีจึงติดผล และคุณภาพผลคาดเดาไม่ได้",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-STD"},{k:"ประเภท",v:"ต้นเพาะเมล็ด"},{k:"เริ่มให้ผล",v:"5–8 ปี"},{k:"ขนาดผล",v:"แปรปรวน"},{k:"ความยาก",v:"ง่าย"},{k:"เหมาะสำหรับ",v:"ทำต้นตอ / ปลูกร่มเงา"}] },
+  { sku: "TR-AVO-HAS", name: "แฮส (Hass)", sci: "P. americana 'Hass'", desc: "เนื้อครีม รสมันเข้ม สายพันธุ์การค้าอันดับหนึ่งของโลก", stars: "★★★☆☆", season: "ส.ค.–พ.ย.",
+    long: "ต้นแม่พันธุ์ดั้งเดิมเพาะโดย Rudolph Hass ที่เมือง La Habra Heights รัฐแคลิฟอร์เนีย และจดสิทธิบัตรในปี 1935 ปัจจุบันครองสัดส่วนอโวคาโด้การค้าของโลกกว่า 80% เป็นชนิดกัวเตมาลาเป็นหลัก เปลือกหนาขรุขระ เปลี่ยนจากเขียวเป็นม่วงดำเมื่อสุก จึงบอกความสุกได้จากสี เนื้อละเอียดมันเข้มข้น เก็บรักษาและขนส่งได้ดีกว่าพันธุ์เปลือกบาง ดอกเป็นชนิด A ในไทยให้ผลดีในพื้นที่สูงกว่า 700 เมตรที่มีอากาศเย็นช่วงออกดอก เช่น เชียงใหม่ เชียงราย ตาก น่าน และเพชรบูรณ์",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-HAS"},{k:"ต้นกำเนิด",v:"แคลิฟอร์เนีย, 1935"},{k:"ชนิดดอก",v:"A"},{k:"ขนาดผล",v:"170–350 ก."},{k:"ปริมาณน้ำมัน",v:"18–22%"},{k:"ช่วงเก็บเกี่ยว",v:"ส.ค.–พ.ย."},{k:"พื้นที่เหมาะสม",v:"สูงกว่า 700 ม."},{k:"ราคาตลาด",v:"120–180 ฿/กก."}] },
+  { sku: "TR-AVO-PIN", name: "พิงค์เคอร์ตัน", sci: "P. americana 'Pinkerton'", desc: "ผลทรงยาวคอสั้น เมล็ดเล็ก เนื้อเยอะ น้ำมันสูง", stars: "★★★★☆", season: "ก.ย.–พ.ย.",
+    long: "คัดเลือกจากสวนของตระกูล Pinkerton ในแคลิฟอร์เนีย เผยแพร่ช่วงต้นทศวรรษ 1970 เป็นลูกผสมกัวเตมาลาเป็นหลัก จุดเด่นคือเมล็ดเล็กมากเมื่อเทียบกับขนาดผล ทำให้สัดส่วนเนื้อที่กินได้สูง ผิวเปลือกขรุขระปานกลาง ปอกง่าย รสมันเข้มใกล้เคียงแฮส ดอกชนิด A ต้นค่อนข้างแผ่กว้าง ให้ผลดกแต่ไวต่อการขาดน้ำและดินเค็ม ต้องคุมการให้น้ำสม่ำเสมอ",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-PIN"},{k:"ต้นกำเนิด",v:"แคลิฟอร์เนีย, ~1972"},{k:"ชนิดดอก",v:"A"},{k:"ขนาดผล",v:"250–450 ก."},{k:"ปริมาณน้ำมัน",v:"20–24%"},{k:"ช่วงเก็บเกี่ยว",v:"ก.ย.–พ.ย."},{k:"เมล็ด",v:"เล็ก (เนื้อ ~75–80%)"},{k:"ราคาตลาด",v:"140–200 ฿/กก."}] },
+  { sku: "TR-AVO-BUC", name: "บัคคาเนีย", sci: "P. americana 'Buccaneer'", desc: "พันธุ์ฟลอริดา ทนร้อนชื้น ให้ผลสม่ำเสมอ", stars: "★★☆☆☆", season: "ส.ค.–ต.ค.",
+    long: "พันธุ์จากฟลอริดา กลุ่มลูกผสมเวสต์อินดีส–กัวเตมาลา จึงทนอากาศร้อนชื้นและดินที่ระบายน้ำไม่ดีนักได้ดีกว่าพันธุ์แคลิฟอร์เนีย ผลทรงกลมรีขนาดกลาง เปลือกเขียวเรียบค่อนข้างบาง เนื้อรสอ่อนกว่าแฮส ปริมาณน้ำมันต่ำจึงเบาและไม่เลี่ยน เหมาะขายเป็นผลสดในตลาดท้องถิ่นและปลูกในที่ราบ",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-BUC"},{k:"ต้นกำเนิด",v:"ฟลอริดา"},{k:"กลุ่มพันธุ์",v:"เวสต์อินดีส × กัวเตมาลา"},{k:"ขนาดผล",v:"200–350 ก."},{k:"ปริมาณน้ำมัน",v:"8–12%"},{k:"ช่วงเก็บเกี่ยว",v:"ส.ค.–ต.ค."},{k:"ความยาก",v:"ง่าย"},{k:"ราคาตลาด",v:"50–80 ฿/กก."}] },
+  { sku: "TR-AVO-PET", name: "ปีเตอร์สัน", sci: "P. americana 'Peterson'", desc: "ปลูกง่าย ให้ผลเร็ว เหมาะกับผู้เริ่มต้น", stars: "★★☆☆☆", season: "ก.ค.–ก.ย.",
+    long: "พันธุ์กลุ่มฟลอริดาที่ปรับตัวกับอากาศร้อนของไทยได้ดี ต้นแข็งแรง เลี้ยงง่าย ทนโรคได้ดีกว่าพันธุ์ที่ต้องการอากาศเย็น มักเริ่มให้ผลภายใน 3 ปีหลังปลูกด้วยต้นทาบ ผลขนาดกลางถึงใหญ่ เปลือกเขียว เนื้อรสอ่อนถึงปานกลาง เป็นพันธุ์ที่แนะนำสำหรับสวนแรกหรือผู้ที่ยังไม่มั่นใจกับสภาพพื้นที่",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-PET"},{k:"ต้นกำเนิด",v:"ฟลอริดา"},{k:"เริ่มให้ผล",v:"~3 ปี (ต้นทาบ)"},{k:"ขนาดผล",v:"250–400 ก."},{k:"ปริมาณน้ำมัน",v:"12–15%"},{k:"ช่วงเก็บเกี่ยว",v:"ก.ค.–ก.ย."},{k:"ความยาก",v:"ง่าย"},{k:"ราคาตลาด",v:"70–110 ฿/กก."}] },
+  { sku: "TR-AVO-BO7", name: "บูท-7", sci: "P. americana 'Booth 7'", desc: "ผลใหญ่ ให้ผลดก ปลูกได้ในที่ราบ", stars: "★★★☆☆", season: "ต.ค.–ธ.ค.",
+    long: "หนึ่งในชุดพันธุ์ Booth จากฟลอริดา (คัดเลือกช่วงทศวรรษ 1930) เป็นลูกผสมกัวเตมาลา–เวสต์อินดีส ทนร้อนชื้นได้ดีจึงปลูกได้ในที่ราบของไทย ผลใหญ่ทรงกลมรี เปลือกหนาเขียวเรียบเป็นมัน เนื้อแน่นสีเหลือง รสมันปานกลาง เก็บเกี่ยวปลายปี ดอกเป็นชนิด B จึงใช้เป็นพันธุ์ผสมเกสรร่วมกับแฮส (ชนิด A) ได้ดี ช่วยเพิ่มการติดผลในแปลง",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-BO7"},{k:"ต้นกำเนิด",v:"ฟลอริดา, ~1935"},{k:"ชนิดดอก",v:"B (ผสมเกสรให้แฮส)"},{k:"ขนาดผล",v:"300–500 ก."},{k:"ปริมาณน้ำมัน",v:"8–12%"},{k:"ช่วงเก็บเกี่ยว",v:"ต.ค.–ธ.ค."},{k:"ความยาก",v:"ปานกลาง"},{k:"ราคาตลาด",v:"60–90 ฿/กก."}] },
+  { sku: "TR-AVO-BO8", name: "บูท-8", sci: "P. americana 'Booth 8'", desc: "ผลกลมรี ทนร้อนชื้น ติดผลสม่ำเสมอ", stars: "★★★☆☆", season: "ก.ย.–พ.ย.",
+    long: "อีกหนึ่งพันธุ์ในชุด Booth จากฟลอริดา กลุ่มลูกผสมกัวเตมาลา–เวสต์อินดีสเช่นเดียวกับบูท-7 จึงทนอากาศร้อนชื้นและปลูกได้ในที่ราบของไทย ต่างจากบูท-7 ที่ผลของบูท-8 มักทรงกลมรีสั้นกว่า ขนาดกลางถึงใหญ่ เปลือกหนาเขียวเป็นมัน เนื้อสีเหลืองครีมรสมันปานกลาง จุดที่ผู้ปลูกมักรายงานคือติดผลสม่ำเสมอทุกปีและทนการขนส่งได้ดีเพราะเปลือกหนา ดอกเป็นชนิด B จึงใช้เป็นพันธุ์ผสมเกสรให้พันธุ์ชนิด A อย่างแฮสได้เช่นเดียวกับบูท-7 เก็บเกี่ยวช่วงกลางถึงปลายฤดู",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-BO8"},{k:"ต้นกำเนิด",v:"ฟลอริดา"},{k:"ชนิดดอก",v:"B (ผสมเกสรให้แฮส)"},{k:"ขนาดผล",v:"250–450 ก."},{k:"ปริมาณน้ำมัน",v:"8–12%"},{k:"ช่วงเก็บเกี่ยว",v:"ก.ย.–พ.ย."},{k:"ความยาก",v:"ปานกลาง"},{k:"ราคาตลาด",v:"60–95 ฿/กก."}] },
+  { sku: "TR-AVO-034", name: "อโวคาโด้ 034", sci: "P. americana 'No.034'", desc: "พันธุ์คัดเลือกในไทย ผลผลิตดี เป็นที่รู้จักในภาคเหนือ", stars: "★★★☆☆", season: "ก.ย.–พ.ย.",
+    long: "พันธุ์หมายเลขที่คัดเลือกและขยายในประเทศไทย พบปลูกมากในแปลงภาคเหนือและพื้นที่โครงการส่งเสริมบนที่สูง จุดเด่นคือปรับตัวกับสภาพแวดล้อมของไทยได้ดี ต้นแข็งแรง ให้ผลดกและสม่ำเสมอ ผลขนาดกลางถึงใหญ่ เปลือกเขียวค่อนข้างหนา เนื้อเหลืองแน่น รสมันดี เป็นพันธุ์ที่เกษตรกรนิยมปลูกร่วมกับแฮสเพื่อยืดช่วงเก็บเกี่ยว หมายเหตุ: ข้อมูลเชิงตัวเลขของพันธุ์คัดเลือกในไทยยังต่างกันตามแหล่งปลูก ควรสอบถามร้านต้นพันธุ์ประกอบ",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-034"},{k:"ต้นกำเนิด",v:"คัดเลือกในไทย"},{k:"ขนาดผล",v:"300–450 ก."},{k:"ปริมาณน้ำมัน",v:"ปานกลาง–สูง"},{k:"ช่วงเก็บเกี่ยว",v:"ก.ย.–พ.ย."},{k:"ความยาก",v:"ปานกลาง"},{k:"จุดเด่น",v:"ผลดก ปรับตัวดี"},{k:"ราคาตลาด",v:"80–130 ฿/กก."}] },
+  { sku: "TR-AVO-PP08", name: "พบพระ 08", sci: "P. americana 'Phop Phra 08'", desc: "พันธุ์คัดเลือกจากอำเภอพบพระ จ.ตาก", stars: "★★★☆☆", season: "ส.ค.–ต.ค.",
+    long: "คัดเลือกจากแหล่งปลูกอโวคาโด้สำคัญของไทยที่อำเภอพบพระ จังหวัดตาก ซึ่งเป็นพื้นที่ที่มีอโวคาโด้ปลูกหนาแน่นที่สุดแห่งหนึ่งของประเทศ จุดเด่นคือเป็นพันธุ์ที่คัดจากต้นที่ปรับตัวและให้ผลดีในสภาพอากาศไทยอยู่แล้ว จึงเลี้ยงง่ายกว่าพันธุ์นำเข้า ผลขนาดกลางถึงใหญ่ เปลือกเขียว เนื้อแน่นรสมัน เหมาะกับตลาดในประเทศ",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-PP08"},{k:"ต้นกำเนิด",v:"อ.พบพระ จ.ตาก"},{k:"ขนาดผล",v:"250–400 ก."},{k:"ปริมาณน้ำมัน",v:"ปานกลาง"},{k:"ช่วงเก็บเกี่ยว",v:"ส.ค.–ต.ค."},{k:"ความยาก",v:"ง่าย–ปานกลาง"},{k:"จุดเด่น",v:"ปรับตัวกับอากาศไทย"},{k:"ราคาตลาด",v:"70–120 ฿/กก."}] },
+  { sku: "TR-AVO-RH80", name: "รูเฮิส 80", sci: "P. americana 'Ruehle'", desc: "ทรงพุ่มเตี้ยแผ่กว้าง เก็บง่าย เหมาะสวนเล็ก", stars: "★★☆☆☆", season: "ก.ค.–ก.ย.",
+    long: "พันธุ์ Ruehle จากฟลอริดา (เผยแพร่ราวปี 1954) กลุ่มเวสต์อินดีส–กัวเตมาลา ลักษณะเด่นที่สุดคือทรงต้นเตี้ยแผ่กว้าง มักสูงไม่เกิน 5 เมตร ทำให้ตัดแต่ง พ่นสาร และเก็บเกี่ยวได้โดยแทบไม่ต้องใช้บันได เหมาะกับสวนขนาดเล็กและการปลูกระยะชิด ผลขนาดกลาง เปลือกเขียวบางเป็นมัน เนื้อรสอ่อน น้ำมันต่ำ เก็บกลางฤดู",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-RH80"},{k:"ต้นกำเนิด",v:"ฟลอริดา, ~1954"},{k:"ทรงต้น",v:"เตี้ยแผ่กว้าง (<5 ม.)"},{k:"ขนาดผล",v:"180–300 ก."},{k:"ปริมาณน้ำมัน",v:"9–12%"},{k:"ช่วงเก็บเกี่ยว",v:"ก.ค.–ก.ย."},{k:"ความยาก",v:"ง่าย"},{k:"ราคาตลาด",v:"55–85 ฿/กก."}] },
+  { sku: "TR-AVO-CUBA", name: "คิวบา", sci: "P. americana (กลุ่มเวสต์อินดีส)", desc: "ผลใหญ่ เปลือกเขียวเรียบ ทนร้อน เก็บต้นฤดู", stars: "★★☆☆☆", season: "มิ.ย.–ส.ค.",
+    long: "ชื่อที่ใช้เรียกอโวคาโด้กลุ่มเวสต์อินดีส (แอนทิลลิส) ซึ่งเป็นกลุ่มที่ทนร้อนชื้นและทนดินเค็มได้ดีที่สุดในสามกลุ่มหลัก จึงปลูกได้ในที่ราบและพื้นที่ต่ำที่พันธุ์แฮสไม่ยอมติดผล ผลมักใหญ่ เปลือกเขียวเรียบบาง เนื้อฉ่ำ รสอ่อนหวานเล็กน้อย ปริมาณน้ำมันต่ำที่สุดในบรรดากลุ่มหลัก จึงเบาและเหมาะกินสดหรือปั่น สุกเร็วและช้ำง่าย ควรขายใกล้แหล่งปลูก",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-CUBA"},{k:"กลุ่มพันธุ์",v:"เวสต์อินดีส"},{k:"ขนาดผล",v:"400–700 ก."},{k:"ปริมาณน้ำมัน",v:"5–10% (ต่ำ)"},{k:"ช่วงเก็บเกี่ยว",v:"มิ.ย.–ส.ค."},{k:"พื้นที่เหมาะสม",v:"ที่ราบ / ร้อนชื้น"},{k:"ความยาก",v:"ง่าย"},{k:"ราคาตลาด",v:"40–70 ฿/กก."}] },
+  { sku: "TR-AVO-RED", name: "เรดเวียดนาม", sci: "P. americana (สายพันธุ์เวียดนาม เปลือกม่วงแดง)", desc: "เปลือกม่วงแดงสะดุดตา ผลใหญ่ ทนร้อนชื้น", stars: "★★★☆☆", season: "ก.ค.–ก.ย.",
+    long: "สายพันธุ์ที่นำเข้าจากเวียดนาม จุดขายคือเปลือกสีม่วงแดงเข้มเมื่อสุก ทำให้แตกต่างบนแผงและใช้ทำการตลาดได้ดี ผลมักทรงยาวรีขนาดใหญ่ เนื้อสีเหลืองครีม รสมันปานกลาง เป็นกลุ่มที่ปรับตัวกับอากาศร้อนชื้นได้ดีกว่าพันธุ์แคลิฟอร์เนีย จึงปลูกได้ในหลายพื้นที่ของไทย ทั้งนี้ 'เรดเวียดนาม' เป็นชื่อทางการค้าที่ครอบคลุมหลายต้นคัดเลือก คุณภาพจึงต่างกันตามแหล่งกิ่งพันธุ์ ควรซื้อจากร้านที่ระบุที่มาชัดเจน",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-RED"},{k:"ต้นกำเนิด",v:"เวียดนาม"},{k:"สีเปลือกสุก",v:"ม่วงแดง"},{k:"ขนาดผล",v:"350–600 ก."},{k:"ปริมาณน้ำมัน",v:"ปานกลาง"},{k:"ช่วงเก็บเกี่ยว",v:"ก.ค.–ก.ย."},{k:"ความยาก",v:"ปานกลาง"},{k:"ราคาตลาด",v:"90–150 ฿/กก."}] },
+  { sku: "TR-AVO-SEL", name: "อโวคาโด้ ไร้เมล็ด", sci: "P. americana — ผลไม่มีเมล็ด (parthenocarpic)", desc: "ผลเล็กเรียวไม่มีเมล็ด กินได้ทั้งลูก แปลกและขายได้ราคา", stars: "★★★★☆", season: "ตามพันธุ์แม่",
+    long: "ไม่ใช่สายพันธุ์แยกต่างหาก แต่เป็นผลที่เกิดโดยไม่มีการปฏิสนธิ (parthenocarpy) จึงไม่พัฒนาเมล็ด ในต่างประเทศเรียก cocktail avocado หรือ cuke ผลทรงยาวเรียวคล้ายแตงกวาเล็ก ยาวราว 5–8 เซนติเมตร เปลือกบางจนปอกหรือกินทั้งลูกได้ รสมันคล้ายผลปกติของพันธุ์นั้น มักเกิดกับพันธุ์เปลือกบางอย่างเฟอร์ทีในปีที่อากาศเย็นช่วงดอกบาน ข้อควรรู้: ปริมาณผลไร้เมล็ดที่ได้ในแต่ละปีขึ้นกับสภาพอากาศ ไม่สามารถบังคับให้ออกสม่ำเสมอได้ จึงเหมาะเป็นสินค้าเสริมมากกว่าผลผลิตหลัก",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-SEL"},{k:"กลไก",v:"parthenocarpy (ไม่ปฏิสนธิ)"},{k:"ขนาดผล",v:"30–80 ก."},{k:"ความยาว",v:"5–8 ซม."},{k:"เมล็ด",v:"ไม่มี"},{k:"ช่วงเก็บเกี่ยว",v:"ตามพันธุ์แม่"},{k:"ความยาก",v:"ควบคุมผลผลิตยาก"},{k:"ราคาตลาด",v:"สินค้าเฉพาะกลุ่ม"}] },
+  { sku: "TR-AVO-TA21", name: "TA21", sci: "P. americana 'TA21'", desc: "พันธุ์คัดเลือกรหัส TA ปลูกในแปลงทดสอบภาคเหนือ", stars: "★★★☆☆", season: "ก.ย.–พ.ย.",
+    long: "พันธุ์ในชุดรหัส TA ที่คัดเลือกและทดสอบในแปลงของไทย ยังไม่แพร่หลายเท่าแฮสหรือพันธุ์ 034 แต่ได้รับความสนใจจากผู้ปลูกที่ต้องการกระจายสายพันธุ์และยืดช่วงเก็บเกี่ยว ผลขนาดกลางถึงใหญ่ เปลือกเขียว เนื้อแน่น รสมันปานกลางถึงเข้ม หมายเหตุ: ข้อมูลทางวิชาการที่เผยแพร่ของพันธุ์นี้ยังมีจำกัด ตัวเลขด้านล่างเป็นค่าที่รายงานจากแปลงผู้ปลูก ควรยืนยันกับร้านต้นพันธุ์ก่อนตัดสินใจปลูกเป็นแปลงใหญ่",
+    stats: [{k:"รหัสสินค้า",v:"TR-AVO-TA21"},{k:"ต้นกำเนิด",v:"คัดเลือกในไทย"},{k:"ขนาดผล",v:"250–400 ก."},{k:"ปริมาณน้ำมัน",v:"ปานกลาง–สูง"},{k:"ช่วงเก็บเกี่ยว",v:"ก.ย.–พ.ย."},{k:"ความยาก",v:"ปานกลาง"},{k:"สถานะข้อมูล",v:"อยู่ระหว่างรวบรวม"},{k:"ราคาตลาด",v:"90–140 ฿/กก."}] }
+];
+
+const POSTS = [
+  { tag: "เริ่มต้น", read: 9, title: "ทำไมต้องปลูกอโวคาโด้? ประโยชน์และข้อดีที่คุณต้องรู้",
+    excerpt: "คุณค่าทางอาหารตามข้อมูล USDA ราคาตลาดในไทย และเหตุผลเชิงเศรษฐกิจของการปลูกเอง",
+    author: "ทีมบรรณาธิการ Avocado Geek", date: "10 ส.ค. 2569", imageNote: "ผลอโวคาโด้ผ่าครึ่งบนเขียง",
+    keywords: ["ประโยชน์อโวคาโด้", "ทำไมต้องปลูกอโวคาโด้", "มูลค่าการปลูกอโวคาโด้", "อโวคาโด้ราคา"],
+    toc: ["คุณค่าทางอาหารที่วัดได้จริง", "ทำไมอโวคาโด้ราคาสูงกว่าผลไม้ทั่วไป", "ปลูกเองคุ้มไหม เมื่อคิดเป็นตัวเลข", "ข้อดีที่ไม่ใช่เรื่องเงิน", "ข้อจำกัดที่ต้องรู้ก่อนตัดสินใจ", "สรุป: ใครควรปลูก ใครยังไม่ควร"],
+    body: [
+      { h: "คุณค่าทางอาหารที่วัดได้จริง", p: "ข้อมูลจากฐาน USDA FoodData Central ระบุว่าอโวคาโด้ดิบ 100 กรัมให้พลังงานราว 160 กิโลแคลอรี ไขมันรวม 14.7 กรัม โดยเป็นไขมันไม่อิ่มตัวเชิงเดี่ยว (โอเลอิก) ราว 9.8 กรัม ไขมันอิ่มตัวเพียง 2.1 กรัม ใยอาหาร 6.7 กรัม โพแทสเซียม 485 มิลลิกรัม โฟเลต 81 ไมโครกรัม และน้ำตาลต่ำกว่า 1 กรัม จุดที่ทำให้อโวคาโด้ต่างจากผลไม้อื่นคือพลังงานเกือบทั้งหมดมาจากไขมันดี ไม่ใช่น้ำตาล นักโภชนาการจึงมักจัดอโวคาโด้ไว้ในหมวด 'ไขมันที่ดีต่อสุขภาพ' มากกว่าหมวดผลไม้" },
+      { h: "ทำไมอโวคาโด้ราคาสูงกว่าผลไม้ทั่วไป", p: "สามเหตุผลหลัก หนึ่ง — ต้นใช้เวลา 3–4 ปีหลังปลูกต้นเสียบยอดจึงเริ่มให้ผลเชิงพาณิชย์ ทำให้อุปทานตอบสนองความต้องการช้า สอง — สายพันธุ์คุณภาพสูงอย่างแฮสต้องการอากาศเย็นช่วงออกดอก พื้นที่ปลูกที่เหมาะในไทยจึงจำกัดอยู่ที่ภาคเหนือและพื้นที่สูงบางแห่ง สาม — ผลบอบบางและช้ำง่ายหลังสุก ต้นทุนการคัด บรรจุ และขนส่งจึงสูงกว่าผลไม้ทั่วไปมาก ราคาขายหน้าสวนของแฮสในไทยจึงอยู่ในระดับ 120–180 บาทต่อกิโลกรัม ขณะที่พันธุ์เปลือกเขียวรสอ่อนอยู่ราว 50–90 บาท" },
+      { h: "ปลูกเองคุ้มไหม เมื่อคิดเป็นตัวเลข", p: "คิดแบบสวนเล็ก 1 ไร่ ปลูกระยะ 6×6 เมตร ได้ราว 44 ต้น ค่าต้นเสียบยอดคุณภาพประมาณ 300–450 บาทต่อต้น รวมค่าต้นราว 15,000–20,000 บาท บวกค่าเตรียมพื้นที่และระบบน้ำ ต้นที่ให้ผลแล้วอายุ 6–8 ปีในสภาพการจัดการที่ดีอาจให้ผล 50–120 กิโลกรัมต่อต้นต่อปี ขึ้นกับสายพันธุ์ อากาศ และการดูแล จุดคุ้มทุนจริงจึงมักอยู่ที่ปีที่ 5–7 ไม่ใช่ปีที่ 2 — ใครที่คิดจะปลูกเพื่อขายควรวางแผนกระแสเงินสดให้ครอบคลุมช่วงก่อนให้ผล" },
+      { h: "ข้อดีที่ไม่ใช่เรื่องเงิน", p: "อโวคาโด้เป็นไม้ยืนต้นไม่ผลัดใบ ให้ร่มเงาและช่วยยึดดินในพื้นที่ลาดชันได้ดี ปลูกแซมในระบบวนเกษตรร่วมกับกาแฟหรือกล้วยได้ เก็บผลได้จากต้นเดิมนานหลายสิบปีโดยไม่ต้องปลูกใหม่ทุกฤดูเหมือนพืชล้มลุก และผลที่เก็บจากต้นเองมีข้อดีเชิงคุณภาพที่ตลาดให้ค่า คือเก็บได้ในระยะแก่จัดจริงแล้วบ่มให้สุกพอดีก่อนถึงผู้บริโภค ต่างจากผลที่ต้องเก็บก่อนแก่เพื่อรองรับการขนส่งไกล" },
+      { h: "ข้อจำกัดที่ต้องรู้ก่อนตัดสินใจ", p: "อโวคาโด้เป็นไม้ผลที่ไวต่อน้ำขังและความเค็มมากที่สุดกลุ่มหนึ่ง เอกสาร Drought Tip ของ UC ANR ระบุว่ารากส่วนใหญ่อยู่ในดินชั้นบนเพียงราวหนึ่งฟุต จึงดึงน้ำจากดินชั้นลึกไม่ได้และทนแล้งได้ต่ำ ในทางกลับกันดินที่ระบายน้ำไม่ดีจะเปิดทางให้เชื้อ Phytophthora cinnamomi เข้าทำลายราก ซึ่ง UC IPM จัดว่าเป็นโรคที่ร้ายแรงที่สุดของอโวคาโด้ หากพื้นที่ของคุณเป็นดินเหนียวจัดหรือมีน้ำขังในหน้าฝน ต้องแก้เรื่องการระบายน้ำให้ได้ก่อน ไม่ใช่ปลูกก่อนแล้วค่อยแก้" },
+      { h: "สรุป: ใครควรปลูก ใครยังไม่ควร", p: "ควรปลูก — ผู้ที่มีพื้นที่ระบายน้ำดี มีน้ำใช้สม่ำเสมอตลอดหน้าแล้ง และรับได้กับการรอผลผลิต 3–4 ปี ยังไม่ควรปลูกเป็นแปลงใหญ่ — ผู้ที่พื้นที่มีน้ำขังในหน้าฝนและยังไม่ได้แก้ ผู้ที่ไม่มีระบบน้ำในหน้าแล้ง หรือผู้ที่ต้องการรายได้ภายในปีเดียว ทางกลางที่ปลอดภัยคือเริ่มจาก 5–10 ต้นในสายพันธุ์ที่เลี้ยงง่ายก่อน เรียนรู้พฤติกรรมของต้นในพื้นที่ตัวเองหนึ่งรอบฤดู แล้วจึงขยาย" }
+    ] },
+
+  { tag: "สายพันธุ์", read: 12, title: "สายพันธุ์อโวคาโด้ในไทยอะไรดี? เลือกตัวไหนให้เหมาะกับคุณ",
+    excerpt: "เทียบสายพันธุ์หลักที่ปลูกได้ในไทย ทั้งความยาก ฤดูเก็บเกี่ยว ชนิดดอก และราคาตลาด",
+    author: "ทีมวิชาการ Avocado Geek", date: "8 ส.ค. 2569", imageNote: "ผลหลายสายพันธุ์เรียงเทียบขนาด",
+    keywords: ["สายพันธุ์อโวคาโด้ดีที่สุด", "เปรียบเทียบอโวคาโด้", "อโวคาโด้ Hass vs Fuerte", "สายพันธุ์อโวคาโด้ไทย"],
+    toc: ["เข้าใจ 3 กลุ่มพันธุ์ก่อนเลือกยี่ห้อ", "ชนิดดอก A และ B: เรื่องที่คนมักข้าม", "สายพันธุ์เด่นที่ปลูกได้ในไทย", "เลือกตามความสูงพื้นที่", "เลือกตามเป้าหมายการขาย", "ปลูกกี่สายพันธุ์ดี"],
+    body: [
+      { h: "เข้าใจ 3 กลุ่มพันธุ์ก่อนเลือกยี่ห้อ", p: "อโวคาโด้ทั้งโลกแบ่งเป็นสามกลุ่มพันธุกรรมหลัก กลุ่มเม็กซิกันทนหนาวได้ดีที่สุด เปลือกบางเรียบ กลิ่นใบมีกลิ่นโป๊ยกั๊ก กลุ่มกัวเตมาลาให้ผลเปลือกหนาขรุขระ ปริมาณน้ำมันสูง คุณภาพเนื้อดีที่สุด และกลุ่มเวสต์อินดีสทนร้อนชื้นและทนดินเค็มได้ดีที่สุด แต่ปริมาณน้ำมันต่ำและรสอ่อน สายพันธุ์การค้าส่วนใหญ่เป็นลูกผสมของสองในสามกลุ่มนี้ การรู้ว่าพันธุ์ที่สนใจอยู่กลุ่มใดจะบอกได้ทันทีว่ามันจะอยู่รอดในพื้นที่ของคุณหรือไม่ ก่อนดูเรื่องรสชาติหรือราคา" },
+      { h: "ชนิดดอก A และ B: เรื่องที่คนมักข้าม", p: "ดอกอโวคาโด้เป็นดอกสมบูรณ์เพศแต่ทำงานแบบ synchronous dichogamy คือดอกเดียวกันเปิดสองครั้ง ครั้งแรกเป็นเพศเมียพร้อมรับละอองเรณู ครั้งที่สองเป็นเพศผู้ปล่อยละอองเรณู พันธุ์ชนิด A เปิดเป็นเพศเมียในช่วงเช้าและเป็นเพศผู้ในช่วงบ่าย ขณะที่พันธุ์ชนิด B ตรงกันข้าม ธรรมชาติออกแบบมาเพื่อผลักดันการผสมข้ามต้น เอกสารของ UC Riverside ระบุว่าการปลูกพันธุ์ที่ชนิดดอกเสริมกันแทรกในแปลงช่วยเพิ่มการติดผลและผลผลิตได้ แฮสเป็นชนิด A ขณะที่พันธุ์กลุ่มเปลือกเขียวหลายตัวเป็นชนิด B การจับคู่จึงทำได้จริงในทางปฏิบัติ" },
+      { h: "สายพันธุ์เด่นที่ปลูกได้ในไทย", p: "แฮส — เนื้อมันเข้ม น้ำมัน 18–22% เปลือกเปลี่ยนเป็นม่วงดำเมื่อสุกจึงบอกความสุกง่าย ราคาดีที่สุด แต่ต้องการพื้นที่สูงและอากาศเย็นช่วงออกดอก พิงค์เคอร์ตัน — เมล็ดเล็กเนื้อเยอะ น้ำมันสูง รสใกล้แฮส แต่ไวต่อการขาดน้ำ บูท-7 — ผลใหญ่ ทนร้อนชื้น ปลูกได้ในที่ราบ และเป็นชนิดดอก B ที่ใช้ผสมเกสรกับแฮสได้ ปีเตอร์สัน — เลี้ยงง่ายที่สุดในกลุ่มนี้ ให้ผลเร็ว เหมาะกับสวนแรก พันธุ์คัดเลือกไทยอย่าง 034 และพบพระ 08 — ปรับตัวกับอากาศไทยได้ดีเพราะคัดจากต้นที่รอดและให้ผลดีในพื้นที่จริงอยู่แล้ว" },
+      { h: "เลือกตามความสูงพื้นที่", p: "นี่เป็นตัวกรองที่สำคัญที่สุดและแก้ไขทีหลังไม่ได้ งานวิจัยเรื่องการออกดอกระบุว่าอุณหภูมิกลางวันสูงกว่า 30 องศาหรือต่ำกว่า 20 องศาสามารถรบกวนวงจรดอกของพันธุ์กลุ่มเฟอร์ทีได้ และอุณหภูมิที่เหมาะกับการเจริญของหลอดละอองเรณูอยู่ราว 25 องศา ในทางปฏิบัติสำหรับไทยหมายความว่า พื้นที่สูงกว่า 700 เมตรที่มีกลางคืนเย็นช่วงออกดอกเหมาะกับแฮสและพิงค์เคอร์ตัน ส่วนที่ราบและพื้นที่ต่ำควรเลือกพันธุ์กลุ่มฟลอริดา–เวสต์อินดีสอย่างบูท-7 บัคคาเนีย ปีเตอร์สัน หรือพันธุ์คัดเลือกไทย" },
+      { h: "เลือกตามเป้าหมายการขาย", p: "ถ้าเป้าหมายคือตลาดพรีเมียมและร้านอาหาร ให้เน้นพันธุ์เปลือกดำน้ำมันสูงที่ผู้บริโภครู้จักชื่อ เพราะราคาต่อกิโลกรัมต่างกันเกือบเท่าตัวและตลาดยอมจ่ายกับความแน่นอนของรสชาติ ถ้าเป้าหมายคือตลาดสดในพื้นที่และเน้นปริมาณ พันธุ์เปลือกเขียวผลใหญ่ที่เลี้ยงง่ายจะให้กำไรต่อแรงงานดีกว่า เพราะต้นทุนดูแลต่ำและผลผลิตต่อต้นสูง ถ้าปลูกกินในครอบครัว ความง่ายในการเลี้ยงและช่วงเก็บเกี่ยวที่กระจายสำคัญกว่าราคา" },
+      { h: "ปลูกกี่สายพันธุ์ดี", p: "อย่างน้อยสองสายพันธุ์ และให้มีชนิดดอกต่างกันถ้าทำได้ เหตุผลมีสองข้อ ข้อแรกคือการผสมข้ามพันธุ์ช่วยเพิ่มการติดผลตามที่งานวิจัยหลายชิ้นยืนยัน ข้อสองคือการกระจายความเสี่ยง ทั้งด้านโรค ด้านสภาพอากาศในปีที่ผิดปกติ และด้านราคาตลาด สัดส่วนที่ใช้ได้ในทางปฏิบัติคือพันธุ์หลักที่ต้องการขาย 70–80% และพันธุ์ผสมเกสร/พันธุ์สำรอง 20–30% กระจายให้อยู่ในระยะที่แมลงผสมเกสรบินถึง ไม่ใช่กองไว้มุมเดียวของแปลง" }
+    ] },
+
+  { tag: "การปลูก", read: 12, title: "คู่มือการปลูกอโวคาโด้: จากแกะกล่องต้นพันธุ์สู่วันเก็บผลผลิต",
+    excerpt: "5 ขั้นตอนตามลำดับจริง ตั้งแต่พักฟื้นต้นที่เพิ่งมาถึง เตรียมดิน ลงปลูก ดูแลเดือนแรก จนถึงการบำรุงระยะยาว",
+    author: "ทีมวิชาการ Avocado Geek", date: "6 ส.ค. 2569", imageNote: "ต้นพันธุ์เสียบยอดพร้อมลงปลูก",
+    keywords: ["วิธีปลูกอโวคาโด้", "การปลูกอโวคาโด้ขั้นตอน", "พักฟื้นต้นอโวคาโด้", "ดูแลอโวคาโด้ปีแรก", "ดินปลูกอโวคาโด้"],
+    toc: ["ขั้นที่ 1 พักฟื้นต้นกล้า (สำคัญที่สุด)", "ขั้นที่ 2 เตรียมหลุมและผสมดินปลูก", "ขั้นที่ 3 ขั้นตอนการลงมือปลูก", "ขั้นที่ 4 การดูแลใน 1 เดือนแรก", "ขั้นที่ 5 การบำรุงระยะยาวถึงเก็บเกี่ยว", "สรุปสิ่งที่ห้ามทำเด็ดขาด"],
+    body: [
+      { h: "ขั้นที่ 1 — พักฟื้นต้นกล้า (สำคัญที่สุด)", imgId: "art-plant-1", img: "ภาพประกอบ: การแกะกล่องและพักฟื้นต้น",
+        p: "เมื่อต้นพันธุ์เดินทางมาถึงผ่านระบบขนส่ง ต้นจะเครียดและบอบช้ำจากแรงกระแทกและการอยู่ในที่มืดหลายวัน ห้ามนำลงปลูกหรือเปลี่ยนกระถางทันที สิ่งที่ต้องทำคือ แกะห่อพลาสติกที่หุ้มกระถางหรือตุ้มดินออกอย่างเบามือ ระวังไม่ให้กิ่งหรือใบหัก ห้ามแกะเทปที่พันรอยต่อเสียบยอดออก เพราะรอยต่อยังไม่แข็งแรงพอและอาจฉีกจนกิ่งพันธุ์ดีแห้งตาย ห้ามถอดไม้ค้ำยอดเดิมออก ให้คงไว้พยุงลำต้นไม่ให้โยกคลอน จากนั้นรดน้ำให้ชุ่มพอดี แล้ววางไว้ในที่แดดรำไรประมาณ 20–30% ลมโกรกสบาย เป็นเวลา 5–7 วันเพื่อให้ปรับตัวเข้ากับสภาพแวดล้อมใหม่ก่อนลงปลูก" },
+      { h: "ขั้นที่ 2 — เตรียมหลุมและผสมดินปลูก", imgId: "art-plant-2", img: "ภาพประกอบ: สัดส่วนดินผสมและขนาดหลุม",
+        p: "อโวคาโด้เป็นพืชที่กลัวน้ำขังและรากเน่าง่ายที่สุดกลุ่มหนึ่ง หัวใจของการเตรียมดินคือต้องโปร่ง ระบายน้ำได้ดีเยี่ยม เทน้ำแล้วต้องไหลผ่านสะดวกทันที สูตรดินผสมมาตรฐานที่ใช้ได้จริงคือ ดินร่วนโปร่ง 2 ส่วน + แกลบดิบหรือขุยมะพร้าวหรือกากมะพร้าวสับ 1 ส่วนเพื่อเพิ่มช่องว่างอากาศในดิน + ปุ๋ยคอกเก่าหรือปุ๋ยหมักที่ย่อยสลายแล้ว 1 ส่วน ห้ามใช้ปุ๋ยคอกใหม่ที่ยังร้อนอยู่เพราะจะทำให้รากไหม้ ขนาดหลุมปลูกให้ขุดกว้าง ลึก และยาวประมาณ 50×50×50 เซนติเมตร แล้วนำดินผสมรองก้นหลุมเตรียมไว้ หากพื้นที่เป็นดินเหนียวหรือมีน้ำขังในหน้าฝน ให้พูนดินเป็นโคกสูงกว่าระดับพื้นราว 15–20 เซนติเมตรร่วมด้วย" },
+      { h: "ขั้นที่ 3 — ขั้นตอนการลงมือปลูก", imgId: "art-plant-3", img: "ภาพประกอบ: การกรีดถุงและตั้งระดับดิน",
+        p: "ขั้นนี้ต้องระมัดระวังสูงสุดเพราะระบบรากอโวคาโด้เปราะบางมาก ใช้คัตเตอร์กรีดข้างถุงดำสองด้านแล้วค่อยๆ ประคองต้นออกมา ระวังอย่าให้ตุ้มดินแตก เพราะถ้าดินแตกรากฝอยจะขาดและต้นเหี่ยวตายได้ง่าย วางต้นลงกลางหลุม กลบดินให้แน่นปานกลาง โดยให้ระดับดินใหม่อยู่เท่ากับระดับดินเดิมในถุงพอดี ห้ามถมดินสูงจนกลบมิดรอยเทปแผลเสียบยอด เพราะความชื้นจะทำให้แผลเน่า ปักไม้ไผ่ข้างลำต้นและผูกเชือกเป็นรูปเลข 8 หลวมๆ เพื่อไม่ให้ลมพัดต้นโยก เนื่องจากการโยกจะทำให้รากที่กำลังเดินขาด สุดท้ายคลุมโคนด้วยฟางข้าวแห้งหรือเศษใบไม้แห้งหนา 2–3 นิ้ว เว้นห่างจากโคนต้นเล็กน้อย เพื่อรักษาความชื้นและกันหน้าดินแห้งจากแดด" },
+      { h: "ขั้นที่ 4 — การดูแลใน 1 เดือนแรก", imgId: "art-plant-4", img: "ภาพประกอบ: การพรางแสงและรดน้ำต้นใหม่",
+        p: "เดือนแรกคือหัวเลี้ยวหัวต่อที่ต้นกำลังสร้างรากใหม่ในดินจริง การรดน้ำให้รดวันละครั้งในตอนเช้า ให้ดินมีความชื้นแต่ห้ามแฉะหรือมีน้ำขัง วันไหนฝนตกหนักให้เว้นการรดน้ำ การพรางแสงในช่วง 1–2 สัปดาห์แรกให้ทำร่มเงาชั่วคราวหรือกางสแลนบังแดดจัดช่วงเที่ยงและบ่าย เมื่อต้นเริ่มตั้งตัวหรือแทงใบอ่อนใหม่จึงค่อยถอดสแลนออกให้รับแดดเต็มวัน และข้อสำคัญที่สุดคือห้ามใส่ปุ๋ยเคมีเด็ดขาดในเดือนแรก เพราะระบบรากยังอ่อนแอ ปุ๋ยเคมีจะทำให้รากไหม้และต้นตายได้ ให้งดไปก่อนอย่างน้อย 1–2 เดือน" },
+      { h: "ขั้นที่ 5 — การบำรุงระยะยาวถึงเก็บเกี่ยว", imgId: "art-plant-5", img: "ภาพประกอบ: การให้ปุ๋ยรอบชายพุ่มและการตัดแต่งทรงพุ่ม",
+        p: "หลังผ่านเดือนแรกต้นจะเริ่มเติบโตเร็วขึ้นชัดเจน การให้ปุ๋ยแบ่งตามช่วงอายุ ปีที่ 1–2 เน้นเร่งต้นเร่งใบ ใส่ปุ๋ยคอกเก่าหรือปุ๋ยหมักปีละ 2–3 ครั้ง เสริมด้วยปุ๋ยเคมีสูตรเสมอเช่น 16-16-16 ทุก 2–3 เดือนในปริมาณน้อยราว 1–2 กำมือต่อต้น โรยรอบชายพุ่ม ห้ามใส่ชิดโคนต้น ปีที่ 3 เป็นต้นไปเปลี่ยนมาเน้นสูตรสะสมอาหารที่ตัวหลังสูงเช่น 8-24-24 ในช่วงก่อนเข้าฤดูหนาวเพื่อกระตุ้นการออกดอก การตัดแต่งกิ่ง เมื่อต้นสูงราว 1 เมตรให้ตัดยอดเพื่อให้แตกกิ่งข้างเป็นทรงพุ่มเตี้ยที่ดูแลและเก็บผลง่าย และหมั่นตัดกิ่งแห้ง กิ่งเป็นโรค และกิ่งที่ซ้อนทับกันด้านในออกเพื่อให้แดดส่องถึงโคนต้น ระยะเวลาให้ผลผลิตของต้นเสียบยอดโดยทั่วไปจะเริ่มออกดอกและติดผลในปีที่ 3–4 หลังลงปลูก ขึ้นกับสายพันธุ์ สภาพอากาศ และการดูแล เคล็ดลับจากชาวสวนคืออโวคาโด้ชอบน้ำสม่ำเสมอแต่เกลียดน้ำขัง ในช่วงติดผลอ่อนห้ามปล่อยให้ดินแห้งขาดน้ำ เพราะจะทำให้ผลอ่อนร่วงเสียหาย" },
+      { h: "สรุปสิ่งที่ห้ามทำเด็ดขาด", p: "หนึ่ง — ห้ามลงปลูกทันทีที่ต้นมาถึง ต้องพักฟื้น 5–7 วันก่อน สอง — ห้ามแกะเทปพันรอยต่อเสียบยอดและห้ามกลบดินทับรอยต่อ สาม — ห้ามให้ตุ้มดินแตกตอนถอดถุง สี่ — ห้ามใส่ปุ๋ยเคมีในเดือนแรก ห้า — ห้ามปลูกในที่ที่มีน้ำขัง และห้ามรดน้ำซ้ำขณะดินยังชื้น หก — ห้ามใส่ปุ๋ยชิดโคนต้น เจ็ด — ห้ามปล่อยให้ต้นโยกจากลมในช่วงที่รากยังไม่ยึดดิน" }
+    ] },
+  { tag: "ดิน", read: 10, title: "ดินที่เหมาะสำหรับอโวคาโด้: pH ส่วนประกอบ และวิธีเตรียมแปลง",
+    excerpt: "ช่วง pH ที่เหมาะ โครงสร้างดิน การระบายน้ำ การทดสอบดิน และการคลุมโคนที่ช่วยได้จริง",
+    author: "ทีมวิชาการ Avocado Geek", date: "3 ส.ค. 2569", imageNote: "หน้าตัดดินร่วนปนทรายและการคลุมโคน",
+    keywords: ["ดินสำหรับอโวคาโด้", "pH อโวคาโด้", "การระบายน้ำอโวคาโด้", "เตรียมดินปลูกอโวคาโด้"],
+    toc: ["pH ที่เหมาะและเหตุผลเบื้องหลัง", "โครงสร้างและเนื้อดินที่ต้องการ", "การระบายน้ำ: ปัจจัยที่ตัดสินความอยู่รอด", "การทดสอบดินก่อนปลูก", "การปรับปรุงดินที่ไม่เหมาะ", "ความเค็มของดินและน้ำ", "การคลุมโคนที่ทำได้จริง"],
+    body: [
+      { h: "pH ที่เหมาะและเหตุผลเบื้องหลัง", p: "แหล่งวิชาการให้ช่วงที่ใกล้เคียงกัน โดยรวมอยู่ราว pH 5.5–7.0 และช่วงที่หลายแหล่งระบุว่าเหมาะที่สุดคือ 6.0–6.5 เหตุผลอยู่ที่ความสามารถในการดูดธาตุอาหาร ดินที่เป็นด่างเกินไปจะล็อกธาตุเหล็กและสังกะสีไว้จนต้นแสดงอาการใบเหลืองระหว่างเส้นใบ ขณะที่ดินที่เป็นกรดจัดเกินจะทำให้ฟอสฟอรัสและแคลเซียมใช้ประโยชน์ได้น้อยลง การปรับ pH ต้องทำก่อนปลูก เพราะการปรับหลังปลูกทำได้จำกัดและใช้เวลาหลายเดือนจึงเห็นผล" },
+      { h: "โครงสร้างและเนื้อดินที่ต้องการ", p: "ดินที่ดีที่สุดสำหรับอโวคาโด้คือดินร่วนปนทรายที่โปร่ง ระบายน้ำเร็ว แต่ยังอุ้มความชื้นได้พอ เอกสารทางการผลิตระบุว่าดินร่วนปนทรายที่มีดินเหนียวราว 20–40% ให้ผลดี ชั้นดินควรลึกพอให้รากแผ่ ราวหนึ่งเมตรขึ้นไป จุดที่ต้องเข้าใจคือรากดูดอาหารส่วนใหญ่ของอโวคาโด้กระจุกอยู่ในดินชั้นบนราว 50 เซนติเมตร ในรัศมี 1–1.25 เมตรจากโคน ดินชั้นบนจึงสำคัญกว่าดินชั้นลึก และการไถพรวนลึกใกล้โคนเป็นสิ่งที่ควรเลี่ยง" },
+      { h: "การระบายน้ำ: ปัจจัยที่ตัดสินความอยู่รอด", p: "อโวคาโด้ไวต่อสภาพน้ำขังอย่างมากเพราะรากต้องการออกซิเจนสูง เมื่อดินอิ่มน้ำนานเกินไป รากขาดอากาศและอ่อนแอลง เปิดทางให้เชื้อ Phytophthora เข้าทำลาย ทางแก้เชิงโครงสร้างมีสามอย่างที่ทำได้จริง หนึ่ง — ยกโคกปลูกให้สูงกว่าระดับพื้น สอง — ขุดร่องระบายน้ำระหว่างแถวและเบนทางน้ำผิวดินออกจากแปลง สาม — ไม่ทำงานในแปลงขณะดินเปียกจัด เพราะการเหยียบย่ำและล้อรถทำให้ดินอัดแน่นและพาเชื้อกระจายไปทั่ว" },
+      { h: "การทดสอบดินก่อนปลูก", p: "ควรตรวจอย่างน้อยสามอย่างก่อนลงทุน คือ pH ความเค็ม (EC) และเนื้อดิน ชุดตรวจ pH ราคาไม่แพงหาซื้อได้ทั่วไป แต่ถ้าจะปลูกเป็นแปลงใหญ่ควรส่งตัวอย่างดินให้ห้องปฏิบัติการหรือสำนักงานเกษตรในพื้นที่วิเคราะห์ เก็บตัวอย่างจากหลายจุดในแปลงที่ความลึก 0–30 และ 30–60 เซนติเมตร แล้วผสมรวมตามชั้น เพราะดินในแปลงเดียวมักไม่สม่ำเสมอ และควรตรวจคุณภาพน้ำที่จะใช้รดด้วย โดยเฉพาะเรื่องความเค็มและความเป็นด่าง" },
+      { h: "การปรับปรุงดินที่ไม่เหมาะ", p: "ดินเหนียวจัด — เพิ่มอินทรียวัตถุที่ย่อยสลายแล้วและวัสดุที่ทำให้โปร่ง ร่วมกับการยกโคกหรือทำแปลงยกร่อง อย่าหวังว่าจะเปลี่ยนเนื้อดินทั้งแปลงได้ ให้จัดการที่ระดับหลุมปลูกและการระบายน้ำ ดินเป็นด่าง — ใช้กำมะถันผงหรือวัสดุที่ให้ผลเป็นกรด แต่ต้องวางแผนล่วงหน้าเพราะการปรับ pH ใช้เวลาหลายเดือน ดินทรายจัด — เพิ่มอินทรียวัตถุเพื่อช่วยอุ้มน้ำและธาตุอาหาร และให้น้ำถี่ขึ้นแต่ครั้งละน้อยลง เพราะดินทรายอุ้มน้ำได้น้อยและน้ำเคลื่อนตัวด้านข้างได้จำกัด" },
+      { h: "ความเค็มของดินและน้ำ", p: "เอกสารของ UC ANR ระบุว่าอโวคาโด้เป็นไม้ผลที่ไวต่อเกลือและความแล้งมากที่สุดกลุ่มหนึ่ง และในปีที่ฝนน้อย แม้แปลงที่ให้น้ำดีก็ยังแสดงอาการเกลือทำลาย เพราะฝนคือกลไกหลักที่ชะเกลือออกจากเขตราก อาการที่สังเกตได้คือปลายใบและขอบใบไหม้แห้งเป็นสีน้ำตาล ในพื้นที่ที่น้ำมีเกลือสูง ต้องให้น้ำเกินความต้องการของพืชในสัดส่วนหนึ่งเพื่อชะเกลือลงใต้เขตราก และการคลุมโคนช่วยลดผลกระทบจากดินและน้ำที่มีเกลือได้" },
+      { h: "การคลุมโคนที่ทำได้จริง", p: "UC IPM แนะนำให้ใช้วัสดุคลุมอินทรีย์เนื้อหยาบ เช่น เศษกิ่งอโวคาโด้ที่ตัดแต่ง เศษวัสดุพืชที่หมักแล้ว หรือชิ้นไม้เนื้อแข็ง ซึ่งควบคุม Phytophthora ได้ดีกว่าใบที่ร่วงเองตามธรรมชาติ เหตุผลคือวัสดุคลุมส่งเสริมให้รากเจริญขึ้นมาในชั้นวัสดุ เพิ่มจุลินทรีย์ที่เป็นปฏิปักษ์กับเชื้อ และลดผลกระทบจากดินและน้ำที่มีเกลือ ในทางปฏิบัติให้คลุมหนาราว 10–15 เซนติเมตรรอบทรงพุ่ม แต่เว้นบริเวณโคนต้นไว้เพื่อไม่ให้โคนอับชื้น" }
+    ] },
+
+  { tag: "การให้น้ำ", read: 10, title: "การรดน้ำอโวคาโด้ที่ถูกต้อง: ความถี่ ปริมาณ และการปรับตามฤดู",
+    excerpt: "ตัวเลขการใช้น้ำจริง วิธีตรวจความชื้นดิน สัญญาณน้ำเกินน้ำขาด และการเลือกระบบน้ำ",
+    author: "ทีมวิชาการ Avocado Geek", date: "31 ก.ค. 2569", imageNote: "หัวน้ำหยดรอบทรงพุ่ม",
+    keywords: ["รดน้ำอโวคาโด้", "ความถี่รดน้ำอโวคาโด้", "ปริมาณน้ำอโวคาโด้", "อโวคาโด้ใบเหลือง น้ำเกิน"],
+    toc: ["ทำไมอโวคาโด้จัดการน้ำยากกว่าไม้ผลอื่น", "ปริมาณน้ำที่ต้นต้องการจริง", "ความถี่ที่เหมาะกับแต่ละอายุต้น", "วิธีตรวจความชื้นดินก่อนรด", "สัญญาณน้ำขาดและน้ำเกิน", "การปรับตามฤดูในบริบทไทย", "เลือกระบบน้ำแบบไหน"],
+    body: [
+      { h: "ทำไมอโวคาโด้จัดการน้ำยากกว่าไม้ผลอื่น", p: "เพราะมันต้องการทั้งความชื้นสม่ำเสมอและอากาศในดินไปพร้อมกัน UC ANR ระบุว่ารากอโวคาโด้อยู่ตื้น ส่วนใหญ่กระจุกในดินชั้นบนราวหนึ่งฟุต จึงไม่สามารถดึงน้ำที่เก็บอยู่ในดินชั้นลึกมาใช้ได้ ผลคือมันทนแล้งได้ต่ำกว่าไม้ผลทั่วไป แต่ในเวลาเดียวกันการให้น้ำมากเกินไปก็ทำให้รากขาดออกซิเจนและเปิดทางให้โรครากและโคนเน่า ช่วงที่ถูกต้องจึงแคบ และการ 'รดเผื่อไว้' เป็นความผิดพลาดที่พบบ่อยที่สุด" },
+      { h: "ปริมาณน้ำที่ต้นต้องการจริง", p: "ในระดับปี แหล่งข้อมูลของแคลิฟอร์เนียระบุว่าอโวคาโด้ต้องการน้ำเทียบเท่าฝนราว 1,000–1,300 มิลลิเมตรต่อปีจึงจะให้ผลผลิตดี ในระดับสัปดาห์ UC IPM ให้ตัวเลขว่าช่วงร้อนที่สุดของฤดูร้อน ต้นที่ให้ผลแล้วต้องการน้ำราว 2 นิ้วต่อสัปดาห์ ในระดับต้น UC Master Gardeners ให้กฎง่ายๆ ว่าต้นโตเต็มที่ใช้น้ำราว 20 แกลลอนต่อวันในฤดูให้น้ำ ขณะที่ต้นที่ปลูกใหม่ใช้ราว 1 แกลลอนต่อวันในสภาพอากาศชายฝั่ง ตัวเลขเหล่านี้ต่างกันตามภูมิอากาศ ให้ใช้เป็นกรอบแล้วปรับด้วยการวัดความชื้นดินจริง" },
+      { h: "ความถี่ที่เหมาะกับแต่ละอายุต้น", p: "ต้นปลูกใหม่ถึงหกเดือน — สัปดาห์ละ 2–3 ครั้ง ครั้งละไม่มาก เพราะตุ้มรากยังเล็กและอุ้มน้ำได้จำกัด สิ้นปีแรก — ลดลงเหลือราวสัปดาห์ละครั้ง เมื่อรากแผ่ออกไปในดินรอบข้างแล้วให้เพิ่มปริมาณต่อครั้งแทนการเพิ่มความถี่ ต้นให้ผลแล้ว — ในฤดูร้อนจัด แนวปฏิบัติในเขตอากาศร้อนคือรดรอบละลึกทุก 7–10 วัน แต่บนดินทรายต้องถี่กว่านั้นและปริมาณต่อครั้งน้อยกว่า ที่ต้องแยกให้ชัดคือต้นเล็กและต้นใหญ่ควรอยู่ในระบบน้ำแยกกัน เพราะความต้องการต่างกันหลายเท่า" },
+      { h: "วิธีตรวจความชื้นดินก่อนรด", p: "วิธีที่ไม่ต้องใช้อุปกรณ์ — ขุดดินลึกราว 15–20 เซนติเมตรในเขตราก กำดินขึ้นมาแล้วบีบ ถ้าดินจับตัวคงรูปตามมือได้ แสดงว่าความชื้นยังพอ ยังไม่ต้องรด ถ้าดินร่วนแตกออกทันทีคือแห้งแล้ว วิธีที่แม่นกว่า — ใช้เทนซิโอมิเตอร์ที่ระดับ 12 และ 24 นิ้ว แนวปฏิบัติของสวนในแคลิฟอร์เนียคือเริ่มให้น้ำเมื่อค่าที่ 12 นิ้วอ่านได้ราว 25–30 เซนติบาร์ โดยเริ่มเร็วกว่านั้นถ้าดินเป็นทรายจัด และช้ากว่านั้นถ้าดินมีดินเหนียวสูง" },
+      { h: "สัญญาณน้ำขาดและน้ำเกิน", p: "น้ำขาด — ผลเล็กกว่าปกติและเสี่ยงไหม้แดด ปลายใบและขอบใบแห้งกรอบสีน้ำตาลจากเกลือที่ไม่ถูกชะออก ใบร่วงในช่วงออกดอกเพราะดอกกับใบแย่งน้ำกัน น้ำเกิน — ใบเหลืองซีดและเล็กลง ใบเหี่ยวแม้ดินยังเปียก ซึ่งเป็นอาการเด่นของโรครากเน่าตามที่ UC IPM ระบุ กิ่งเล็กแห้งตายในทรงพุ่มจนกิ่งใหญ่โดนแดดไหม้ และมักไม่มีชั้นใบร่วงคลุมใต้ต้น จุดสังเกตสำคัญคือถ้าใบเหี่ยวแต่ดินเปียก ปัญหาคือรากไม่ใช่การขาดน้ำ" },
+      { h: "การปรับตามฤดูในบริบทไทย", p: "หน้าแล้ง (ก.พ.–พ.ค.) — ช่วงที่ต้องการน้ำมากที่สุดและตรงกับช่วงติดผลอ่อนของหลายสายพันธุ์ การขาดน้ำช่วงนี้ทำให้ผลร่วงชัดเจน ให้รดสม่ำเสมอและคลุมโคนไว้ หน้าฝน (มิ.ย.–ต.ค.) — งดให้น้ำเมื่อฝนเพียงพอ และเปลี่ยนโฟกัสไปที่การระบายน้ำออกจากแปลงให้เร็ว เพราะช่วงนี้คือช่วงที่โรครากเน่าระบาดหนักที่สุด หน้าหนาว (พ.ย.–ม.ค.) — ความต้องการน้ำลดลงตามอุณหภูมิ ให้ลดปริมาณลงแต่ไม่ปล่อยให้แห้งจัดในช่วงที่ต้นเริ่มสร้างตาดอก" },
+      { h: "เลือกระบบน้ำแบบไหน", p: "น้ำหยดหลายหัวต่อต้นหรือมินิสปริงเกลอร์เป็นตัวเลือกที่แนะนำ เพราะกระจายน้ำได้สม่ำเสมอในเขตรากตื้นและควบคุมปริมาณได้แม่น UC IPM แนะนำ 2–4 หัวต่อต้นหรือใช้หัวพ่นละอองขนาดเล็ก โดยวางให้เปียกทั่วบริเวณทรงพุ่ม ไม่ใช่แค่จุดเดียวใกล้โคน สิ่งที่ต้องเลี่ยงคือการให้น้ำที่ทำให้โคนต้นเปียกอยู่เสมอ และน้ำที่ไหลบ่าออกนอกแปลง ตรวจหัวน้ำที่อุดตันและวัดอัตราการไหลจริงต่อต้นอย่างน้อยปีละครั้งก่อนเข้าหน้าแล้ง" }
+    ] },
+
+  { tag: "ปัญหา", read: 12, title: "ปัญหาปลูกอโวคาโด้ที่พบบ่อย: โรค แมลงศัตรู และวิธีแก้ไข",
+    excerpt: "รากเน่า แอนแทรคโนส เพลี้ยไฟ ไร และอาการขาดธาตุ พร้อมแนวทางจัดการแบบผสมผสาน",
+    author: "ทีมวิชาการ Avocado Geek", date: "28 ก.ค. 2569", imageNote: "ใบและผลที่แสดงอาการโรค",
+    keywords: ["โรคอโวคาโด้", "ปัญหาปลูกอโวคาโด้", "รากเน่าอโวคาโด้", "แมลงศัตรูอโวคาโด้"],
+    toc: ["โรครากเน่า: ปัญหาอันดับหนึ่ง", "โคนเน่าและแคงเกอร์ที่ลำต้น", "แอนแทรคโนสและโรคผลเน่า", "เพลี้ยไฟและไร", "อาการขาดธาตุอาหาร", "ผลร่วงและติดผลน้อย", "หลักการจัดการแบบผสมผสาน"],
+    body: [
+      { h: "โรครากเน่า: ปัญหาอันดับหนึ่ง", p: "UC IPM ระบุชัดว่าโรครากเน่าจากเชื้อ Phytophthora cinnamomi เป็นโรคที่ร้ายแรงที่สุดของอโวคาโด้ เชื้อนี้เป็นโอโอไมซีตหรือราน้ำ ไม่ใช่ราแท้ และมีพืชอาศัยมากกว่าหนึ่งพันชนิด อาการทางใบคือใบเล็กลง สีเขียวซีดหรือเหลือง เหี่ยวและปลายใบแห้งเป็นสีน้ำตาลแม้ดินยังชื้น ทรงพุ่มโปร่ง แตกยอดใหม่น้อย กิ่งเล็กแห้งตายจนกิ่งใหญ่โดนแดดไหม้ และมักไม่มีชั้นใบร่วงใต้ต้น หลายกรณีต้นจะให้ผลดกแต่ผลเล็กก่อนตาย รากดูดอาหารที่ติดเชื้อจะเปลี่ยนจากสีขาวซีดเป็นดำ" },
+      { h: "การจัดการโรครากเน่า", p: "แนวทางที่ UC IPM เน้นคือการป้องกันมาก่อนการรักษา หนึ่ง — ใช้ต้นพันธุ์ที่ตรวจสอบแหล่งที่มาได้และเลือกต้นตอที่ทนโรค ต้นตอที่ผลิตแบบโคลนจากพันธุ์ที่แนะนำจะทนกว่าต้นตอเพาะเมล็ด แต่ไม่มีต้นตอใดที่ภูมิคุ้มกันสมบูรณ์ สอง — สุขอนามัยในแปลง อย่าให้ดินหรือน้ำจากบริเวณที่เป็นโรคไหลเข้าบริเวณที่ยังดี ติดตั้งรางระบายกันน้ำไหลข้าม สาม — คลุมโคนด้วยวัสดุอินทรีย์เนื้อหยาบและใช้ยิปซัมซึ่งให้แคลเซียมที่ช่วยยับยั้งการสร้างสปอร์ สี่ — ให้ไนโตรเจนในระดับพอเหมาะเพื่อให้ต้นแข็งแรงพอทนโรค แต่เลี่ยงปุ๋ยที่มีแอมโมเนียหรือเกลือสูง" },
+      { h: "โคนเน่าและแคงเกอร์ที่ลำต้น", p: "เชื้อ Phytophthora อีกชนิดหนึ่งคือ P. mengei (ชื่อเดิม P. citricola) ทำให้เกิดแคงเกอร์ที่โคนลำต้นและคอราก ซึ่งพบเกิดร่วมกับโรครากเน่าในต้นเดียวกันได้ อาการที่สังเกตได้คือรอยแผลเปลือกที่มีของเหลวสีขาวหรือน้ำตาลไหลซึม เมื่อแกะเปลือกจะเห็นเนื้อเยื่อใต้เปลือกเปลี่ยนสี ปัจจัยส่งเสริมคือโคนต้นเปียกอยู่เสมอจากการให้น้ำหรือดินกลบสูงเกิน การป้องกันคือปลูกให้โคนสูง อย่ารดน้ำโดนโคน และอย่ากลบดินหรือวัสดุคลุมทับโคนต้น" },
+      { h: "แอนแทรคโนสและโรคผลเน่า", p: "แอนแทรคโนสเป็นโรคที่แสดงอาการชัดเจนที่สุดตอนใกล้เก็บเกี่ยวและหลังเก็บ โดยเกิดเป็นจุดหรือแผลสีดำยุบตัวบนผิวผลและลุกลามเข้าเนื้อเมื่อผลเริ่มสุก เชื้อเข้าทำลายผ่านบาดแผลและสภาพชื้น การจัดการที่ได้ผลจริงคือลดความชื้นในทรงพุ่มด้วยการตัดแต่งให้โปร่ง เก็บผลอย่างระวังไม่ให้เกิดบาดแผลและเหลือก้านสั้นติดผลเพื่อลดช่องทางเข้าของเชื้อ ลดเวลาระหว่างเก็บถึงการทำความเย็น และกำจัดผลร่วงผลเน่าออกจากแปลง เพราะเป็นแหล่งเชื้อสำหรับฤดูถัดไป" },
+      { h: "เพลี้ยไฟและไร", p: "เพลี้ยไฟทำลายผิวผลอ่อนทำให้เกิดรอยกร้านเป็นแผ่นสีน้ำตาล ซึ่งไม่กระทบรสชาติแต่ทำให้ผลตกเกรดและขายได้ราคาต่ำลง ไรสนิมและไรแดงทำให้ใบด่างซีดและร่วงในกรณีที่ระบาดหนัก UC IPM ระบุว่าการคลุมวัสดุอินทรีย์เนื้อหยาบหนาราว 6 นิ้วอาจลดการอยู่รอดของเพลี้ยไฟที่ทิ้งตัวลงดินเพื่อเข้าดักแด้ แม้ประสิทธิภาพยังไม่แน่ชัดและอาจไม่คุ้มค่าแรงถ้าทำเพื่อคุมเพลี้ยไฟเพียงอย่างเดียว หลักปฏิบัติที่สำคัญกว่าคือสำรวจแปลงสม่ำเสมอ อนุรักษ์ศัตรูธรรมชาติ และหลีกเลี่ยงการพ่นสารในช่วงดอกบานเพราะเป็นพิษต่อแมลงผสมเกสร" },
+      { h: "อาการขาดธาตุอาหาร", p: "อาการที่พบบ่อยที่สุดในไทยคือใบเหลืองระหว่างเส้นใบขณะที่เส้นใบยังเขียว ซึ่งมักเป็นการขาดธาตุเหล็กหรือสังกะสีที่เกิดจากดินเป็นด่างเกินไป ไม่ใช่เพราะดินไม่มีธาตุนั้น การแก้จึงต้องแก้ที่ pH ไม่ใช่เพียงเติมธาตุ อาการปลายใบและขอบใบแห้งไหม้เป็นสีน้ำตาลมักเป็นพิษจากเกลือหรือคลอไรด์ ไม่ใช่การขาดธาตุ ซึ่งแก้ด้วยการชะเกลือและปรับคุณภาพน้ำ วิธีวินิจฉัยที่แม่นกว่าการเดาคือการวิเคราะห์ใบร่วมกับการวิเคราะห์ดิน" },
+      { h: "ผลร่วงและติดผลน้อย", p: "การร่วงของผลอ่อนบางส่วนเป็นเรื่องปกติตามธรรมชาติ ต้นโตเต็มที่สามารถออกดอกได้มากกว่าหนึ่งล้านดอกในหนึ่งฤดู แต่ติดผลจริงเพียงส่วนน้อยมาก ปัญหาที่ควรตรวจคือสี่ข้อ หนึ่ง — ไม่มีพันธุ์ผสมเกสรที่ชนิดดอกเสริมกันในระยะใกล้ สอง — น้ำไม่สม่ำเสมอในช่วงติดผลอ่อน สาม — อุณหภูมิผิดปกติช่วงดอกบาน เพราะงานวิจัยพบว่าอุณหภูมิที่สูงหรือต่ำเกินรบกวนวงจรดอกและการเจริญของหลอดละอองเรณู สี่ — ขาดแคลเซียมและโบรอน ให้ตรวจทั้งสี่ปัจจัยก่อนตัดสินใจใช้สารกระตุ้นการติดผล" },
+      { h: "หลักการจัดการแบบผสมผสาน", p: "ลำดับที่ควรทำเสมอคือ ป้องกัน → สำรวจ → วินิจฉัย → จัดการ ป้องกันด้วยการเลือกพื้นที่และต้นพันธุ์ที่ถูกต้องตั้งแต่ต้น สำรวจแปลงเป็นรอบสม่ำเสมอเพื่อพบอาการในระยะแรกซึ่งยังแก้ทันเกือบทุกกรณี วินิจฉัยให้แน่ก่อนพ่นสาร เพราะอาการใบเหลืองอาจมาจากรากเน่า ขาดธาตุ หรือเกลือ ซึ่งวิธีแก้ต่างกันโดยสิ้นเชิง และเมื่อต้องใช้สารเคมี ให้สลับกลุ่มสารเพื่อลดการดื้อ ปฏิบัติตามฉลาก และแก้ปัจจัยแวดล้อมที่เป็นต้นเหตุควบคู่กันไปเสมอ" }
+    ] },
+
+  { tag: "การขยายพันธุ์", read: 9, title: "ปลูกอโวคาโด้จากเมล็ด: ขั้นตอน ระยะเวลา ข้อดีข้อเสียที่ต้องรู้ก่อน",
+    excerpt: "วิธีเพาะที่ได้ผล ระยะเวลาจริงจนติดผล และเหตุผลที่ผลจะไม่เหมือนต้นแม่",
+    author: "ทีมวิชาการ Avocado Geek", date: "25 ก.ค. 2569", imageNote: "เมล็ดงอกและต้นกล้าในถุงชำ",
+    keywords: ["ปลูกอโวคาโด้จากเมล็ด", "เพาะเมล็ดอโวคาโด้", "เมล็ดอโวคาโด้ปลูก", "ต้นกล้าอโวคาโด้"],
+    toc: ["ความจริงข้อแรกที่ต้องยอมรับ", "เลือกและเตรียมเมล็ด", "วิธีเพาะที่ได้ผลจริง", "การดูแลต้นกล้า", "ระยะเวลาที่ต้องรอจริง", "ข้อดีของการเพาะเมล็ด", "ใช้ต้นเพาะเมล็ดเป็นต้นตอ"],
+    body: [
+      { h: "ความจริงข้อแรกที่ต้องยอมรับ", p: "อโวคาโด้ผสมข้ามพันธุ์เป็นหลัก ต้นที่ได้จากเมล็ดจึงเป็นลูกผสมที่มีพันธุกรรมไม่เหมือนต้นแม่ ผลที่ได้จะต่างออกไปทั้งขนาด รูปทรง ปริมาณน้ำมัน รสชาติ และช่วงเก็บเกี่ยว บางต้นดีกว่าต้นแม่ แต่ส่วนใหญ่ด้อยกว่าในเชิงการค้า นี่คือเหตุผลที่สวนการค้าทั่วโลกใช้ต้นเสียบยอดหรือทาบกิ่งเท่านั้น ไม่ใช้ต้นเพาะเมล็ดปลูกเพื่อเก็บผล การเพาะเมล็ดจึงควรทำด้วยเป้าหมายสองอย่าง คือเรียนรู้และสนุก หรือเพื่อผลิตต้นตอ ไม่ใช่เพื่อหวังผลผลิตที่คาดการณ์ได้" },
+      { h: "เลือกและเตรียมเมล็ด", p: "ใช้เมล็ดจากผลที่สุกดีและสมบูรณ์ ไม่ใช่ผลที่เน่าหรือช้ำ เมล็ดอโวคาโด้สูญเสียความงอกเร็วเมื่อแห้ง จึงควรเพาะภายในไม่กี่วันหลังผ่าผล ล้างเนื้อที่ติดออกให้หมดเพราะเนื้อที่เหลือเป็นแหล่งเชื้อรา ไม่ต้องแกะเปลือกหุ้มเมล็ดออกทั้งหมด แต่การเฉือนปลายด้านบนเล็กน้อยช่วยให้ยอดแทงออกง่ายขึ้นในบางกรณี สังเกตทิศทางให้ถูก ด้านที่แบนกว่าและกว้างกว่าคือด้านล่างที่จะออกราก ด้านที่แหลมกว่าคือด้านบนที่จะแตกยอด" },
+      { h: "วิธีเพาะที่ได้ผลจริง", p: "วิธีที่ให้อัตรารอดดีกว่าการปักไม้จิ้มฟันแช่น้ำคือการเพาะในวัสดุปลูกโดยตรง ใช้ถุงชำหรือกระถางที่มีรูระบายน้ำ วัสดุปลูกที่โปร่งระบายน้ำเร็ว เช่น ดินร่วนผสมแกลบดิบหรือขุยมะพร้าว ฝังเมล็ดโดยให้ส่วนบนโผล่พ้นวัสดุประมาณหนึ่งในสาม รักษาความชื้นสม่ำเสมอแต่ไม่แฉะ วางในที่ร่มรำไรอุ่นๆ ไม่ตากแดดจัด เมล็ดมักเริ่มแตกรากภายใน 2–6 สัปดาห์และแตกยอดตามมา วิธีแช่น้ำเห็นรากได้ชัดและสนุกกว่า แต่รากที่เกิดในน้ำจะอ่อนแอและช็อกเมื่อย้ายลงดิน" },
+      { h: "การดูแลต้นกล้า", p: "ให้แสงรำไรในช่วงแรกแล้วค่อยเพิ่มแสงทีละน้อยจนได้แดดเต็มวันเมื่อต้นแข็งแรง รดน้ำเมื่อผิววัสดุเริ่มแห้ง ไม่รดทุกวันตามตาราง เพราะวัสดุที่แฉะทำให้รากเน่าซึ่งเป็นสาเหตุการตายอันดับหนึ่งของต้นกล้า เริ่มให้ปุ๋ยเจือจางมากได้เมื่อต้นมีใบแท้ 4–6 ใบ เมื่อต้นสูงราว 30 เซนติเมตร การเด็ดยอดจะช่วยให้แตกกิ่งข้างและทรงพุ่มแน่นขึ้นแทนที่จะยืดสูงเป็นเสาเดียว และย้ายลงภาชนะใหญ่ขึ้นเมื่อรากเริ่มขดที่ก้น" },
+      { h: "ระยะเวลาที่ต้องรอจริง", p: "ต้นที่ปลูกจากเมล็ดโดยทั่วไปใช้เวลาราว 5–8 ปีหรือมากกว่านั้นจึงเริ่มติดผล บางต้นอาจไม่ให้ผลที่มีคุณภาพเลย เทียบกับต้นเสียบยอดหรือทาบกิ่งที่มักเริ่มให้ผลภายในราว 3–4 ปีและให้ผลตรงตามสายพันธุ์ ความต่างนี้ไม่ใช่เรื่องเล็ก เพราะหมายถึงเวลา 3–5 ปีที่ต่างกันบวกกับความไม่แน่นอนของคุณภาพผล สำหรับผู้ที่ต้องการเก็บผลจริงจัง การจ่ายเพิ่มเพื่อต้นเสียบยอดคุ้มกว่าเกือบทุกกรณี" },
+      { h: "ข้อดีของการเพาะเมล็ด", p: "ต้นทุนแทบเป็นศูนย์เพราะเมล็ดมาจากผลที่กินอยู่แล้ว เป็นกิจกรรมเรียนรู้ที่ดีสำหรับผู้เริ่มต้นและเด็ก ทำให้เข้าใจพฤติกรรมของต้นอโวคาโด้ตั้งแต่ระยะแรก ต้นที่ได้แข็งแรงและมีระบบรากที่พัฒนาในที่ที่มันอยู่จริง และในเชิงปฏิบัติสำคัญที่สุด — ต้นเพาะเมล็ดคือวัตถุดิบสำหรับทำต้นตอ ซึ่งเป็นก้าวแรกของการผลิตต้นพันธุ์ดีด้วยตัวเอง หลายคนที่เริ่มจากความสนุกจึงต่อยอดไปเป็นการทาบกิ่งได้" },
+      { h: "ใช้ต้นเพาะเมล็ดเป็นต้นตอ", p: "นี่คือทางที่คุ้มค่าที่สุดสำหรับต้นเพาะเมล็ด เลี้ยงต้นกล้าในถุงชำต่อไปจนอายุราว 8–12 เดือน ลำต้นตรง เส้นผ่านศูนย์กลางใกล้เคียงดินสอ แล้วจึงนำไปเสียบยอดหรือทาบด้วยกิ่งพันธุ์ดี ผลที่ได้คือต้นที่มีรากจากต้นตอที่ปรับตัวกับดินในพื้นที่ และมียอดที่ให้ผลตรงตามสายพันธุ์ ข้อควรรู้คือต้นตอเพาะเมล็ดมีความทนโรคไม่สม่ำเสมอ ต่างจากต้นตอโคลนที่คัดคุณสมบัติมาแล้ว จึงควรบันทึกไว้ว่าต้นตอของคุณเพาะจากเมล็ดพันธุ์อะไร เพื่อเทียบผลในระยะยาว" }
+    ] },
+
+  { tag: "เทคนิค", read: 11, title: "เทคนิคเสียบยอดและทาบกิ่งอโวคาโด้: วิธี จังหวะเวลา และการดูแลหลังทำ",
+    excerpt: "เลือกกิ่งพันธุ์และต้นตอ ขั้นตอนการเสียบยอด การพันแผล และการตรวจรอยต่อ",
+    author: "ทีมวิชาการ Avocado Geek", date: "22 ก.ค. 2569", imageNote: "รอยต่อที่พันพลาสติกใส",
+    keywords: ["เสียบยอดอโวคาโด้", "ทาบกิ่งอโวคาโด้", "grafting avocado", "ขยายพันธุ์อโวคาโด้"],
+    toc: ["ทำไมต้องเสียบยอด", "เข้าใจสองส่วน: ต้นตอและกิ่งพันธุ์", "เตรียมต้นตอให้พร้อม", "เลือกและเก็บกิ่งพันธุ์", "จังหวะเวลาที่เหมาะ", "ขั้นตอนการเสียบยอด", "การดูแลหลังเสียบยอด", "สาเหตุที่รอยต่อไม่ติด"],
+    body: [
+      { h: "ทำไมต้องเสียบยอด", p: "เหตุผลมีสองข้อที่ตอบโจทย์ต่างกัน ข้อแรก — ได้ผลตรงตามสายพันธุ์ เพราะกิ่งพันธุ์เป็นเนื้อเยื่อเดียวกับต้นแม่ทางพันธุกรรม ต่างจากต้นเพาะเมล็ดที่พันธุกรรมผสมใหม่ ข้อสอง — ให้ผลเร็วกว่า โดยทั่วไปเริ่มให้ผลในราว 3–4 ปีเทียบกับ 5–8 ปีของต้นเพาะเมล็ด นอกจากนี้การเสียบยอดยังทำให้เลือกต้นตอที่ทนโรครากเน่าหรือทนดินเค็มได้ แยกจากการเลือกยอดที่ให้ผลดี ซึ่งเป็นข้อได้เปรียบที่ต้นเพาะเมล็ดทำไม่ได้" },
+      { h: "เข้าใจสองส่วน: ต้นตอและกิ่งพันธุ์", p: "ต้นตอ (rootstock) คือส่วนล่างที่ให้ระบบรากและกำหนดความทนทานต่อดิน โรค และความเค็ม UC IPM ระบุว่าควรเลือกต้นตอที่ทนโรครากเน่า และต้นตอที่ผลิตแบบโคลนจากพันธุ์ที่แนะนำจะทนกว่าต้นตอที่เพาะจากเมล็ด กิ่งพันธุ์ (scion) คือส่วนบนที่กำหนดสายพันธุ์ของผล ทั้งรสชาติ ขนาด ฤดูเก็บเกี่ยว และชนิดดอก การจับคู่ที่ดีจึงหมายถึงต้นตอที่เหมาะกับดินของคุณ ประกอบกับยอดที่เหมาะกับตลาดของคุณ" },
+      { h: "เตรียมต้นตอให้พร้อม", p: "ใช้ต้นตออายุราว 8–12 เดือน ลำต้นตรง แข็งแรง ไม่มีอาการโรค เส้นผ่านศูนย์กลางใกล้เคียงกับกิ่งพันธุ์ที่จะใช้ เพราะขนาดที่เท่ากันทำให้แผลสองฝั่งประกบสนิทและเนื้อเยื่อเชื่อมกันได้ดี รดน้ำต้นตอให้ชุ่มหนึ่งวันก่อนทำ เพื่อให้ต้นอยู่ในสภาพเจริญเติบโตและเนื้อเยื่อเชื่อมเร็ว ต้นตอที่ขาดน้ำหรือกำลังเครียดจะให้อัตราการติดต่ำลงชัดเจน" },
+      { h: "เลือกและเก็บกิ่งพันธุ์", p: "เลือกกิ่งกึ่งอ่อนกึ่งแก่จากต้นแม่ที่ให้ผลมาแล้วอย่างน้อยสองฤดูและรู้ประวัติชัดเจนว่าเป็นสายพันธุ์อะไร ตาที่สมบูรณ์และไม่แตกยอดอ่อนจัด ขนาดใกล้เคียงดินสอ ตัดใบออกให้เหลือเพียงก้านใบเพื่อลดการคายน้ำ ถ้ายังไม่ทำทันทีให้ห่อด้วยผ้าหรือกระดาษชุบน้ำหมาดและเก็บในที่เย็น ใช้ภายใน 1–2 วันเพื่อความปลอดภัย กิ่งพันธุ์ที่แห้งไปแล้วแม้เพียงเล็กน้อยจะไม่ติด และควรบันทึกว่ากิ่งมาจากต้นแม่ต้นไหน เพื่อให้ตรวจย้อนหลังได้เมื่อผลออก" },
+      { h: "จังหวะเวลาที่เหมาะ", p: "ทำในช่วงที่ต้นกำลังเจริญเติบโตแต่อากาศไม่ร้อนจัดและไม่ใช่ช่วงฝนชุก เพราะความชื้นที่มากเกินทำให้แผลเน่า ในไทยช่วงที่ทำได้ดีคือปลายหนาวถึงต้นฝน เลือกทำในช่วงเช้าที่อุณหภูมิยังไม่สูง หลีกเลี่ยงวันที่ฝนตกหรือกำลังจะตก เพราะน้ำที่ซึมเข้าแผลเป็นสาเหตุการล้มเหลวที่พบบ่อยที่สุด" },
+      { h: "ขั้นตอนการเสียบยอด", p: "ใช้มีดที่คมจริงและสะอาด เช็ดใบมีดด้วยแอลกอฮอล์ก่อนทำและระหว่างเปลี่ยนต้น เฉือนแผลยาวราว 4–5 เซนติเมตรทั้งบนต้นตอและกิ่งพันธุ์ให้เป็นระนาบเรียบในการเฉือนครั้งเดียว ไม่เฉือนซ้ำหลายครั้งเพราะผิวแผลที่ขรุขระจะไม่ประกบสนิท ประกบให้ชั้นเนื้อเยื่อเจริญของทั้งสองฝั่งแนบกัน แล้วพันด้วยพลาสติกใสหรือเทปพันกิ่งจากล่างขึ้นบนอย่างแน่นและซ้อนกันไม่ให้น้ำเข้า พันคลุมกิ่งพันธุ์ทั้งหมดเพื่อรักษาความชื้นภายในไว้ ยกเว้นบริเวณตาที่จะแตกยอด" },
+      { h: "การดูแลหลังเสียบยอด", p: "วางต้นในที่ร่มรำไรราว 50–60% ไม่ให้แดดส่องแผลโดยตรง และไม่ให้น้ำโดนรอยต่อ รักษาความชื้นในวัสดุปลูกให้สม่ำเสมอแต่ไม่แฉะ ตรวจรอยต่อครั้งแรกที่ราว 3 สัปดาห์ ถ้ากิ่งพันธุ์ยังเขียวสดและตาเริ่มบวมหรือแตกยอดใหม่ แสดงว่าเริ่มติด ยังไม่ต้องแกะพลาสติกทันที รอให้ยอดใหม่แข็งแรงก่อน แล้วตัดยอดต้นตอส่วนที่อยู่เหนือรอยต่อออกเป็นขั้นๆ ไม่ตัดทีเดียวหมด และต้องหมั่นเด็ดยอดที่แตกจากต้นตอใต้รอยต่อออกทุกครั้งที่พบ เพราะมันจะแย่งอาหารจากยอดพันธุ์ดี" },
+      { h: "สาเหตุที่รอยต่อไม่ติด", p: "อันดับหนึ่ง — น้ำเข้าแผลเพราะพันไม่แน่นหรือพันไม่คลุม อันดับสอง — กิ่งพันธุ์แห้งหรือเก็บไว้นานเกินก่อนใช้ อันดับสาม — มีดไม่คม ทำให้แผลช้ำและเนื้อเยื่อตายจนไม่เชื่อม อันดับสี่ — ขนาดต้นตอกับกิ่งพันธุ์ต่างกันมากจนประกบไม่สนิท อันดับห้า — ทำในช่วงอากาศร้อนจัดหรือต้นตอกำลังเครียดจากการขาดน้ำ ผู้ที่ทำครั้งแรกมักได้อัตราการติดราว 50–70% และดีขึ้นชัดเจนตามจำนวนครั้งที่ทำ ให้ทำหลายต้นในรอบเดียวและจดสิ่งที่ทำต่างกันไว้เทียบผล" }
+    ] },
+
+  { tag: "เก็บเกี่ยว", read: 10, title: "เก็บเกี่ยวและบ่มอโวคาโด้: รู้ว่าแก่เมื่อไร วิธีเก็บ และการเก็บรักษา",
+    excerpt: "เกณฑ์ความแก่ด้วยเปอร์เซ็นต์น้ำหนักแห้ง วิธีตัดที่ถูกต้อง การบ่ม และอุณหภูมิเก็บรักษา",
+    author: "ทีมวิชาการ Avocado Geek", date: "19 ก.ค. 2569", imageNote: "การตัดผลโดยเหลือก้านสั้นติดผล",
+    keywords: ["เก็บเกี่ยวอโวคาโด้", "อโวคาโด้แก่เมื่อไหร่", "บ่มอโวคาโด้", "เก็บรักษาอโวคาโด้"],
+    toc: ["อโวคาโด้ไม่สุกบนต้น", "เกณฑ์ความแก่: เปอร์เซ็นต์น้ำหนักแห้ง", "สัญญาณที่สังเกตได้ในสวน", "วิธีเก็บที่ถูกต้อง", "การบ่มให้สุก", "การเก็บรักษาด้วยความเย็น", "ความเสียหายจากความเย็นและข้อควรระวัง"],
+    body: [
+      { h: "อโวคาโด้ไม่สุกบนต้น", p: "นี่คือคุณสมบัติที่ทำให้อโวคาโด้ต่างจากผลไม้เกือบทุกชนิดและเป็นข้อได้เปรียบทางการค้า ผลจะไม่นิ่มพร้อมกินขณะยังติดอยู่บนต้น มันจะเข้าสู่กระบวนการสุกหลังถูกตัดจากต้นเท่านั้น อโวคาโด้จัดเป็นผลไม้ประเภทไคลแมกเทอริก ซึ่งมีการหายใจและการผลิตเอทิลีนเพิ่มขึ้นในช่วงสุก ผลในทางปฏิบัติคือต้นทำหน้าที่เป็นที่เก็บผลผลิตได้ระยะหนึ่ง ผู้ปลูกจึงเลือกจังหวะเก็บตามราคาตลาดได้บ้าง แต่การทิ้งไว้บนต้นนานเกินก็ทำให้คุณภาพและกลิ่นรสเสียได้เช่นกัน" },
+      { h: "เกณฑ์ความแก่: เปอร์เซ็นต์น้ำหนักแห้ง", p: "ตัวชี้วัดที่ใช้เป็นมาตรฐานในแคลิฟอร์เนียและแหล่งผลิตส่วนใหญ่คือเปอร์เซ็นต์น้ำหนักแห้ง (dry matter) ซึ่งสัมพันธ์อย่างสูงกับปริมาณน้ำมัน ข้อมูลจากศูนย์วิจัยหลังการเก็บเกี่ยว UC Davis ระบุว่าค่าต่ำสุดที่กำหนดอยู่ในช่วง 19–25% ขึ้นกับสายพันธุ์ โดยเฟอร์ทีอยู่ที่ 19.0% แฮสอยู่ที่ 20.8% และเกวนอยู่ที่ 24.2% ส่วนสายพันธุ์กลุ่มฟลอริดาซึ่งมีน้ำมันต่ำกว่าจะใช้เกณฑ์วันนับจากดอกบานเต็มที่แทน ผู้ปลูกวัดค่านี้เองได้โดยชั่งน้ำหนักเนื้อสด อบให้แห้งจนน้ำหนักคงที่ แล้วคำนวณสัดส่วนที่เหลือ" },
+      { h: "สัญญาณที่สังเกตได้ในสวน", p: "สำหรับผู้ปลูกที่ไม่มีเครื่องมือวัด ให้ใช้สัญญาณประกอบกันหลายอย่าง ผลได้ขนาดและน้ำหนักตามลักษณะของสายพันธุ์ ก้านผลเริ่มเปลี่ยนเป็นสีเหลือง เปลือกของเมล็ดด้านในเปลี่ยนเป็นสีน้ำตาลเข้มและบางลงเมื่อผ่าตรวจ ในสายพันธุ์เปลือกดำอย่างแฮสจะเริ่มเห็นเปลือกเปลี่ยนสี วิธีที่แนะนำที่สุดคือเก็บผลตัวอย่าง 2–3 ผลมาบ่มที่อุณหภูมิห้อง ถ้าสุกนิ่มสม่ำเสมอในเวลาที่เหมาะและรสชาติดี แสดงว่าล็อตนั้นแก่พอเก็บได้ ข้อสังเกตสำคัญคือขนาดผลใหญ่ไม่ได้แปลว่าแก่แล้ว" },
+      { h: "วิธีเก็บที่ถูกต้อง", p: "ใช้กรรไกรตัดแต่งกิ่งที่คม ไม่บิดหรือดึงผล เพราะการบิดทำให้ก้านหลุดติดผิวผลและเปิดแผลให้เชื้อเข้า ตัดโดยเหลือก้านสั้นติดผลไว้ประมาณ 5–10 มิลลิเมตร ซึ่งช่วยลดการเข้าทำลายของเชื้อที่ทำให้เกิดโรคขั้วผลเน่า เก็บในช่วงเช้าที่อากาศเย็นและผลยังไม่ร้อนจากแดด วางในภาชนะที่บุนวมและไม่ซ้อนกันหนาเกินไป อย่าทิ้งผลกองไว้ในแดด เพราะความร้อนสะสมเร่งการสุกและทำให้คุณภาพเสียเร็ว นำเข้าที่ร่มและทำความเย็นให้เร็วที่สุดหลังเก็บ" },
+      { h: "การบ่มให้สุก", p: "อุณหภูมิที่เหมาะสำหรับการบ่มอยู่ราว 20–22 องศาเซลเซียส ที่ความชื้นสัมพัทธ์สูง ระยะเวลาขึ้นกับความแก่ของผล ข้อมูลจากคู่มือคุณภาพเชิงอุตสาหกรรมระบุว่าผลที่มีน้ำหนักแห้งต่ำกว่า 23% ต้องใช้เวลาบ่มราว 2–3 วัน ผลที่ 23–26% ใช้ 1–2 วัน และผลที่สูงกว่า 26% ใช้เพียงวันเดียว แปลว่าผลที่แก่จัดกว่าจะสุกเร็วกว่าและสีเปลือกเมื่อสุกเข้มกว่า สำหรับผู้บริโภคทั่วไป การเก็บผลไว้ใกล้ผลไม้ที่ผลิตเอทิลีนสูงอย่างกล้วยจะช่วยเร่งการสุกได้ และผลที่สุกพร้อมกินจะนิ่มลงสม่ำเสมอเมื่อกดเบาๆ ในฝ่ามือ ไม่ใช่กดด้วยปลายนิ้วเพราะทำให้ผลช้ำ" },
+      { h: "การเก็บรักษาด้วยความเย็น", p: "ผลที่แก่แต่ยังเขียวและแข็งสามารถเก็บที่อุณหภูมิต่ำเพื่อชะลอการสุกได้ ข้อมูลของ UC Davis ระบุว่าแฮสระยะเขียวแก่สามารถเก็บที่ 5–7 องศาเซลเซียสในสภาพบรรยากาศควบคุมที่ออกซิเจน 2% และคาร์บอนไดออกไซด์ 3–5% ได้นานถึง 9 สัปดาห์ แล้วนำมาบ่มในอากาศปกติที่ 20 องศาให้ได้คุณภาพดี ในระดับสวนหรือร้านที่ไม่มีระบบบรรยากาศควบคุม การทำความเย็นให้เร็วหลังเก็บและรักษาอุณหภูมิให้สม่ำเสมอคือปัจจัยสำคัญที่สุด สำหรับผลที่สุกแล้ว การเก็บในตู้เย็นช่วยยืดอายุได้อีกไม่กี่วัน" },
+      { h: "ความเสียหายจากความเย็นและข้อควรระวัง", p: "อโวคาโด้เสียหายจากความเย็นได้ถ้าอุณหภูมิต่ำเกินไปหรือเก็บนานเกินไป อาการที่พบคือเนื้อและเส้นท่อลำเลียงเปลี่ยนเป็นสีน้ำตาล ผลสุกไม่สม่ำเสมอ และรสชาติเปลี่ยน จุดที่ต้องระวังเป็นพิเศษคือผลที่ยังไม่แก่พอ เพราะจะไวต่อความเสียหายจากความเย็นมากกว่าและสุกได้ไม่ดีแม้บ่มแล้ว นอกจากนี้คาร์บอนไดออกไซด์ที่สูงเกิน 10% อาจเพิ่มการเปลี่ยนสีของเปลือกและเนื้อและทำให้เกิดกลิ่นรสผิดปกติ โดยเฉพาะเมื่อออกซิเจนต่ำกว่า 1% การเก็บที่อุณหภูมิเหมาะสมโดยไม่ควบคุมบรรยากาศจึงปลอดภัยกว่าการควบคุมบรรยากาศแบบผิดวิธี" }
+    ] },
+
+  { tag: "ปฏิทิน", read: 9, title: "ปฏิทินดูแลอโวคาโด้ตลอดปี: เดือนไหนต้องทำอะไร",
+    excerpt: "งานที่ต้องทำในแต่ละช่วงฤดูของไทย ตั้งแต่ช่วงออกดอกจนถึงการฟื้นต้นหลังเก็บเกี่ยว",
+    author: "ทีมวิชาการ Avocado Geek", date: "15 ก.ค. 2569", imageNote: "สวนอโวคาโด้ในช่วงออกดอก",
+    keywords: ["ปฏิทินปลูกอโวคาโด้", "ดูแลอโวคาโด้ตลอดปี", "บำรุงอโวคาโด้ตามฤดู", "ตัดแต่งกิ่งอโวคาโด้"],
+    toc: ["วิธีใช้ปฏิทินนี้", "ธ.ค.–ก.พ. ช่วงสร้างตาดอกและออกดอก", "มี.ค.–พ.ค. ช่วงติดผลอ่อนและหน้าแล้ง", "มิ.ย.–ส.ค. ช่วงขยายผลและต้นฤดูฝน", "ก.ย.–พ.ย. ช่วงเก็บเกี่ยว", "หลังเก็บเกี่ยว: ตัดแต่งและฟื้นต้น", "งานที่ต้องทำทุกเดือน"],
+    body: [
+      { h: "วิธีใช้ปฏิทินนี้", p: "ช่วงเวลาในปฏิทินนี้เป็นกรอบกลางสำหรับพื้นที่ปลูกในไทย แต่วันจริงจะเลื่อนตามสายพันธุ์และความสูงของพื้นที่ พันธุ์ที่เก็บต้นฤดูอย่างกลุ่มเวสต์อินดีสจะเลื่อนทุกอย่างเร็วขึ้นราวหนึ่งถึงสองเดือน ส่วนพันธุ์ที่เก็บปลายฤดูอย่างแฮสในพื้นที่สูงจะเลื่อนช้าลง วิธีใช้ที่ถูกต้องคือยึดตามระยะการเจริญของต้นที่เห็นจริงในแปลง ไม่ยึดตามเดือนบนปฏิทิน แล้วจดวันที่ต้นของคุณเข้าแต่ละระยะไว้เพื่อใช้เป็นปฏิทินของสวนตัวเองในปีถัดไป" },
+      { h: "ธ.ค.–ก.พ. ช่วงสร้างตาดอกและออกดอก", p: "ช่วงนี้ห้ามให้ปุ๋ยไนโตรเจนสูง เพราะจะกระตุ้นให้แตกใบแข่งกับดอกและลดการติดผล ให้น้ำสม่ำเสมอแต่ไม่แฉะ เพราะความเครียดจากการขาดน้ำหรือเกลือในช่วงดอกบานทำให้ใบร่วงมาก เนื่องจากดอกและใบแย่งน้ำกัน ที่สำคัญที่สุดคือห้ามพ่นสารที่เป็นพิษต่อแมลงผสมเกสรในช่วงดอกบาน เพราะการติดผลของอโวคาโด้พึ่งพาแมลงเป็นหลัก และงานวิจัยชี้ว่าผลผลิตของแฮสมักถูกจำกัดด้วยปริมาณละอองเรณูที่ได้รับ หากมีรังผึ้งในพื้นที่ ช่วงนี้คือเวลาที่ควรนำเข้ามาใกล้แปลง" },
+      { h: "มี.ค.–พ.ค. ช่วงติดผลอ่อนและหน้าแล้ง", p: "ช่วงนี้ผลอ่อนจะร่วงเองตามธรรมชาติจำนวนมากซึ่งเป็นเรื่องปกติ งานที่สำคัญคือรักษาความชื้นดินให้สม่ำเสมอ เพราะการขาดน้ำในช่วงติดผลกระทบผลผลิตอย่างชัดเจน คลุมโคนให้หนาก่อนแดดจัดที่สุดเพื่อลดการใช้น้ำและรักษาอุณหภูมิรากให้เย็น ตรวจและล้างระบบน้ำหยดให้พร้อมก่อนเข้าเดือนที่ร้อนที่สุด และวัดอัตราการไหลจริงต่อต้นเพื่อไม่ให้เข้าใจผิดว่าให้น้ำพอแล้ว ต้นเล็กอายุไม่ถึงสองปีควรมีร่มพรางหรือพืชบังร่มชั่วคราวในช่วงนี้" },
+      { h: "มิ.ย.–ส.ค. ช่วงขยายผลและต้นฤดูฝน", p: "ผลกำลังสร้างเนื้อและน้ำมัน ธาตุที่ต้องการเพิ่มคือโพแทสเซียม ให้ปุ๋ยแบ่งใส่หลายครั้งครั้งละน้อยแทนการใส่หนักครั้งเดียว ค้ำกิ่งที่ผลดกเพื่อกันกิ่งฉีก จุดเปลี่ยนสำคัญของช่วงนี้คือการจัดการน้ำต้องเปลี่ยนทิศทางทั้งหมด จากการเติมน้ำเป็นการระบายน้ำออก เพราะนี่คือช่วงที่โรครากเน่าระบาดหนักที่สุด ให้เปิดร่องระบายน้ำ ตรวจจุดที่น้ำขังหลังฝนหนัก และงดเข้าไปทำงานในแปลงขณะดินเปียกจัดเพื่อไม่ให้ดินอัดแน่นและพาเชื้อกระจาย" },
+      { h: "ก.ย.–พ.ย. ช่วงเก็บเกี่ยว", p: "เริ่มจากการตรวจความแก่ด้วยการเก็บผลตัวอย่างมาบ่มทดสอบ หรือวัดเปอร์เซ็นต์น้ำหนักแห้งหากทำได้ ไม่เก็บทั้งแปลงพร้อมกันในครั้งเดียว ให้ทยอยเก็บตามความแก่จริงของแต่ละต้น ใช้กรรไกรตัดเหลือก้านสั้นติดผล เก็บช่วงเช้า และนำเข้าที่ร่มทำความเย็นเร็วที่สุด ช่วงนี้ยังเป็นช่วงที่แอนแทรคโนสแสดงอาการมากที่สุด ให้เก็บผลร่วงและผลเน่าออกจากแปลงอย่างสม่ำเสมอเพราะเป็นแหล่งเชื้อของฤดูถัดไป" },
+      { h: "หลังเก็บเกี่ยว: ตัดแต่งและฟื้นต้น", p: "หลังเก็บผลหมดคือจังหวะที่ดีที่สุดในการตัดแต่งกิ่ง ให้ตัดกิ่งแห้ง กิ่งเป็นโรค กิ่งไขว้ และกิ่งที่ทำให้ทรงพุ่มทึบเกิน โดยคุมความสูงต้นไว้ในระดับที่จัดการและเก็บผลได้ ข้อควรระวังคืออย่าตัดจนแดดส่องกิ่งใหญ่และลำต้นโดยตรง เพราะเปลือกอโวคาโด้ไหม้แดดง่ายและแผลไหม้เป็นช่องทางเข้าของเชื้อ หากจำเป็นให้ทาปูนขาวป้องกัน จากนั้นใส่ปุ๋ยอินทรีย์ที่ย่อยสลายแล้วเพื่อฟื้นต้น เติมวัสดุคลุมโคนที่ย่อยไปแล้ว และปรับ pH ดินถ้าผลวิเคราะห์บอกว่าจำเป็น" },
+      { h: "งานที่ต้องทำทุกเดือน", p: "สำรวจแปลงอย่างน้อยเดือนละครั้งโดยเดินดูทุกแถว ไม่ใช่ดูจากขอบแปลง สังเกตสี่อย่าง คือสีและขนาดของใบใหม่ อาการที่ปลายและขอบใบ ความโปร่งของทรงพุ่ม และจุดที่น้ำขังหรือดินแตกระแหง จดบันทึกวันที่ให้ปุ๋ย ให้น้ำ พ่นสาร และวันที่ต้นเข้าแต่ละระยะการเจริญ บันทึกเหล่านี้คือสิ่งที่ทำให้ปีที่สามของคุณจัดการได้ดีกว่าปีแรกอย่างมีนัยสำคัญ และถ้าต้นของคุณมีรหัสตรวจสอบจาก Avocado Geek ให้ผูกบันทึกไว้กับรหัสนั้นเพื่อดูย้อนหลังได้" }
+    ] }
+];
+
+const TRAITS = {
+  "TR-AVO-STD":     { alt: "any",  tree: "large",  fruit: "medium", taste: "mild", price: "low",  ease: 1, season: "mid",   purpose: ["rootstock","shade"] },
+  "TR-AVO-HAS": { alt: "high", tree: "medium", fruit: "small",  taste: "rich", price: "high", ease: 3, season: "late",  purpose: ["market","export","eat"] },
+  "TR-AVO-PIN": { alt: "high", tree: "medium", fruit: "medium", taste: "rich", price: "high", ease: 3, season: "late",  purpose: ["market","eat"] },
+  "TR-AVO-BUC": { alt: "low",  tree: "medium", fruit: "medium", taste: "mild", price: "low",  ease: 1, season: "mid",   purpose: ["market","eat"] },
+  "TR-AVO-PET": { alt: "any",  tree: "medium", fruit: "large",  taste: "mild", price: "low",  ease: 1, season: "mid",   purpose: ["eat","market"] },
+  "TR-AVO-BO7": { alt: "low",  tree: "large",  fruit: "large",  taste: "mild", price: "low",  ease: 2, season: "late",  purpose: ["market","pollinator"] },
+  "TR-AVO-BO8": { alt: "low",  tree: "medium", fruit: "large",  taste: "mild", price: "low",  ease: 2, season: "late",  purpose: ["market","pollinator","eat"] },
+  "TR-AVO-034":     { alt: "any",  tree: "large",  fruit: "large",  taste: "rich", price: "mid",  ease: 2, season: "late",  purpose: ["market","eat"] },
+  "TR-AVO-PP08":    { alt: "any",  tree: "medium", fruit: "large",  taste: "rich", price: "mid",  ease: 1, season: "mid",   purpose: ["market","eat"] },
+  "TR-AVO-RH80":    { alt: "low",  tree: "small",  fruit: "medium", taste: "mild", price: "low",  ease: 1, season: "mid",   purpose: ["eat","smallfarm"] },
+  "TR-AVO-CUBA":    { alt: "low",  tree: "large",  fruit: "large",  taste: "mild", price: "low",  ease: 1, season: "early", purpose: ["eat","market"] },
+  "TR-AVO-RED":     { alt: "any",  tree: "medium", fruit: "large",  taste: "rich", price: "mid",  ease: 2, season: "mid",   purpose: ["market","novelty"] },
+  "TR-AVO-SEL":     { alt: "high", tree: "medium", fruit: "small",  taste: "rich", price: "high", ease: 3, season: "late",  purpose: ["novelty"] },
+  "TR-AVO-TA21":    { alt: "any",  tree: "medium", fruit: "large",  taste: "rich", price: "mid",  ease: 2, season: "late",  purpose: ["market","eat"] }
+};
+
+const REGIONS = [
+  { key: "north-high", label: "ภาคเหนือ (พื้นที่สูง)", note: "สูงกว่า 700 ม.", alt: "high",
+    provinces: ["เชียงใหม่", "เชียงราย", "น่าน", "แม่ฮ่องสอน", "เพชรบูรณ์ (เขาค้อ)"] },
+  { key: "north-low", label: "ภาคเหนือ (พื้นที่ต่ำ)", note: "ต่ำกว่า 700 ม.", alt: "low",
+    provinces: ["ลำพูน", "ลำปาง", "แพร่", "อุตรดิตถ์", "พะเยา"] },
+  { key: "west", label: "ภาคตะวันตก", note: "ตาก / กาญจนบุรี", alt: "mixed",
+    provinces: ["ตาก (พบพระ)", "ตาก (อุ้มผาง)", "กาญจนบุรี", "ราชบุรี"] },
+  { key: "northeast", label: "ภาคอีสาน", note: "ร้อนแล้ง", alt: "low",
+    provinces: ["นครราชสีมา (ปากช่อง)", "เลย (ภูเรือ)", "ชัยภูมิ", "อุดรธานี"] },
+  { key: "central", label: "ภาคกลาง", note: "ที่ราบร้อนชื้น", alt: "low",
+    provinces: ["สระบุรี", "นครนายก", "ปราจีนบุรี", "กรุงเทพฯ และปริมณฑล"] },
+  { key: "south", label: "ภาคใต้", note: "ฝนชุก", alt: "low",
+    provinces: ["ชุมพร", "สุราษฎร์ธานี", "นครศรีธรรมราช", "ตรัง"] }
+];
+
+const QUESTIONS = [
+  { key: "area", label: "ขนาดพื้นที่ปลูก", options: [
+    { v: "pot", label: "ปลูกในกระถาง / หลังบ้าน" },
+    { v: "small", label: "ไม่เกิน 2 ไร่" },
+    { v: "medium", label: "2–10 ไร่" },
+    { v: "large", label: "มากกว่า 10 ไร่" } ] },
+  { key: "purpose", label: "ปลูกเพื่ออะไร", options: [
+    { v: "eat", label: "กินในครอบครัว" },
+    { v: "market", label: "ขายผลในประเทศ" },
+    { v: "export", label: "ส่งออก / ตลาดพรีเมียม" },
+    { v: "novelty", label: "สินค้าแปลกใหม่" },
+    { v: "rootstock", label: "ทำต้นตอ / ปลูกร่มเงา" } ] },
+  { key: "tree", label: "ขนาดทรงต้นที่ต้องการ", options: [
+    { v: "small", label: "เตี้ย เก็บง่าย" },
+    { v: "medium", label: "ปานกลาง" },
+    { v: "large", label: "ใหญ่ ให้ผลมาก" } ] },
+  { key: "fruit", label: "ขนาดผลที่ต้องการ", options: [
+    { v: "small", label: "เล็ก (ต่ำกว่า 250 ก.)" },
+    { v: "medium", label: "กลาง (250–400 ก.)" },
+    { v: "large", label: "ใหญ่ (มากกว่า 400 ก.)" } ] },
+  { key: "taste", label: "รสชาติที่ชอบ", options: [
+    { v: "rich", label: "มันเข้ม น้ำมันสูง" },
+    { v: "mild", label: "รสอ่อน เบา ไม่เลี่ยน" } ] },
+  { key: "price", label: "ระดับราคาที่ต้องการขาย", options: [
+    { v: "high", label: "ราคาสูง (120 ฿+/กก.)" },
+    { v: "mid", label: "ปานกลาง (80–120 ฿)" },
+    { v: "low", label: "เน้นปริมาณ ราคาย่อมเยา" } ] },
+  { key: "ease", label: "ประสบการณ์ปลูก", options: [
+    { v: "new", label: "มือใหม่ ยังไม่เคยปลูก" },
+    { v: "some", label: "เคยปลูกไม้ผลมาก่อน" },
+    { v: "pro", label: "ทำสวนเป็นอาชีพ" } ] },
+  { key: "season", label: "ช่วงที่อยากเก็บเกี่ยว", options: [
+    { v: "early", label: "ต้นฤดู (มิ.ย.–ส.ค.)" },
+    { v: "mid", label: "กลางฤดู (ก.ค.–ต.ค.)" },
+    { v: "late", label: "ปลายฤดู (ก.ย.–ธ.ค.)" } ] }
+];
+
+const LOTS = [
+  { code: "AVO-2503-014", sku: "TR-AVO-HAS", variety: "แฮส (Hass)",
+    method: "เสียบยอด", graftDate: "2568-03-12", certDate: "2569-02-10",
+    rootstock: "เพาะเมล็ดจากพันธุ์ธรรมดา (TR-AVO-STD) อายุ 11 เดือน ณ วันเสียบยอด",
+    scion: "กิ่งพันธุ์แฮสจากต้นแม่ที่ให้ผลแล้ว 6 ฤดู", status: "รับรองแล้ว · อยู่ในระบบติดตาม",
+    height: "70–85 ซม. (วัดจากปากถุง)", container: "ถุงชำดำ 8×12 นิ้ว", flower: "ชนิด A",
+    pollinator: "บูท-7 (ชนิด B) — ปลูกร่วมช่วยเพิ่มการติดผล", zone: "พื้นที่สูงกว่า 700 ม. อากาศเย็นช่วงออกดอก",
+    firstFruit: "2571 (ประมาณ 3 ปีหลังปลูกลงแปลง)", graftCheck: "ผ่าน — รอยต่อสมบูรณ์ ไม่มีรอยปริ",
+    warranty: "รับประกันรอยต่อ 30 วันนับจากวันรับต้น",
+    events: [
+      { d: "2569-02-10", h: "รับรองโดย Avocado Geek", p: "ตรวจที่มากิ่งพันธุ์ วันเสียบยอด และเงื่อนไขรับประกัน ผ่านเกณฑ์ทั้ง 4 ข้อ ออกรหัสประจำต้นนี้" },
+      { d: "2568-06-18", h: "ย้ายออกจากโรงเรือน", p: "ปรับสภาพในที่ร่มรำไร 60% ตัดยอดต้นตอส่วนเกินออก" },
+      { d: "2568-04-02", h: "ตรวจรอยต่อ", p: "รอยต่อสมบูรณ์ แตกยอดใหม่ แกะพลาสติกพันรอยต่อออก" },
+      { d: "2568-03-12", h: "เสียบยอด", p: "ใช้กิ่งพันธุ์แฮสจากต้นแม่ที่บันทึกไว้ในระบบ — วันนี้คือวันเริ่มนับอายุของต้น" },
+      { d: "2567-04-20", h: "เพาะเมล็ดต้นตอ", p: "เพาะจากเมล็ดพันธุ์ธรรมดา (TR-AVO-STD) คัดขนาดสม่ำเสมอ ลงถุงชำวัสดุปลูกผสมแกลบดิบ" }
+    ] },
+  { code: "AVO-2507-003", sku: "TR-AVO-PP08", variety: "พบพระ 08",
+    method: "เสียบยอด", graftDate: "2568-07-05", certDate: "2569-05-30",
+    rootstock: "เพาะเมล็ดจากพันธุ์บัคคาเนีย (TR-AVO-BUC) อายุ 9 เดือน ณ วันเสียบยอด",
+    scion: "กิ่งพันธุ์พบพระ 08 จากต้นแม่ที่คัดไว้ในแปลง", status: "รับรองแล้ว · อยู่ในระบบติดตาม",
+    height: "60–75 ซม. (วัดจากปากถุง)", container: "ถุงชำดำ 8×12 นิ้ว", flower: "ไม่ระบุ (อยู่ระหว่างบันทึกข้อมูล)",
+    pollinator: "แนะนำปลูกร่วม 2 สายพันธุ์เพื่อการติดผลที่ดีขึ้น", zone: "ปลูกได้ทั้งที่ราบและพื้นที่สูง ทนอากาศไทย",
+    firstFruit: "2571 (ประมาณ 3 ปีหลังปลูกลงแปลง)", graftCheck: "ผ่าน — รอยต่อสมบูรณ์",
+    warranty: "รับประกันรอยต่อ 30 วันนับจากวันรับต้น",
+    events: [
+      { d: "2569-05-30", h: "รับรองโดย Avocado Geek", p: "บันทึกที่มากิ่งพันธุ์และวันเสียบยอด ผ่านการรับรองและออกรหัสประจำต้นนี้" },
+      { d: "2568-07-28", h: "ตรวจรอยต่อ", p: "รอยต่อติดสมบูรณ์ แตกยอดใหม่ตามเกณฑ์" },
+      { d: "2568-07-05", h: "เสียบยอด", p: "กิ่งพันธุ์พบพระ 08 จากต้นแม่ในแปลง — วันนี้คือวันเริ่มนับอายุของต้น" },
+      { d: "2567-09-14", h: "เพาะเมล็ดต้นตอ", p: "เพาะจากเมล็ดพันธุ์บัคคาเนีย (TR-AVO-BUC) ในโรงเรือน คุมความชื้นและคัดต้นที่โตสม่ำเสมอ" }
+    ] },
+  { code: "AVO-2601-007", sku: "TR-AVO-034", variety: "อโวคาโด้ 034",
+    method: "เสียบยอด", graftDate: "2569-01-22", certDate: "2569-06-20",
+    rootstock: "เพาะเมล็ดจากพันธุ์ธรรมดา (TR-AVO-STD) อายุ 10 เดือน ณ วันเสียบยอด",
+    scion: "กิ่งพันธุ์ 034 จากต้นแม่ในแปลงภาคเหนือ", status: "รับรองแล้ว · อยู่ในระบบติดตาม",
+    height: "55–70 ซม. (วัดจากปากถุง)", container: "ถุงชำดำ 6×10 นิ้ว", flower: "ไม่ระบุ (อยู่ระหว่างบันทึกข้อมูล)",
+    pollinator: "ปลูกร่วมกับพันธุ์ชนิด B เช่น บูท-7", zone: "ปลูกได้ทั้งที่ราบและพื้นที่สูง",
+    firstFruit: "2572 (ประมาณ 3 ปีหลังปลูกลงแปลง)", graftCheck: "ผ่าน — รอยต่อสมบูรณ์",
+    warranty: "รับประกันรอยต่อ 30 วันนับจากวันรับต้น",
+    events: [
+      { d: "2569-06-20", h: "รับรองโดย Avocado Geek", p: "ตรวจเอกสารที่มากิ่งพันธุ์และเงื่อนไขรับประกัน ผ่านการรับรองและออกรหัสประจำต้นนี้" },
+      { d: "2569-02-15", h: "ตรวจรอยต่อ", p: "รอยต่อติดสมบูรณ์ พร้อมปรับสภาพก่อนจำหน่าย" },
+      { d: "2569-01-22", h: "เสียบยอด", p: "กิ่งพันธุ์ 034 จากต้นแม่ที่บันทึกไว้ — วันนี้คือวันเริ่มนับอายุของต้น" },
+      { d: "2568-03-08", h: "เพาะเมล็ดต้นตอ", p: "เพาะจากเมล็ดพันธุ์ธรรมดา (TR-AVO-STD) คัดขนาดเมล็ดก่อนลงถุงชำ" }
+    ] }
+];
+
+const SELLERS = [
+  { name: "Yutthana Farm Avocado", short: "Yutthana Farm", initial: "YF", province: "รออัปเดต", type: "สวนผู้ผลิต · ขายผล + ต้นพันธุ์", since: "รออัปเดต", rating: "—", reviews: 0,
+    desc: "สวนผู้ผลิตอโวคาโด้ จำหน่ายทั้งผลสดตามฤดูและต้นพันธุ์ทาบกิ่ง",
+    tags: ["ผลสด", "ต้นพันธุ์"], verified: "ส.ค. 2569",
+    address: "รออัปเดตที่อยู่", phone: "รออัปเดต", hours: "รออัปเดต", email: "รออัปเดต",
+    about: "Yutthana Farm (ยุทธนา ฟาร์ม อโวคาโด้) เป็นสวนผู้ผลิตที่จำหน่ายทั้งผลอโวคาโด้สดตามฤดูกาลและต้นพันธุ์สำหรับผู้ที่ต้องการเริ่มปลูก ในอนาคตมีแผนขยายไปสู่สินค้าและบริการอื่นที่เกี่ยวข้องกับอโวคาโด้ เช่น ผลิตภัณฑ์แปรรูปและปัจจัยการผลิตสำหรับผู้ปลูก — ข้อมูลติดต่อและรายการสินค้ากำลังรอการยืนยันจากร้าน",
+    products: [{name:"ผลสดอโวคาโด้ (ตามฤดู)",price:"สอบถามร้าน"},{name:"ต้นพันธุ์ทาบกิ่ง",price:"สอบถามร้าน"}],
+    channels: [{label:"📱 Facebook / Line (รออัปเดต)"},{label:"☎️ เบอร์โทร (รออัปเดต)"}] },
+  { name: "Medoi Farm — มีดอยฟาร์ม", short: "Medoi Farm", initial: "MD", province: "รออัปเดต", type: "สวนผู้ผลิต · ขายผล + ต้นพันธุ์", since: "รออัปเดต", rating: "—", reviews: 0,
+    desc: "มีดอยฟาร์ม จำหน่ายผลอโวคาโด้และต้นพันธุ์จากแปลงปลูกบนพื้นที่สูง",
+    tags: ["ผลสด", "ต้นพันธุ์"], verified: "ส.ค. 2569",
+    address: "รออัปเดตที่อยู่", phone: "รออัปเดต", hours: "รออัปเดต", email: "รออัปเดต",
+    about: "มีดอยฟาร์ม (Medoi Farm) จำหน่ายผลอโวคาโด้สดและต้นพันธุ์ให้ผู้ที่สนใจปลูก เน้นสายพันธุ์ที่เหมาะกับสภาพพื้นที่ปลูกของฟาร์ม และมีแผนต่อยอดไปสู่สินค้าอื่นที่เกี่ยวข้องกับอโวคาโด้ในอนาคต — ข้อมูลติดต่อและรายการสินค้ากำลังรอการยืนยันจากร้าน",
+    products: [{name:"ผลสดอโวคาโด้ (ตามฤดู)",price:"สอบถามร้าน"},{name:"ต้นพันธุ์ทาบกิ่ง",price:"สอบถามร้าน"}],
+    channels: [{label:"📱 Facebook / Line (รออัปเดต)"},{label:"☎️ เบอร์โทร (รออัปเดต)"}] },
+  { name: "น้องพร อโวคาโด้", short: "น้องพรอโวคาโด้", initial: "นพ", province: "รออัปเดต", type: "ร้านจำหน่าย · ขายผล + ต้นพันธุ์", since: "รออัปเดต", rating: "—", reviews: 0,
+    desc: "จำหน่ายผลอโวคาโด้และต้นพันธุ์ ติดต่อสั่งซื้อผ่านช่องทางออนไลน์",
+    tags: ["ผลสด", "ต้นพันธุ์"], verified: "ส.ค. 2569",
+    address: "รออัปเดตที่อยู่", phone: "รออัปเดต", hours: "รออัปเดต", email: "รออัปเดต",
+    about: "น้องพรอโวคาโด้ จำหน่ายผลอโวคาโด้สดและต้นพันธุ์ให้ทั้งผู้บริโภคและผู้ที่ต้องการเริ่มปลูก รับออเดอร์ผ่านช่องทางออนไลน์เป็นหลัก และมีแผนขยายไปสู่สินค้าอื่นที่เกี่ยวข้องกับอโวคาโด้ในอนาคต — ข้อมูลติดต่อและรายการสินค้ากำลังรอการยืนยันจากร้าน",
+    products: [{name:"ผลสดอโวคาโด้ (ตามฤดู)",price:"สอบถามร้าน"},{name:"ต้นพันธุ์ทาบกิ่ง",price:"สอบถามร้าน"}],
+    channels: [{label:"📱 Facebook / Line (รออัปเดต)"},{label:"☎️ เบอร์โทร (รออัปเดต)"}] }
+];
+
+const TABS = [
+  { key: "info", label: "ข้อมูล", content: [
+    { h: "ลักษณะผล", p: "ทรงผล เปลือก และสีเมื่อสุกต่างกันชัดเจนระหว่างสายพันธุ์ ควรสังเกตก้านผลและความแน่นของเปลือกเพื่อตัดสินความสุก" },
+    { h: "รสชาติและเนื้อ", p: "เนื้อละเอียดมันตามปริมาณน้ำมัน ยิ่งน้ำมันสูงยิ่งเข้มข้น เหมาะทำกัวคาโมเลและสลัด" },
+    { h: "เมล็ด", p: "สัดส่วนเมล็ดต่อผลมีผลต่อเนื้อที่กินได้ สายพันธุ์เมล็ดเล็กให้เนื้อมากกว่าถึง 15%" },
+    { h: "คุณค่าทางอาหาร", p: "ไขมันไม่อิ่มตัวเชิงเดี่ยวสูง พร้อมโพแทสเซียมและวิตามินอี ปริมาณต่างกันตามความสุกและสายพันธุ์" }
+  ] },
+  { key: "grow", label: "วิธีปลูก", content: [
+    { h: "สภาพดิน", p: "ดินร่วนระบายน้ำดี pH 5.5–6.5 หลีกเลี่ยงดินเหนียวและพื้นที่น้ำขัง ยกโคกปลูกสูง 20–30 ซม." },
+    { h: "สภาพอากาศ", p: "ต้องการอุณหภูมิ 20–30 องศา ช่วงออกดอกอากาศเย็นช่วยติดผล ลมแรงทำให้ผลร่วง ควรปลูกแนวกันลม" },
+    { h: "การให้น้ำ", p: "ระบบน้ำหยดสม่ำเสมอ ต้นเล็ก 20–30 ลิตร/สัปดาห์ ต้นให้ผล 60–100 ลิตร/สัปดาห์ งดรดเมื่อดินยังชื้น" },
+    { h: "ปุ๋ยและการทาบกิ่ง", p: "ปุ๋ยคอกปีละ 2 ครั้งร่วมกับปุ๋ยเคมีสูตรเสมอในระยะต้นเล็ก และใช้ต้นทาบเสมอเพื่อให้ได้ลักษณะตรงตามสายพันธุ์" }
+  ] },
+  { key: "care", label: "ดูแลรักษา", content: [
+    { h: "การตัดแต่งกิ่ง", p: "ตัดกิ่งแห้ง กิ่งไขว้ และกิ่งน้ำค้างหลังเก็บเกี่ยว คุมความสูงไม่เกิน 5–6 เมตรเพื่อให้จัดการง่าย" },
+    { h: "การเก็บเกี่ยว", p: "เก็บเมื่อได้น้ำหนักและปริมาณน้ำมันตามเกณฑ์ ตัดโดยเหลือก้านสั้นติดผลเพื่อลดการเข้าทำลายของเชื้อ" },
+    { h: "หลังเก็บเกี่ยว", p: "บ่มที่อุณหภูมิห้อง 3–7 วัน เก็บผลสุกในตู้เย็น 5–7 องศาได้อีก 5 วัน ไม่วางซ้อนกันเกินสองชั้น" },
+    { h: "การฟื้นต้น", p: "ใส่ปุ๋ยคอกและปรับ pH ดินหลังเก็บเกี่ยว ให้ต้นพักตัวก่อนเข้าฤดูออกดอกครั้งถัดไป" }
+  ] },
+  { key: "problem", label: "ปัญหา", content: [
+    { h: "รากเน่า (Phytophthora)", p: "ใบเหลืองร่วง กิ่งแห้งย้อน แก้ด้วยการระบายน้ำ ยกโคก และราดเมทาแลกซิลตามอัตราแนะนำ" },
+    { h: "แอนแทรคโนส", p: "จุดดำบนผลช่วงใกล้สุก ลดโดยตัดแต่งให้ทรงพุ่มโปร่งและฉีดสารป้องกันเชื้อราก่อนฝนชุก" },
+    { h: "เพลี้ยไฟและไรแดง", p: "ทำให้ผิวผลกร้าน ระบาดในหน้าแล้ง ใช้น้ำมันปิโตรเลียมหรือสารชีวภัณฑ์สลับกลุ่มสารเพื่อกันการดื้อ" },
+    { h: "ผลร่วงผิดปกติ", p: "มักมาจากขาดแคลเซียม–โบรอน น้ำไม่สม่ำเสมอ หรือขาดพันธุ์ผสมเกสร ควรตรวจทั้งสามปัจจัย" }
+  ] }
+];
+
+class Component extends DCLogic {
+  state = { page: "home", vi: 0, ai: 0, si: 0, tab: "info", ans: {} };
+
+  nav(page, extra) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState(Object.assign({ page: page }, extra || {}));
+      if (typeof window !== "undefined") window.scrollTo(0, 0);
+    };
+  }
+
+  onCode = (e) => { this.setState({ code: e.target.value, lotError: "" }); };
+
+  lookup = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const q = (this.state.code || "").trim().toUpperCase();
+    if (!q) { this.setState({ lot: null, lotError: "กรอกรหัสล็อตก่อนตรวจสอบ" }); return; }
+    const hit = LOTS.filter((l) => l.code.toUpperCase() === q || l.code.toUpperCase().indexOf(q) >= 0)[0];
+    if (hit) this.setState({ lot: hit, lotError: "" });
+    else this.setState({ lot: null, lotError: "ไม่พบรหัส " + q + " ในระบบ — ตรวจตัวอักษรอีกครั้ง หรือสอบถามร้านที่ซื้อ" });
+  };
+
+  thaiDate(iso) {
+    const M = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+    const p = String(iso).split("-");
+    return Number(p[2]) + " " + M[Number(p[1]) - 1] + " " + p[0];
+  }
+
+  ageFrom(iso) {
+    const p = String(iso).split("-").map(Number);
+    const start = new Date(p[0] - 543, p[1] - 1, p[2]);
+    const now = new Date();
+    let m = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    if (now.getDate() < start.getDate()) m -= 1;
+    if (m < 0) m = 0;
+    const y = Math.floor(m / 12), r = m % 12;
+    if (y === 0) return r + " เดือน";
+    return y + " ปี" + (r ? " " + r + " เดือน" : "");
+  }
+
+  pick(key, value) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState((s) => {
+        const ans = Object.assign({}, s.ans);
+        ans[key] = ans[key] === value ? null : value;
+        if (key === "region") ans.province = null;
+        return { ans: ans };
+      });
+    };
+  }
+
+  resetMatch = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ ans: {} });
+  };
+
+  scoreVariety(v, ans) {
+    const t = TRAITS[v.sku] || {};
+    const region = REGIONS.filter((r) => r.key === ans.region)[0];
+    let score = 58;
+    const pros = [];
+    const cons = [];
+
+    if (region) {
+      if (region.alt === "high") {
+        if (t.alt === "high") { score += 26; pros.push("ต้องการอากาศเย็นช่วงออกดอก — " + region.label + " ตอบโจทย์พอดี"); }
+        else { score += 4; cons.push("ปลูกได้ แต่ไม่ได้ใช้ข้อดีของพื้นที่สูงเต็มที่ ราคาขายมักต่ำกว่าพันธุ์พื้นที่สูง"); }
+      } else if (region.alt === "low") {
+        if (t.alt === "high") { score -= 30; cons.push("ต้องมีอากาศเย็นช่วงออกดอกจึงติดผลดี ในพื้นที่ต่ำมักติดผลน้อย"); }
+        else { score += 16; pros.push("ทนอากาศร้อนชื้น ปลูกได้ใน " + region.label); }
+      } else {
+        score += 8; pros.push("ปรับตัวได้กับสภาพผสมของ " + region.label);
+      }
+    }
+
+    if (ans.area) {
+      if (ans.area === "pot" || ans.area === "small") {
+        if (t.tree === "small") { score += 12; pros.push("ทรงต้นเตี้ย เหมาะกับพื้นที่จำกัด"); }
+        else if (t.tree === "large") { score -= 10; cons.push("ทรงต้นใหญ่ ต้องมีระยะปลูกกว้าง"); }
+      } else if (ans.area === "large" && t.tree === "large") {
+        score += 8; pros.push("ทรงต้นใหญ่ ให้ผลผลิตต่อต้นสูง คุ้มกับแปลงขนาดใหญ่");
+      }
+    }
+
+    if (ans.purpose) {
+      if ((t.purpose || []).indexOf(ans.purpose) >= 0) { score += 15; pros.push("ตรงกับเป้าหมาย: " + this.labelOf("purpose", ans.purpose)); }
+      else { score -= 5; cons.push("ไม่ได้เด่นเรื่อง " + this.labelOf("purpose", ans.purpose)); }
+    }
+    if (ans.tree) {
+      if (t.tree === ans.tree) { score += 10; pros.push("ขนาดทรงต้นตรงตามที่ต้องการ"); }
+      else { score -= 4; }
+    }
+    if (ans.fruit) {
+      if (t.fruit === ans.fruit) { score += 10; pros.push("ขนาดผลตรงตามที่ต้องการ"); }
+      else { score -= 4; cons.push("ขนาดผลไม่ตรงกับที่เลือก"); }
+    }
+    if (ans.taste) {
+      if (t.taste === ans.taste) { score += 12; pros.push(ans.taste === "rich" ? "เนื้อมันเข้ม น้ำมันสูง" : "รสอ่อน เบา ไม่เลี่ยน"); }
+      else { score -= 7; cons.push(ans.taste === "rich" ? "รสค่อนข้างอ่อน น้ำมันไม่สูง" : "รสมันเข้ม อาจหนักกว่าที่ชอบ"); }
+    }
+    if (ans.price) {
+      if (t.price === ans.price) { score += 10; pros.push("ระดับราคาตลาดตรงกับที่ตั้งใจ"); }
+      else if (ans.price === "high" && t.price === "low") { score -= 8; cons.push("ราคาตลาดค่อนข้างต่ำ เน้นปริมาณมากกว่าราคา"); }
+      else { score -= 3; }
+    }
+    if (ans.ease) {
+      if (ans.ease === "new") {
+        if (t.ease === 1) { score += 10; pros.push("เลี้ยงง่าย ทนกว่าพันธุ์อื่น เหมาะกับมือใหม่"); }
+        else if (t.ease === 3) { score -= 8; cons.push("ต้องดูแลประณีตกว่า ควรเริ่มจำนวนน้อยก่อน"); }
+      } else if (ans.ease === "some" && t.ease === 2) { score += 8; pros.push("ความยากระดับกลาง พอเหมาะกับประสบการณ์ที่มี"); }
+      else if (ans.ease === "pro" && t.ease === 3) { score += 8; pros.push("ให้ผลตอบแทนสูงถ้าจัดการได้ — เหมาะกับผู้ทำสวนเป็นอาชีพ"); }
+    }
+    if (ans.season) {
+      if (t.season === ans.season) { score += 10; pros.push("เก็บเกี่ยวช่วง " + v.season + " ตรงกับที่ต้องการ"); }
+      else { score -= 3; cons.push("เก็บเกี่ยว " + v.season + " ไม่ตรงกับช่วงที่เลือก"); }
+    }
+
+    const seedling = v.sku === "TR-AVO-STD";
+    if (seedling) {
+      if (ans.purpose === "rootstock") {
+        score += 10;
+        pros.push("ต้นเพาะเมล็ดราคาถูก รากแข็งแรง — ตรงตามการใช้เป็นต้นตอ");
+      } else {
+        score -= 34;
+        cons.push("เป็นต้นเพาะเมล็ด ผลไม่ตรงต้นแม่และใช้เวลา 5–8 ปีจึงติดผล ไม่แนะนำถ้าต้องการผลผลิต");
+      }
+    } else if (ans.purpose === "eat" || ans.purpose === "market" || ans.purpose === "export") {
+      score += 6;
+      pros.push("เป็นต้นทาบพันธุ์แท้ ให้ผลตรงสายพันธุ์และเริ่มให้ผลเร็วกว่าต้นเพาะเมล็ด");
+    } else if (ans.purpose === "rootstock") {
+      score -= 12;
+      cons.push("เป็นพันธุ์กินผล ใช้ทำต้นตอไม่คุ้มราคา");
+    }
+
+    const t2 = TRAITS[v.sku] || {};
+    pros.push("จุดเฉพาะของพันธุ์นี้: " + v.desc);
+    // tie-break: ราคาตลาด > ความง่าย > ขนาดผล (เก็บทศนิยมไว้เรียงลำดับ)
+    const tb = (t2.price === "high" ? 2.4 : (t2.price === "mid" ? 1.4 : 0.4))
+      + (t2.ease === 1 ? 0.9 : (t2.ease === 2 ? 0.5 : 0.2))
+      + (t2.fruit === "large" ? 0.3 : (t2.fruit === "medium" ? 0.2 : 0.1));
+
+    if (score > 96) score = 96;
+    if (score < 8) score = 8;
+    return { score: Math.round(score), rank: score + tb, pros: pros.slice(0, 4), cons: cons.slice(0, 2) };
+  }
+
+  labelOf(key, value) {
+    const q = QUESTIONS.filter((x) => x.key === key)[0];
+    if (!q) return value;
+    const o = q.options.filter((x) => x.v === value)[0];
+    return o ? o.label : value;
+  }
+
+  selectTab(key) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState({ tab: key });
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const goVariety = (i) => this.nav("varietyDetail", { vi: i, tab: "info" });
+    const goArticle = (i) => this.nav("article", { ai: i });
+    const goSeller = (i) => this.nav("sellerDetail", { si: i });
+
+    const varieties = VARIETIES.map((v, i) => Object.assign({}, v, { open: goVariety(i) }));
+    const posts = POSTS.map((p, i) => Object.assign({}, p, { open: goArticle(i) }));
+    const sellers = SELLERS.map((x, i) => Object.assign({}, x, {
+      open: goSeller(i),
+      tagline: (x.tags || []).join(" · ")
+    }));
+    const article = POSTS[s.ai];
+    const variety = VARIETIES[s.vi];
+    const seller = SELLERS[s.si];
+    const activeTab = TABS.filter((t) => t.key === s.tab)[0] || TABS[0];
+
+    const hasFilter = !!s.vf;
+    const key = hasFilter ? String(s.vf).split("(")[0].trim() : "";
+    const filtered = hasFilter ? posts.filter((p) => {
+      const hay = [p.title, p.excerpt, (p.keywords || []).join(" "),
+        (p.body || []).map((b) => b.h + " " + b.p).join(" ")].join(" ");
+      return hay.indexOf(key) >= 0;
+    }) : [];
+
+    return {
+      isHome: s.page === "home", isBlog: s.page === "blog", isArticle: s.page === "article",
+      isVarieties: s.page === "varieties", isVarietyDetail: s.page === "varietyDetail",
+      isSellers: s.page === "sellers", isSellerDetail: s.page === "sellerDetail",
+      isAbout: s.page === "about", isContact: s.page === "contact", isMatch: s.page === "match",
+      goHome: this.nav("home"), goBlog: this.nav("blog"), goVarieties: this.nav("varieties"),
+      goSellers: this.nav("sellers"), goAbout: this.nav("about"), goContact: this.nav("contact"),
+      goMatch: this.nav("match"), goTrace: this.nav("trace"),
+      isTrace: s.page === "trace",
+      code: s.code || "",
+      onCode: this.onCode, lookup: this.lookup,
+      lotError: s.lotError || "", hasLotError: !!s.lotError,
+      hasLot: !!s.lot,
+      lot: s.lot ? {
+        code: s.lot.code, variety: s.lot.variety, sku: s.lot.sku,
+        method: s.lot.method, rootstock: s.lot.rootstock, scion: s.lot.scion,
+        warranty: s.lot.warranty, status: s.lot.status,
+        graftDate: this.thaiDate(s.lot.graftDate),
+        age: this.ageFrom(s.lot.graftDate),
+        stats: [
+          { k: "รหัสต้น", v: s.lot.code },
+          { k: "สายพันธุ์", v: s.lot.variety },
+          { k: "รหัสสายพันธุ์", v: s.lot.sku },
+          { k: "วันเสียบยอด (เริ่มนับอายุ)", v: this.thaiDate(s.lot.graftDate) },
+          { k: "อายุต้นปัจจุบัน", v: this.ageFrom(s.lot.graftDate) },
+          { k: "วิธีขยายพันธุ์", v: s.lot.method },
+          { k: "ต้นตอที่ใช้", v: s.lot.rootstock },
+          { k: "กิ่งพันธุ์", v: s.lot.scion },
+          { k: "ผลตรวจรอยต่อ", v: s.lot.graftCheck },
+          { k: "คาดว่าเริ่มติดผล", v: s.lot.firstFruit },
+          { k: "วันที่รับรอง", v: this.thaiDate(s.lot.certDate) },
+          { k: "สถานะ", v: s.lot.status }
+        ],
+        events: s.lot.events.map((ev) => ({ d: this.thaiDate(ev.d), h: ev.h, p: ev.p })),
+        openVariety: this.nav("varietyDetail", { vi: VARIETIES.map((v) => v.sku).indexOf(s.lot.sku), tab: "info" })
+      } : null,
+
+      regionCards: REGIONS.map((r) => ({
+        label: r.label, note: r.note, select: this.pick("region", r.key),
+        bg: s.ans.region === r.key ? "#2D5F2E" : "#fff",
+        fg: s.ans.region === r.key ? "#fff" : "#1F4420",
+        sub: s.ans.region === r.key ? "#CFE2CB" : "#8A8A80",
+        border: s.ans.region === r.key ? "#2D5F2E" : "#E7E4D9"
+      })),
+      provinceChips: (REGIONS.filter((r) => r.key === s.ans.region)[0] || { provinces: [] }).provinces.map((p) => ({
+        label: p, select: this.pick("province", p),
+        bg: s.ans.province === p ? "#EAF3E6" : "#fff",
+        fg: s.ans.province === p ? "#2D5F2E" : "#4A4A42",
+        border: s.ans.province === p ? "#70B75C" : "#E7E4D9"
+      })),
+      hasRegion: !!s.ans.region,
+      questions: QUESTIONS.map((q) => ({
+        label: q.label,
+        options: q.options.map((o) => ({
+          label: o.label, select: this.pick(q.key, o.v),
+          bg: s.ans[q.key] === o.v ? "#EAF3E6" : "#fff",
+          fg: s.ans[q.key] === o.v ? "#2D5F2E" : "#4A4A42",
+          border: s.ans[q.key] === o.v ? "#70B75C" : "#E7E4D9",
+          weight: s.ans[q.key] === o.v ? "600" : "500"
+        }))
+      })),
+      answeredCount: Object.keys(s.ans).filter((k) => s.ans[k]).length,
+      resetMatch: this.resetMatch,
+      matches: VARIETIES.map((v, i) => {
+        const r = this.scoreVariety(v, s.ans);
+        return {
+          name: v.name, sku: v.sku, sci: v.sci, season: v.season, desc: v.desc,
+          score: r.score, rank: r.rank, bar: r.score + "%", pros: r.pros, cons: r.cons,
+          open: goVariety(i),
+          tone: r.score >= 80 ? "#2D5F2E" : (r.score >= 60 ? "#70B75C" : "#C9A227"),
+          verdict: r.score >= 80 ? "เหมาะมาก" : (r.score >= 60 ? "พอเหมาะ" : "ควรพิจารณา")
+        };
+      }).sort((a, b) => b.rank - a.rank),
+
+      topVarieties: [varieties[1], varieties[2], varieties[6], varieties[10]],
+      topPosts: posts.slice(0, 3),
+      varieties: varieties,
+      varietyCount: varieties.length,
+      posts: hasFilter ? (filtered.length ? filtered.slice(1) : posts) : posts.slice(1),
+      showPagination: !hasFilter,
+      showFeatured: hasFilter ? filtered.length > 0 : true,
+      featured: hasFilter ? (filtered[0] || {}) : Object.assign({}, POSTS[0]),
+      openFeatured: hasFilter ? (filtered[0] ? filtered[0].open : this.nav("blog")) : goArticle(0),
+      hasVarietyFilter: hasFilter,
+      filterLabel: s.vf || "",
+      filterCount: filtered.length,
+      clearFilter: this.nav("blog", { vf: null }),
+      noFilterMatch: hasFilter && filtered.length === 0,
+      blogTags: ["เริ่มต้น", "สายพันธุ์", "การปลูก", "ดิน", "การให้น้ำ", "ปัญหา", "การขยายพันธุ์", "เทคนิค", "เก็บเกี่ยว", "ปฏิทิน"],
+
+      article: Object.assign({}, article, {
+        initial: article.author.slice(0, 1),
+        heroId: "art-hero-" + s.ai,
+        body: article.body.map((b, bi) => Object.assign({}, b, { imgId: b.imgId || ("art-" + s.ai + "-" + bi) }))
+      }),
+      related: posts.filter((p, i) => i !== s.ai).slice(0, 3),
+      mentioned: [varieties[1], varieties[4]],
+
+      variety: variety,
+      goVarietyArticles: this.nav("blog", { vf: variety.name }),
+      tabs: TABS.map((t) => ({
+        label: t.label, select: this.selectTab(t.key),
+        color: t.key === s.tab ? "#1F4420" : "#8A8A80",
+        border: t.key === s.tab ? "#2D5F2E" : "transparent"
+      })),
+      tabContent: activeTab.content,
+
+      sellers: sellers,
+      topSellers: sellers.slice(0, 3),
+      relatedSellers: sellers.filter((x, i) => i !== s.si).slice(0, 3),
+      seller: seller,
+      sellerFilters: [
+        { label: "สินค้า", options: ["ผลสด", "ต้นพันธุ์"] },
+        { label: "ช่องทาง", options: ["ออนไลน์", "หน้าสวน / หน้าร้าน"] }
+      ],
+      sellerCount: SELLERS.length,
+      filters: [
+        { label: "ระดับความยาก", options: ["ง่าย", "ปานกลาง", "ยาก"] },
+        { label: "ฤดูเก็บเกี่ยว", options: ["มิ.ย.–ส.ค.", "ก.ย.–พ.ย.", "ธ.ค.–ก.พ."] },
+        { label: "ขนาดผล", options: ["เล็ก (<200 ก.)", "กลาง (200–350 ก.)", "ใหญ่ (>350 ก.)"] },
+        { label: "ลักษณะเด่น", options: ["ราคาสูง", "รสชาติเข้ม", "ทนโรค", "ยอดนิยม"] }
+      ],
+
+      pillars: [
+        { n: "01", h: "ความรู้ที่ตรวจทานแล้ว", p: "ทุกบทความผ่านการตรวจโดยผู้ปลูกที่มีประสบการณ์จริงและนักวิชาการเกษตร ก่อนเผยแพร่" },
+        { n: "02", h: "ฐานข้อมูลสายพันธุ์", p: "ทุกสายพันธุ์มีข้อมูลเทียบเคียงได้จริง ทั้งรหัสสินค้า ความยาก ฤดูเก็บเกี่ยว และราคาตลาด และเพิ่มขึ้นเรื่อยๆ" },
+        { n: "03", h: "ร้านค้าที่คัดกรอง", p: "เราตรวจแหล่งที่มาของต้นพันธุ์และเงื่อนไขการรับประกัน ก่อนให้ตรารับรอง" }
+      ],
+      criteria: [
+        "ระบุสายพันธุ์และวันที่ทาบกิ่งบนต้นพันธุ์ทุกต้น",
+        "มีเงื่อนไขรับประกันการติดของรอยต่ออย่างน้อย 30 วัน",
+        "ตรวจสอบแหล่งที่มาของกิ่งพันธุ์ย้อนหลังได้",
+        "ไม่มีข้อร้องเรียนที่ยังไม่ได้แก้ไขในรอบ 12 เดือน"
+      ],
+      faqs: [
+        { q: "Avocado Geek ขายต้นพันธุ์เองไหม?", a: "ไม่ครับ เราเป็นแหล่งข้อมูลและตัวกลางเชื่อมต่อ การซื้อขายเกิดขึ้นกับร้านค้าโดยตรง" },
+        { q: "ร้านของฉันขอรับรองได้อย่างไร?", a: "ส่งข้อมูลร้านผ่านหน้าติดต่อ ทีมงานจะติดต่อกลับเพื่อขอเอกสารและนัดตรวจภายใน 2 สัปดาห์" },
+        { q: "ข้อมูลสายพันธุ์อ้างอิงจากที่ไหน?", a: "จากเอกสารวิชาการ ข้อมูลสถานีวิจัย และการเก็บข้อมูลจากสวนสมาชิกในแต่ละภูมิภาค" },
+        { q: "พบข้อมูลผิดพลาดต้องทำอย่างไร?", a: "แจ้งผ่านหน้าติดต่อ ระบุหน้าและประเด็นที่พบ เราตรวจสอบและแก้ไขภายใน 7 วัน" }
+      ],
+      contacts: [
+        { k: "อีเมล", v: "hello@avocadobase.th" },
+        { k: "Line Official", v: "@avocadobase" },
+        { k: "โทรศัพท์", v: "052-000-118" },
+        { k: "เวลาทำการ", v: "จ.–ศ. 09:00–18:00" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
