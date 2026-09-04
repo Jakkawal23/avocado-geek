@@ -52,6 +52,7 @@ export default function VarietiesBrowser({ varieties }: { varieties: Variety[] }
   const [season, setSeason] = useState<string[]>([]);
   const [size, setSize] = useState<string[]>([]);
   const [highlight, setHighlight] = useState<string[]>([]);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -66,8 +67,8 @@ export default function VarietiesBrowser({ varieties }: { varieties: Variety[] }
     });
   }, [varieties, query, difficulty, season, size, highlight]);
 
-  const hasActiveFilters =
-    query !== "" || difficulty.length > 0 || season.length > 0 || size.length > 0 || highlight.length > 0;
+  const activeFilterCount = difficulty.length + season.length + size.length + highlight.length;
+  const hasActiveFilters = query !== "" || activeFilterCount > 0;
 
   function clearAll() {
     setQuery("");
@@ -78,66 +79,81 @@ export default function VarietiesBrowser({ varieties }: { varieties: Variety[] }
   }
 
   return (
-    <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[260px_1fr]">
-      <aside className="flex flex-col gap-6 rounded-2xl border border-border bg-white p-6">
-        <div className="flex items-center gap-2.5 rounded-[10px] border border-border px-3.5 py-2.5">
-          <span className="text-ink-fainter">⌕</span>
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="ชื่อสายพันธุ์"
-            className="w-full border-none bg-transparent text-[15px] text-ink outline-none"
-          />
-        </div>
+    <div className="flex flex-col gap-5">
+      <button
+        type="button"
+        onClick={() => setFiltersOpen((v) => !v)}
+        className="flex items-center justify-between gap-3 rounded-xl border border-border bg-white px-4 py-3.5 text-[15px] font-semibold text-ink-soft lg:hidden"
+      >
+        <span className="flex items-center gap-2">
+          ตัวกรอง
+          {activeFilterCount > 0 && (
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-avocado px-1 text-xs font-bold text-white">
+              {activeFilterCount}
+            </span>
+          )}
+        </span>
+        <span className="text-ink-fainter">{filtersOpen ? "ซ่อน ▲" : "แสดง ▼"}</span>
+      </button>
 
-        <CheckboxGroup
-          title="ระดับความยาก"
-          options={DIFFICULTIES.map((d) => ({ value: d, label: d }))}
-          selected={difficulty}
-          onToggle={(v) => setDifficulty((prev) => toggle(prev, v))}
-        />
-        <CheckboxGroup
-          title="ฤดูเก็บเกี่ยว"
-          options={SEASONS.map((s) => ({ value: s, label: s }))}
-          selected={season}
-          onToggle={(v) => setSeason((prev) => toggle(prev, v))}
-        />
-        <CheckboxGroup
-          title="ขนาดผล"
-          options={SIZES}
-          selected={size}
-          onToggle={(v) => setSize((prev) => toggle(prev, v))}
-        />
-        <CheckboxGroup
-          title="ลักษณะเด่น"
-          options={HIGHLIGHTS.map((h) => ({ value: h, label: h }))}
-          selected={highlight}
-          onToggle={(v) => setHighlight((prev) => toggle(prev, v))}
-        />
-
-        <button
-          type="button"
-          onClick={clearAll}
-          disabled={!hasActiveFilters}
-          className="rounded-[10px] bg-beige py-2.5 text-sm font-semibold text-ink-soft hover:bg-avocado-pale hover:text-avocado disabled:cursor-not-allowed disabled:opacity-50"
+      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[260px_1fr]">
+        <aside
+          className={`${filtersOpen ? "flex" : "hidden"} flex-col gap-6 rounded-2xl border border-border bg-white p-6 lg:flex`}
         >
-          ล้างตัวกรอง
-        </button>
-      </aside>
-
-      <div className="flex flex-col gap-5">
-        <span className="text-sm text-ink-faint">แสดง {filtered.length} สายพันธุ์</span>
-        {filtered.length === 0 ? (
-          <p className="rounded-xl border border-border bg-beige px-5 py-4 text-[15px] text-ink-faint">
-            ไม่พบสายพันธุ์ที่ตรงกับตัวกรอง ลองล้างตัวกรองดูนะครับ
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {filtered.map((v) => (
-              <VarietyCard key={v.slug} variety={v} />
-            ))}
+          <div className="flex items-center gap-2.5 rounded-[10px] border border-border px-3.5 py-2.5">
+            <span className="text-ink-fainter">⌕</span>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="ชื่อสายพันธุ์"
+              className="w-full border-none bg-transparent text-[15px] text-ink outline-none"
+            />
           </div>
-        )}
+
+          <CheckboxGroup
+            title="ระดับความยาก"
+            options={DIFFICULTIES.map((d) => ({ value: d, label: d }))}
+            selected={difficulty}
+            onToggle={(v) => setDifficulty((prev) => toggle(prev, v))}
+          />
+          <CheckboxGroup
+            title="ฤดูเก็บเกี่ยว"
+            options={SEASONS.map((s) => ({ value: s, label: s }))}
+            selected={season}
+            onToggle={(v) => setSeason((prev) => toggle(prev, v))}
+          />
+          <CheckboxGroup title="ขนาดผล" options={SIZES} selected={size} onToggle={(v) => setSize((prev) => toggle(prev, v))} />
+          <CheckboxGroup
+            title="ลักษณะเด่น"
+            options={HIGHLIGHTS.map((h) => ({ value: h, label: h }))}
+            selected={highlight}
+            onToggle={(v) => setHighlight((prev) => toggle(prev, v))}
+          />
+
+          <button
+            type="button"
+            onClick={clearAll}
+            disabled={!hasActiveFilters}
+            className="rounded-[10px] bg-beige py-2.5 text-sm font-semibold text-ink-soft hover:bg-avocado-pale hover:text-avocado disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            ล้างตัวกรอง
+          </button>
+        </aside>
+
+        <div className="flex flex-col gap-5">
+          <span className="text-sm text-ink-faint">แสดง {filtered.length} สายพันธุ์</span>
+          {filtered.length === 0 ? (
+            <p className="rounded-xl border border-border bg-beige px-5 py-4 text-[15px] text-ink-faint">
+              ไม่พบสายพันธุ์ที่ตรงกับตัวกรอง ลองล้างตัวกรองดูนะครับ
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {filtered.map((v) => (
+                <VarietyCard key={v.slug} variety={v} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

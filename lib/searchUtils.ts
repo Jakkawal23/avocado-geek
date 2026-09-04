@@ -21,5 +21,4 @@ export const CONTENT_TYPE_LABELS: Record<ContentType, string> = {
   article: "บทความ",
   variety: "สายพันธุ์",
   shop: "ร้านค้า",
-  guide: "คู่มือ",
 };

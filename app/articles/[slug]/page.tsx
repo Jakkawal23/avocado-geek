@@ -6,7 +6,7 @@ import { articleJsonLd, buildMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ShareButtons from "@/components/ShareButtons";
 import JsonLd from "@/components/JsonLd";
-import { formatThaiDate } from "@/components/ArticleCard";
+import { formatThaiDate } from "@/lib/date";
 
 export function generateStaticParams() {
   return getAllArticles().map((a) => ({ slug: a.slug }));
@@ -39,7 +39,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <Breadcrumbs
         items={[
           { label: "หน้าแรก", href: "/" },
-          { label: "บล็อกความรู้", href: "/articles" },
+          { label: "ความรู้", href: "/articles" },
           { label: article.category },
         ]}
       />

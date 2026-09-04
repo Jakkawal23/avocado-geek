@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
-import type { Article, Guide, Shop, TraceLot, Variety } from "./types";
+import type { Article, Shop, TraceLot, Variety } from "./types";
 
 // All content lives as individual, hand-editable JSON files under
 // /public/data/<type>/<slug>.json — no database, no API route. Adding a new
-// article/variety/shop/guide is just "copy a file, edit the fields".
+// article/variety/shop is just "copy a file, edit the fields". A how-to guide
+// is just an article whose `content` sections happen to be numbered steps.
 
 const DATA_DIR = path.join(process.cwd(), "public", "data");
 
@@ -45,6 +46,12 @@ export function getArticleTags(): string[] {
   return Array.from(tags);
 }
 
+export function getArticleCategories(): string[] {
+  const categories = new Set<string>();
+  getAllArticles().forEach((a) => categories.add(a.category));
+  return Array.from(categories);
+}
+
 export function getRelatedArticles(article: Article, limit = 3): Article[] {
   return getAllArticles()
     .filter((a) => a.slug !== article.slug)
@@ -76,16 +83,6 @@ export function getShopsForVariety(varietySlug: string): Shop[] {
   return getAllShops().filter((s) => s.varieties_available?.includes(varietySlug));
 }
 
-// ---- Guides ----
-
-export function getAllGuides(): Guide[] {
-  return readJsonDir<Guide>("guides");
-}
-
-export function getGuideBySlug(slug: string): Guide | undefined {
-  return bySlug(getAllGuides(), slug);
-}
-
 // ---- Trace lots (tree traceability codes, used by /trace) ----
 
 export function getAllTraceLots(): TraceLot[] {
@@ -104,6 +101,5 @@ export function getSiteStats() {
     varietyCount: getAllVarieties().length,
     articleCount: getAllArticles().length,
     shopCount: getAllShops().length,
-    guideCount: getAllGuides().length,
   };
 }

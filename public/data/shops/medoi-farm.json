@@ -27,19 +27,65 @@
   ],
   "channels": [
     {
-      "label": "📱 Facebook / Line (รออัปเดต)"
+      "type": "tiktok",
+      "label": "TikTok Shop",
+      "value": "รอผู้ขายยืนยันลิงก์ร้าน"
     },
     {
-      "label": "☎️ เบอร์โทร (รออัปเดต)"
+      "type": "shopee",
+      "label": "Shopee",
+      "value": "รอผู้ขายยืนยันลิงก์ร้าน"
+    },
+    {
+      "type": "lazada",
+      "label": "Lazada",
+      "value": "รอผู้ขายยืนยันลิงก์ร้าน"
+    },
+    {
+      "type": "facebook",
+      "label": "Facebook",
+      "value": "รอผู้ขายยืนยันลิงก์เพจ"
+    },
+    {
+      "type": "line",
+      "label": "Line",
+      "value": "รอผู้ขายยืนยัน Line ID"
+    },
+    {
+      "type": "phone",
+      "label": "โทรศัพท์",
+      "value": "รออัปเดต"
     }
   ],
   "tags": [
     "ผลสด",
     "ต้นพันธุ์"
   ],
-  "verifiedDate": "ส.ค. 2569",
+  "verifiedDate": "ส.ค. 2026",
   "saleChannels": [
     "ออนไลน์",
     "หน้าสวน/หน้าร้าน"
+  ],
+  "socialMedia": [
+    {
+      "platform": "facebook",
+      "label": "Facebook เพจ",
+      "value": "รอผู้ขายยืนยันลิงก์เพจ"
+    },
+    {
+      "platform": "instagram",
+      "label": "Instagram",
+      "value": "รอผู้ขายยืนยัน"
+    },
+    {
+      "platform": "tiktok",
+      "label": "TikTok",
+      "value": "รอผู้ขายยืนยัน"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "value": "รอผู้ขายยืนยัน"
+    }
   ]
 }

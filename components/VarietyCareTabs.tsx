@@ -54,7 +54,7 @@ export default function VarietyCareTabs() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap gap-1 border-b border-border">
+      <div className="-mx-4 flex gap-1 overflow-x-auto border-b border-border px-4 sm:mx-0 sm:flex-wrap sm:px-0">
         {TABS.map((tab) => {
           const isActive = tab.key === active;
           return (
@@ -62,7 +62,7 @@ export default function VarietyCareTabs() {
               key={tab.key}
               type="button"
               onClick={() => setActive(tab.key)}
-              className={`border-b-[3px] px-5 py-3.5 text-[15px] font-semibold ${
+              className={`shrink-0 whitespace-nowrap border-b-[3px] px-4 py-3.5 text-[15px] font-semibold sm:px-5 ${
                 isActive ? "border-avocado text-avocado" : "border-transparent text-ink-faint hover:text-avocado"
               }`}
             >

@@ -6,6 +6,25 @@ import { buildMetadata, shopJsonLd } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { initials } from "@/components/ShopCard";
+import type { ShopChannelType, SocialMediaPlatform } from "@/lib/types";
+
+const CHANNEL_ICON: Record<ShopChannelType, string> = {
+  tiktok: "🎵",
+  shopee: "🛒",
+  lazada: "🛍️",
+  facebook: "📘",
+  line: "💬",
+  phone: "☎️",
+  other: "🔗",
+};
+
+const SOCIAL_ICON: Record<SocialMediaPlatform, string> = {
+  facebook: "📘",
+  instagram: "📸",
+  tiktok: "🎵",
+  youtube: "▶️",
+  other: "🔗",
+};
 
 export function generateStaticParams() {
   return getAllShops().map((s) => ({ slug: s.slug }));
@@ -70,7 +89,7 @@ export default function ShopDetailPage({ params }: { params: { slug: string } })
         </div>
       </div>
 
-      <div className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
         <div className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6">
           <span className="font-display text-lg font-semibold text-avocado-dark">เกี่ยวกับร้าน</span>
           <p className="text-[15px] leading-loose text-ink-soft">{shop.about ?? shop.description}</p>
@@ -90,12 +109,33 @@ export default function ShopDetailPage({ params }: { params: { slug: string } })
           <div className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6">
             <span className="font-display text-lg font-semibold text-avocado-dark">ช่องทางการสั่งซื้อ</span>
             {shop.channels.map((c) => (
-              <span
-                key={c.label}
-                className="flex items-center justify-between gap-2.5 rounded-[11px] border border-border px-3.5 py-3 text-[15px] font-medium text-ink"
+              <div
+                key={c.type + c.label}
+                className="flex items-center justify-between gap-2.5 rounded-[11px] border border-border px-3.5 py-3 text-[15px] text-ink"
               >
-                {c.label}
-              </span>
+                <span className="flex items-center gap-2 font-medium">
+                  <span aria-hidden>{CHANNEL_ICON[c.type]}</span>
+                  {c.label}
+                </span>
+                <span className="text-sm text-ink-faint">{c.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
+        {shop.socialMedia && shop.socialMedia.length > 0 && (
+          <div className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6">
+            <span className="font-display text-lg font-semibold text-avocado-dark">โซเชียลมีเดีย</span>
+            {shop.socialMedia.map((s) => (
+              <div
+                key={s.platform + s.label}
+                className="flex items-center justify-between gap-2.5 rounded-[11px] border border-border px-3.5 py-3 text-[15px] text-ink"
+              >
+                <span className="flex items-center gap-2 font-medium">
+                  <span aria-hidden>{SOCIAL_ICON[s.platform]}</span>
+                  {s.label}
+                </span>
+                <span className="text-sm text-ink-faint">{s.value}</span>
+              </div>
             ))}
           </div>
         )}

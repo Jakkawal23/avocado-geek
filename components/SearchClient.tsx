@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { ContentType, SearchIndexItem } from "@/lib/types";
 import { CONTENT_TYPE_LABELS, filterSearchIndex } from "@/lib/searchUtils";
 
-const TYPE_FILTERS: (ContentType | "all")[] = ["all", "article", "variety", "guide", "shop"];
+const TYPE_FILTERS: (ContentType | "all")[] = ["all", "article", "variety", "shop"];
 
 export default function SearchClient({ initialQuery = "" }: { initialQuery?: string }) {
   const [index, setIndex] = useState<SearchIndexItem[] | null>(null);
@@ -34,7 +34,7 @@ export default function SearchClient({ initialQuery = "" }: { initialQuery?: str
           autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="ค้นหาบทความ สายพันธุ์ ร้านค้า หรือคู่มือ..."
+          placeholder="ค้นหาบทความ สายพันธุ์ หรือร้านค้า..."
           className="w-full border-none bg-transparent text-[16px] text-ink outline-none"
         />
       </div>
