@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { Article, Guide, Shop, Variety } from "./types";
+import type { Article, Shop, Variety } from "./types";
 
 export const SITE_NAME = "Avocado Geek";
 export const SITE_DESCRIPTION =
@@ -102,21 +102,5 @@ export function shopJsonLd(shop: Shop) {
           reviewCount: 1,
         }
       : undefined,
-  };
-}
-
-export function guideJsonLd(guide: Guide) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: guide.title,
-    description: guide.content,
-    totalTime: guide.duration,
-    step: guide.steps.map((s, i) => ({
-      "@type": "HowToStep",
-      position: i + 1,
-      name: s.title,
-      text: s.description,
-    })),
   };
 }

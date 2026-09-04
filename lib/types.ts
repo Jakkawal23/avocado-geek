@@ -15,7 +15,7 @@ export interface Article {
   excerpt: string;
   content: ArticleBody[];
   category: string;
-  date: string;
+  date: string; // ISO, e.g. "2026-08-10" — always Gregorian (ค.ศ.)
   author: string;
   image?: string;
   tags: string[];
@@ -41,6 +41,7 @@ export interface Variety {
   image?: string;
   difficultyStars?: string;
   stats?: VarietyStat[];
+  references?: string[]; // sources behind the description/stats above
   // ---- Used by the /match variety matcher (lib/matcher.ts) ----
   elevation?: "สูง" | "ราบ" | "ทุกพื้นที่"; // suitable growing elevation
   difficultyLevel?: 1 | 2 | 3 | 4; // 1 = easiest, matches difficultyStars count
@@ -58,8 +59,28 @@ export interface ShopProduct {
   price: string;
 }
 
+// One ordering channel. `type` picks the icon/label shown on the shop page —
+// every shop is expected to list at least tiktok/shopee/lazada/facebook/line/phone;
+// add more entries with type "other" for anything else (e.g. a second Line, a website).
+export type ShopChannelType = "tiktok" | "shopee" | "lazada" | "facebook" | "line" | "phone" | "other";
+
 export interface ShopChannel {
+  type: ShopChannelType;
   label: string;
+  value: string; // handle, phone number, or "รอผู้ขายยืนยัน" placeholder
+  url?: string;
+}
+
+// The shop's social media presence — separate from `channels` (which is
+// about placing an order). This is "follow us" content: page/profile links,
+// not necessarily a place to buy.
+export type SocialMediaPlatform = "facebook" | "instagram" | "tiktok" | "youtube" | "other";
+
+export interface SocialMediaLink {
+  platform: SocialMediaPlatform;
+  label: string;
+  value: string; // handle, or "รอผู้ขายยืนยัน" placeholder
+  url?: string;
 }
 
 export interface Shop {
@@ -78,27 +99,14 @@ export interface Shop {
   varieties_available: string[];
   products?: ShopProduct[];
   channels?: ShopChannel[];
+  socialMedia?: SocialMediaLink[]; // "follow us" links — Facebook Page, Instagram, TikTok, YouTube, etc.
   tags?: string[]; // product types on offer, e.g. ["ผลสด", "ต้นพันธุ์"] — doubles as the /shops filter
   saleChannels?: string[]; // e.g. ["ออนไลน์", "หน้าสวน/หน้าร้าน"]
-  verifiedDate?: string;
-}
-
-export interface Guide {
-  id: string;
-  title: string;
-  slug: string;
-  type: string;
-  difficulty: string;
-  duration: string;
-  content: string;
-  steps: { title: string; description: string }[];
-  tips: string[];
-  category?: string;
-  date?: string;
+  verifiedDate?: string; // e.g. "ส.ค. 2026" — always Gregorian (ค.ศ.)
 }
 
 export interface TraceEvent {
-  d: string; // date label, e.g. "15 มี.ค. 2567"
+  d: string; // ISO date, e.g. "2025-03-12" — always Gregorian (ค.ศ.)
   h: string; // event title
   p: string; // event description
 }
@@ -108,17 +116,19 @@ export interface TraceLot {
   code: string; // e.g. "AVO-2503-014" — what growers type into /trace
   slug: string;
   varietySlug: string;
-  status: string; // e.g. "รับรองแล้ว"
-  graftDate: string; // ISO date
+  status: string; // e.g. "รับรองแล้ว · อยู่ในระบบติดตาม"
+  graftDate: string; // ISO date — this is what the tree's age is counted from
+  certDate: string; // ISO date the certification itself was issued
   rootstock: string;
   scion: string;
-  method: string; // e.g. "เสียบยอด (cleft grafting)"
+  method: string; // e.g. "เสียบยอด"
+  graftCheck: string; // graft-union inspection result
+  firstFruitEstimate: string; // e.g. "2028 (ประมาณ 3 ปีหลังปลูกลงแปลง)"
   warranty: string;
-  stats: VarietyStat[];
   events: TraceEvent[];
 }
 
-export type ContentType = "article" | "variety" | "shop" | "guide";
+export type ContentType = "article" | "variety" | "shop";
 
 export interface SearchIndexItem {
   type: ContentType;

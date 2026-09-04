@@ -51,16 +51,6 @@ const shops = readJsonDir("shops").map((s) => ({
   tags: [s.location, ...(s.tags ?? [])].filter(Boolean),
 }));
 
-const guides = readJsonDir("guides").map((g) => ({
-  type: "guide",
-  id: g.id,
-  title: g.title,
-  slug: g.slug,
-  url: `/guides/${g.slug}`,
-  excerpt: g.content,
-  tags: [g.type, g.difficulty].filter(Boolean),
-}));
-
-const index = [...articles, ...varieties, ...shops, ...guides];
+const index = [...articles, ...varieties, ...shops];
 fs.writeFileSync(OUT_FILE, JSON.stringify(index), "utf-8");
 console.log(`[build-search-index] wrote ${index.length} entries to public/search-index.json`);

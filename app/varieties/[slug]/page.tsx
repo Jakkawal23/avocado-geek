@@ -74,13 +74,26 @@ export default function VarietyDetailPage({ params }: { params: { slug: string }
           <p className="text-[17px] leading-relaxed text-ink-soft">{variety.description}</p>
 
           {variety.stats && variety.stats.length > 0 && (
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
               {variety.stats.map((s) => (
                 <div key={s.k} className="flex flex-col gap-1 bg-white p-4">
                   <span className="text-xs text-ink-fainter">{s.k}</span>
                   <span className="text-[15px] font-semibold text-avocado-dark">{s.v}</span>
                 </div>
               ))}
+            </div>
+          )}
+
+          {variety.references && variety.references.length > 0 && (
+            <div className="flex flex-col gap-1.5 pt-1">
+              <span className="text-xs font-semibold uppercase tracking-wide text-ink-fainter">แหล่งอ้างอิง</span>
+              <ul className="flex flex-col gap-1">
+                {variety.references.map((r) => (
+                  <li key={r} className="text-[13px] leading-relaxed text-ink-fainter">
+                    · {r}
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 

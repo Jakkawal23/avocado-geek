@@ -1,5 +1,5 @@
 import type { SearchIndexItem } from "./types";
-import { getAllArticles, getAllVarieties, getAllShops, getAllGuides } from "./dataLoader";
+import { getAllArticles, getAllVarieties, getAllShops } from "./dataLoader";
 
 export { filterSearchIndex, CONTENT_TYPE_LABELS } from "./searchUtils";
 
@@ -39,15 +39,5 @@ export function buildSearchIndex(): SearchIndexItem[] {
     tags: [s.location, ...(s.tags ?? [])].filter(Boolean),
   }));
 
-  const guides: SearchIndexItem[] = getAllGuides().map((g) => ({
-    type: "guide",
-    id: g.id,
-    title: g.title,
-    slug: g.slug,
-    url: `/guides/${g.slug}`,
-    excerpt: g.content,
-    tags: [g.type, g.difficulty].filter(Boolean),
-  }));
-
-  return [...articles, ...varieties, ...shops, ...guides];
+  return [...articles, ...varieties, ...shops];
 }

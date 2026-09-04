@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Article } from "@/lib/types";
+import { formatThaiDate } from "@/lib/date";
 
 export default function ArticleCard({ article }: { article: Article }) {
   return (
@@ -25,16 +26,4 @@ export default function ArticleCard({ article }: { article: Article }) {
       </span>
     </Link>
   );
-}
-
-export function formatThaiDate(iso: string): string {
-  try {
-    return new Date(iso).toLocaleDateString("th-TH-u-ca-buddhist", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-  } catch {
-    return iso;
-  }
 }

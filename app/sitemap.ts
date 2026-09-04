@@ -1,21 +1,11 @@
 import type { MetadataRoute } from "next";
-import { getAllArticles, getAllGuides, getAllShops, getAllVarieties } from "@/lib/dataLoader";
+import { getAllArticles, getAllShops, getAllVarieties } from "@/lib/dataLoader";
 import { SITE_URL } from "@/lib/seo";
 
 // Auto-generated from the JSON content directories — add a new article,
-// variety, shop, or guide file and it appears here automatically.
+// variety, or shop file and it appears here automatically.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = [
-    "",
-    "/articles",
-    "/varieties",
-    "/shops",
-    "/match",
-    "/trace",
-    "/search",
-    "/about",
-    "/contact",
-  ].map(
+  const staticRoutes = ["", "/articles", "/varieties", "/shops", "/match", "/trace", "/search", "/about", "/contact"].map(
     (path) => ({
       url: `${SITE_URL}${path}`,
       lastModified: new Date(),
@@ -37,10 +27,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  const guideRoutes = getAllGuides().map((g) => ({
-    url: `${SITE_URL}/guides/${g.slug}`,
-    lastModified: g.date ? new Date(g.date) : new Date(),
-  }));
-
-  return [...staticRoutes, ...articleRoutes, ...varietyRoutes, ...shopRoutes, ...guideRoutes];
+  return [...staticRoutes, ...articleRoutes, ...varietyRoutes, ...shopRoutes];
 }

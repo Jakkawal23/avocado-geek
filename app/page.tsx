@@ -92,20 +92,19 @@ export default function HomePage() {
           <div className="mt-2 flex w-full flex-wrap gap-10 border-t border-border pt-6">
             <Stat value={stats.varietyCount} label="สายพันธุ์ในฐานข้อมูล" />
             <Stat value={stats.articleCount} label="บทความความรู้" />
-            <Stat value={stats.guideCount} label="คู่มือปฏิบัติ" />
             <Stat value={stats.shopCount} label="ร้านค้าที่รับรอง" />
           </div>
         </div>
 
-        <div className="relative">
-          <div className="placeholder-tile flex aspect-[4/4.4] items-center justify-center rounded-3xl border border-[#D8DFD2]">
+        <div className="relative pb-6 lg:pb-0">
+          <div className="placeholder-tile flex aspect-[4/4.4] items-center justify-center rounded-3xl border border-[#D8DFD2] sm:aspect-[4/3.4] lg:aspect-[4/4.4]">
             <span className="rounded-lg bg-cream/85 px-3.5 py-2 text-center font-mono text-[13px] text-[#4E6B4A]">
               hero photo — สวนอโวคาโด้ / ผลบนต้น
             </span>
           </div>
           <Link
             href="/trace"
-            className="absolute -left-4 bottom-6 flex max-w-[270px] items-center gap-3 rounded-2xl border border-border bg-white p-4 text-ink shadow-[0_8px_24px_rgba(31,68,32,0.10)] hover:border-avocado-light"
+            className="mx-auto -mt-8 flex w-[calc(100%-2rem)] max-w-[340px] items-center gap-3 rounded-2xl border border-border bg-white p-4 text-ink shadow-[0_8px_24px_rgba(31,68,32,0.10)] hover:border-avocado-light lg:absolute lg:-left-4 lg:bottom-6 lg:mt-0 lg:w-auto lg:max-w-[270px]"
           >
             <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] bg-avocado-pale text-lg text-avocado">
               ✓
